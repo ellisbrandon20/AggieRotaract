@@ -1,8 +1,12 @@
 # AggieRotaract 431 Project
 
 
-To run on local machine: rails s
-To run on cloud9: bundle install (should only be for first time) --> rails s -p $PORT -b $IP
+To run on local machine: 
+- rails s
+
+To run on cloud9: 
+- bundle install (should only be for first time) 
+- rails s -p $PORT -b $IP
 
 
 
