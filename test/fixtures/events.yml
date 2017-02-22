@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyText
+  description: MyText
+  start_time: 2017-02-22 22:34:43
+  end_time: 2017-02-22 22:34:43
+  capacity: MyString
+  integer: MyString
+  max_points: 9.99
+  meeting: false
+  contact: 1
+  image: MyString
+
+two:
+  name: MyString
+  address: MyText
+  description: MyText
+  start_time: 2017-02-22 22:34:43
+  end_time: 2017-02-22 22:34:43
+  capacity: MyString
+  integer: MyString
+  max_points: 9.99
+  meeting: false
+  contact: 1
+  image: MyString
