@@ -1,0 +1,22 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<h1>Index</h1>
+<% @all_events.each do |event| %>
+
+<%= event.name %><br>
+<%= event.address %><br>
+<%= event.description %><br>
+<%= event.start_time %><br>
+<%= event.end_time %><br>
+<%= event.capacity %><br>
+<%= event.max_points %><br>
+<%= event.meeting %><br>
+<%= event.contact %><br>
+
+<br>
+<% end %>
