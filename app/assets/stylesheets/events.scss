@@ -1,3 +1,11 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.event-card{
+    outline: black solid thick;
+    margin-left: 15em;
+    margin-right: 15em;
+    outline-width: 2px;
+    padding: 1.5em;
+}

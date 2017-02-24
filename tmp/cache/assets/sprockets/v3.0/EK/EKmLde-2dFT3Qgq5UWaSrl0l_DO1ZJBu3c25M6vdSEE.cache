@@ -1,0 +1,26 @@
+I"(function() {
+  (function(){ 
+  $('button').on('click', function() {
+      
+      var $editItem = $(".address");
+      var $link = $editItem.val();
+      
+      var $maplink = $("a.map-link");
+    
+      var $pluslink = $link.replace(/\s+/g, '+');
+      
+      $maplink.show();
+    
+      $maplink.attr("href", 'https://maps.google.co.uk/maps?q=' + $pluslink);
+    
+     
+    
+    
+      // remove - this is just for showing the href being output
+      $("span.result").text($pluslink);
+  });
+})();;
+
+
+}).call(this);
+:ET

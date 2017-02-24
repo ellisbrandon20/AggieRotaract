@@ -1,22 +1,65 @@
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
 <h1>Index</h1>
 <% @all_events.each do |event| %>
-
-<%= event.name %><br>
-<%= event.address %><br>
-<%= event.description %><br>
-<%= event.start_time %><br>
-<%= event.end_time %><br>
-<%= event.capacity %><br>
-<%= event.max_points %><br>
-<%= event.meeting %><br>
-<%= event.contact %><br>
-
-<br>
+    <div class="event-card">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="row col-sm-12">
+                    <%= event.name %>
+                </div>
+                <div class="row col-sm-12">
+                    <b>Time: </b>
+                    <%= event.start_time.strftime("%I %M %p") %>
+                    -
+                    <%= event.end_time.strftime("%I %M %p") %>
+                </div>
+                <div class="row col-sm-12">
+                    <b>Date: </b>
+                    <%= event.date.strftime("%B %d, %Y") %>
+                </div>
+                <div class="row col-sm-12">
+                    <b>Contact: </b>
+                    <%= event.contact %>
+                </div>
+                <b>Description: </b>
+                <div class="row col-sm-12">
+                    <%= event.description %>
+                </div>
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="row col-sm-12">
+                    <!--<%= event.max_points %>-->
+                    Points: 12
+                </div>
+                <div class="row col-sm-12">
+                    Spots Remaining: 12
+                    <!--<%= event.capacity %>-->
+                </div>
+                <div class="row col-sm-12">
+                    <%= image_tag(event.image, class: "img-thumbnail") %>
+                </div>
+                <div class="row col-sm-12">
+                     <div id="address"><%= event.address %></div>
+                     <script type="text/javascript">
+                       Google_Map_Link();
+                    </script>
+                </div>
+                
+                <div id="event-buttons">
+                    <!-- if admin -->
+                    <div class="row">
+                        <div class="col-sm-6">edit btn</div>
+                        <div class="col-sm-6">delete btn</div>
+                    </div>
+                    <div class="row col-sm-12">
+                        <div>view sign ups</div>
+                    </div>
+                    <!-- "else" -->
+                    <!--<div> Remove me btn </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br>
 <% end %>
