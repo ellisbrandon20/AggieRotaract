@@ -5,10 +5,12 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'bootstrap.min.css' %>
+    <!--<link rel="stylesheet" href="/app/assets/stylesheets/bootstrap.min.css">-->
     
-    <link rel="stylesheet" href="/app/assets/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="/app/assets/javascripts/bootstrap.min.js">
+    <!--<link rel="stylesheet" href="/app/assets/javascripts/bootstrap.min.js">-->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min.js' %>
     
   </head>
 
@@ -40,8 +42,8 @@
         </ul>
         
         <ul class="nav navbar-nav navbar-right">
-        <ul class="nav pull-right">
-            <button class="btn ">Log Out</button>
+        <ul class="nav pull-right nav-item-log-out">
+            <button class="btn">Log Out</button>
         </ul>
         
       </div>
