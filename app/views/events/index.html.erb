@@ -1,5 +1,6 @@
 <h1>Index</h1>
 <% @all_events.each do |event| %>
+<<<<<<< HEAD
     <div class="event-card">
         <div class="row">
             <div class="col-sm-9">
@@ -61,5 +62,18 @@
         </div>
     </div>
     
+=======
+    <div class="row">
+    <div class="col-sm-6"><%= event.name %></div>
+    <div class="col-sm-6"><%= event.address %></div>
+    </div>
+    <%= event.description %><br>
+    <%= event.start_time %><br>
+    <%= event.end_time %><br>
+    <%= event.capacity %><br>
+    <%= event.max_points %><br>
+    <%= event.meeting %><br>
+    <%= event.contact %><br>
+>>>>>>> master
     <br>
 <% end %>

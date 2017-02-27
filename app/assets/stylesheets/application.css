@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.navbar .nav.pull-right {
+    float: right;
+    margin-right: 3em;
+    vertical-align: auto;
+}
+.body-content{
+    padding-top: 4em;     
+}
+.nav-item{
+    padding-right: 2em;
+    padding-left: 2em;
+}
+.nav-item-log-out{
+    padding-top: 0.5em;
+}
