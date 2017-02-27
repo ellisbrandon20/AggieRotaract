@@ -3,6 +3,9 @@ class EventsController < ApplicationController
     end
     
     def create
-        render plain: params[:article].inspect
+        @event = Event.new(params[:event])
+        
+        @event.save
+        redirect_to @event
     end
 end
