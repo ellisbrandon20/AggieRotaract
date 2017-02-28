@@ -1,0 +1,13 @@
+I"p(function() {
+  $(document).on('pageload', function() {
+    var $editItem, $maplink, $pluslink;
+    $editItem = $('#address').html();
+    $maplink = $('a.map-link');
+    $pluslink = $editItem.replace(/\s+/g, '+');
+    $maplink.show();
+    $maplink.attr('href', 'https://maps.google.co.uk/maps?q=' + $pluslink);
+    $('#address').text($pluslink);
+  });
+
+}).call(this);
+:ET
