@@ -4,7 +4,7 @@
 
 # $(window).load ->
 # ready = ->
-$(document).ready ->
+googleMapLink = ->
   $elements = document.getElementsByClassName('address')
   i = 0
   while i < $elements.length
@@ -18,5 +18,5 @@ $(document).ready ->
     i++
   return
 
-# $(document).ready(ready)
-# $(document).on('page:load', ready)
+# window.onload = googleMapLink
+document.ready = googleMapLink;

@@ -1,0 +1,17 @@
+I"Å(function() {
+  $(function() {
+    var $editItem, $elements, $link, $pluslink, i;
+    $elements = document.getElementsByClassName('address');
+    i = 0;
+    while (i < $elements.length) {
+      $editItem = $elements[i];
+      $link = $editItem.text;
+      $pluslink = $link.replace(/\s+/g, '+');
+      $elements[i].href = 'https://www.google.com/maps?q=' + $pluslink;
+      $elements[i].text = 'Google Maps Link';
+      i++;
+    }
+  });
+
+}).call(this);
+:ET
