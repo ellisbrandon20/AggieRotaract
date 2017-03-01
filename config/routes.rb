@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'events/index'
     get 'dashboard/index'
     
-    root 'dashboard#index'
+    root 'user#index'
     
     resources :events
 end
