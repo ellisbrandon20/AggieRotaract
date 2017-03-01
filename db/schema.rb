@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 20170222223443) do
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.text     "address"
+    t.date     "date"
     t.text     "description"
     t.time     "start_time"
     t.time     "end_time"
-    t.string   "capacity"
-    t.string   "integer"
+    t.integer  "capacity"
     t.decimal  "max_points"
     t.boolean  "meeting"
     t.integer  "contact"

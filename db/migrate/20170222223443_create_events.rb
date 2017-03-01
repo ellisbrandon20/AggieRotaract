@@ -3,11 +3,11 @@ class CreateEvents < ActiveRecord::Migration[5.0]
     create_table :events do |t|
       t.string :name
       t.text :address
+      t.date :date
       t.text :description
       t.time :start_time
       t.time :end_time
-      t.string :capacity
-      t.string :integer
+      t.integer :capacity
       t.decimal :max_points
       t.boolean :meeting
       t.integer :contact

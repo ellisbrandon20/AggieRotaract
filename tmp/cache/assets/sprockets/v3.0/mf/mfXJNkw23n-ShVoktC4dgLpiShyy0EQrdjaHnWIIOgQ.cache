@@ -1,0 +1,19 @@
+I"(function() {
+  $(window).load(function() {
+    var $editItem, $elements, $link, $pluslink, i;
+    $elements = document.getElementsByClassName('address');
+    alert($elements.length);
+    i = 0;
+    while (i < $elements.length) {
+      $editItem = $elements[i];
+      alert($editItem);
+      $link = $editItem.text;
+      $pluslink = $link.replace(/\s+/g, '+');
+      document.getElementById('address').href = 'https://www.google.com/maps?q=' + $pluslink;
+      $('#address').text('Google Maps Link');
+      i++;
+    }
+  });
+
+}).call(this);
+:ET
