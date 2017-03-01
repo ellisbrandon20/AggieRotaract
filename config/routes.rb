@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    get 'events/index'
-    get 'dashboard/index'
+    post 'user/login'
     
-    root 'user#index'
+    root 'user#login'
     
     resources :events
+    resources :user
 end
