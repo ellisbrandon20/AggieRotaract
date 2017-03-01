@@ -338,3 +338,205 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/events" for 10.240.1.64 at 2017-03-01 21:02:47 +0000
+Cannot render console from 10.240.1.64! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__3177506823204404527_24710020 at /home/ubuntu/workspace/app/views/events/index.html.erb:2)
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__3177506823204404527_24710020 at /home/ubuntu/workspace/app/views/events/index.html.erb:2)
+  Rendered events/index.html.erb within layouts/application (2845.8ms)
+Completed 200 OK in 3033ms (Views: 3011.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 10.240.1.60 at 2017-03-01 21:02:55 +0000
+Cannot render console from 10.240.1.60! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 58ms (Views: 55.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 10.240.0.207 at 2017-03-01 21:02:56 +0000
+Cannot render console from 10.240.0.207! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 49ms (Views: 46.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events" for 10.240.1.60 at 2017-03-01 21:03:40 +0000
+Cannot render console from 10.240.1.60! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__4334561943944476238_27981920 at /home/ubuntu/workspace/app/views/events/index.html.erb:2)
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__4334561943944476238_27981920 at /home/ubuntu/workspace/app/views/events/index.html.erb:2)
+  Rendered events/index.html.erb within layouts/application (2576.5ms)
+Completed 200 OK in 2688ms (Views: 2667.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/events" for 10.240.1.17 at 2017-03-01 21:03:45 +0000
+Cannot render console from 10.240.1.17! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 84ms (Views: 81.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.240.1.17 at 2017-03-01 21:03:46 +0000
+Cannot render console from 10.240.1.17! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 50ms (Views: 48.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.240.0.187 at 2017-03-01 21:03:48 +0000
+Cannot render console from 10.240.0.187! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+Started GET "/" for 10.240.1.64 at 2017-03-01 21:03:48 +0000
+Cannot render console from 10.240.1.64! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.5ms)
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 99ms (Views: 97.2ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 119ms (Views: 80.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.240.0.110 at 2017-03-01 21:03:49 +0000
+Cannot render console from 10.240.0.110! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 42ms (Views: 40.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.240.0.69 at 2017-03-01 21:03:50 +0000
+Cannot render console from 10.240.0.69! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 57ms (Views: 55.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.240.0.110 at 2017-03-01 21:03:53 +0000
+Cannot render console from 10.240.0.110! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 62ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 10.240.1.64 at 2017-03-01 21:03:54 +0000
+Cannot render console from 10.240.1.64! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 81ms (Views: 78.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 10.240.1.64 at 2017-03-01 21:03:55 +0000
+Cannot render console from 10.240.1.64! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 65ms (Views: 61.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 10.240.0.69 at 2017-03-01 21:03:56 +0000
+Cannot render console from 10.240.0.69! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 86ms (Views: 80.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/" for 10.240.0.206 at 2017-03-01 21:03:56 +0000
+Cannot render console from 10.240.0.206! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 55ms (Views: 53.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 10.240.1.19 at 2017-03-01 21:03:57 +0000
+Cannot render console from 10.240.1.19! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 68ms (Views: 64.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events" for 10.240.0.69 at 2017-03-01 21:03:57 +0000
+Cannot render console from 10.240.0.69! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 66ms (Views: 63.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 10.240.1.64 at 2017-03-01 21:03:58 +0000
+Cannot render console from 10.240.1.64! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 72ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
