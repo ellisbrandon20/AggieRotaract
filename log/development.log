@@ -8537,3 +8537,46 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 62ms (Views: 59.8ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/events" for 10.240.0.179 at 2017-03-01 17:01:23 +0000
+Cannot render console from 10.240.0.179! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__3272538849322996643_22921700 at /home/ubuntu/workspace/app/views/events/index.html.erb:9)
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__3272538849322996643_22921700 at /home/ubuntu/workspace/app/views/events/index.html.erb:9)
+  Rendered events/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 804ms (Views: 783.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/events" for 10.240.0.69 at 2017-03-01 17:01:28 +0000
+Cannot render console from 10.240.0.69! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 123ms (Views: 120.1ms | ActiveRecord: 0.6ms)
+
+
