@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170222223443) do
     t.time     "start_time"
     t.time     "end_time"
     t.integer  "capacity"
-    t.decimal  "max_points"
+    t.float    "max_points"
     t.boolean  "meeting"
     t.integer  "contact"
     t.string   "image"

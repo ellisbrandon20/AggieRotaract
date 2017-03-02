@@ -1,5 +1,5 @@
 <h1 class="title">Upcoming Events</h1>
-<% @all_events.each do |event| %>
+<% @upcoming_events.each do |event| %>
     <div class="event-card">
         <div class="row">
             <div class="col-sm-9">
@@ -9,6 +9,7 @@
                 <div class="row col-sm-12">
                     <b>Time: </b>
                     <div class="event-item-margin">
+                        <!--<%= event.start_time%> ======-->
                         <%= event.start_time.strftime("%I:%M %p")%>
                         -
                         <%= event.end_time.strftime("%I:%M %p") %>
@@ -34,8 +35,8 @@
             
             <div class="col-sm-3">
                 <div class="row col-sm-12">
-                    <!--<%= event.max_points %>-->
-                    Points: 12
+                    Points: 
+                    <%= event.max_points %>
                 </div>
                 <div class="row col-sm-12">
                     Spots Remaining: 12
