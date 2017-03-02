@@ -3,4 +3,8 @@ class UserController < ApplicationController
 		puts("---------*********")
 		puts(params[:UIN])
 	end
+
+	def add_user
+		
+	end
 end
