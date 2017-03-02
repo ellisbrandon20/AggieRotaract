@@ -22,3 +22,14 @@ events = [
 events.each do |event|
     Event.create!(event)
 end
+
+users = [
+  {:UIN => "123456789", :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Fresmore", :major => "CSCE", :shirt => "M",
+    :gender => "male", :officer => "yes", :active => "yes"
+  }
+]
+
+users.each do |user|
+    User.create!(user)
+end
