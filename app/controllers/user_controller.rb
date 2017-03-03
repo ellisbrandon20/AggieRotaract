@@ -45,5 +45,11 @@ class UserController < ApplicationController
 		# this is the method that is to be called when signing up a new member
 	end
 
+	def logout
+		# action that is called when logout button is clicked
+		# should be clearing necessary information like this, not sure if we need anything else for now this is enough
+		session[:user_uin] = nil
+		session[:admin] = nil
+	end
 	
 end
