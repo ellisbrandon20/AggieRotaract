@@ -1,0 +1,10 @@
+<%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'admin_login' do %>
+    <h1 class="form-signin-heading text-muted">Admin Log In</h1>
+
+  <input name="admin_password" type="text" class="form-control" placeholder="Admin Password" required="" autofocus="">
+  <div class="row">
+    <div class="col-md-8">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+    </div>
+  </div>
+<% end %>
