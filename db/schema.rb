@@ -29,17 +29,19 @@ ActiveRecord::Schema.define(version: 20170227212531) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "UIN"
-    t.string  "name"
-    t.integer "phone"
-    t.string  "email"
-    t.text    "address"
-    t.string  "classification"
-    t.string  "major"
-    t.string  "shirt"
-    t.boolean "gender"
-    t.boolean "officer"
-    t.boolean "active"
+    t.integer  "UIN"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "address"
+    t.string   "classification"
+    t.string   "major"
+    t.string   "shirt"
+    t.string   "gender"
+    t.boolean  "officer"
+    t.boolean  "active"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
