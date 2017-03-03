@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+	layout "login"
+	
 	def login
 		user_uin = params[:login_UIN]
 		
