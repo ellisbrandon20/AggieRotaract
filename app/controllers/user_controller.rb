@@ -3,6 +3,7 @@ class UserController < ApplicationController
 	
 	def login
 		user_uin = params[:login_UIN]
+		admin = false;
 		
 		# error check for input of 9 digits if not redirect to login page sending error in address bar like: ?login_error=somthing
 		# redirect_to root_path(:login_error => "invalid_input")
@@ -10,14 +11,20 @@ class UserController < ApplicationController
 		# if the text "admin" is entered then do something to ask for password then check that make sure it is correct
 		# if password is incorrect
 			# redirect_to root_path(:login_error => "invalid_password")
+		if params[:login_UIN] == "admin"
+			puts("dang you're an admin")
+			admin = true;
+		end
 		
 		# if admin we need to run this and then redirect to dashboard and skip the below if code (line 18) checking for user in the database
 			# session[:admin] = true
 		# else
 			# session[:admin] = false
 		# this is what we will use throughout the applicaiton to control which buttons and layouts are viewable ot the user
-		
-		if !user_uin.nil?
+		if admin
+			puts("about to redirect to admin path")
+			redirect_to user_admin_login_path
+		elsif !user_uin.nil?
 			if User.exists?({:UIN => user_uin}) #and !user_uin.nil?
 				puts(user_uin)
 				puts("------------------------")
@@ -41,6 +48,10 @@ class UserController < ApplicationController
 			end
 		end
 		
+	end
+
+	def admin_login
+		puts("You logged in as ADMIN, hooray!")
 	end
 	
 	def create
