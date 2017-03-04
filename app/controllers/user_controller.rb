@@ -50,12 +50,14 @@ class UserController < ApplicationController
 		
 	end
 
-	def admin_login
+	def admin_password_validation
 		password = "password"
 		if params[:admin_password] == password
 			# redirect_to root_path(:login_error => "invalid_password")
 			session[:admin] = true
 			redirect_to dashboard_index_path
+		else
+			redirect_to root_path(:login_error => "invalid_password")
 		end
 	end
 	
