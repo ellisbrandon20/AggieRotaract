@@ -1,4 +1,6 @@
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'login' do %>
+  <h1 class="form-signin-heading text-muted center">Log In/Sign Up</h1>
+
   <html>
     <!-- <head/> -->
     <style>
@@ -13,16 +15,16 @@
         }
     </style>
 
-    <body>
-      <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name %>
-      <% end -%>
- 
-      <!-- more content -->
-    </body>
+    <div class="center">
+      <body>
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+        <% end -%>
+   
+        <!-- more content -->
+      </body>
+    </div>
   </html>
-
-  <h1 class="form-signin-heading text-muted center">Sign Up/Log In</h1>
 
   <div class="center">
     <input name="login_UIN" type="text" class="form-control" maxlength="9" placeholder="UIN" required="" autofocus="">
