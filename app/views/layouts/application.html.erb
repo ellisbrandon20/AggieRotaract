@@ -39,7 +39,9 @@
           
           <ul class="nav navbar-nav navbar-right">
           <ul class="nav pull-right nav-item-log-out">
-              <button class="btn">Log Out</button>
+            <%= form_tag :method => :post, :controller => 'user', :action => 'logout' do %>
+              <button class="btn" id="logout_id">Log Out</button>
+            <% end %>
           </ul>
           
         </div>

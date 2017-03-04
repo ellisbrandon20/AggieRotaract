@@ -75,6 +75,9 @@ class UserController < ApplicationController
 		# should be clearing necessary information like this, not sure if we need anything else for now this is enough
 		session[:user_uin] = nil
 		session[:admin] = nil
+		puts "redirect to path"
+		flash[:logout_success] = "Successfully logged out."
+		redirect_to root_path
 	end
 	
 end
