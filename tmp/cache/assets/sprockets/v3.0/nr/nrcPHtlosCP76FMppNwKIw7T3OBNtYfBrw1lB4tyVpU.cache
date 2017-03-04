@@ -1,7 +1,0 @@
-I"m(function() {
-  $(document).on('pageload', function() {
-    alert('page loaded');
-  });
-
-}).call(this);
-:ET

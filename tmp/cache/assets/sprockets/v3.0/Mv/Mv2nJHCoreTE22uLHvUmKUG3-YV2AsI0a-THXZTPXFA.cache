@@ -1,7 +1,0 @@
-I"g(function() {
-  $(document).on('pageload', function() {
-    alert('Hello');
-  });
-
-}).call(this);
-:ET

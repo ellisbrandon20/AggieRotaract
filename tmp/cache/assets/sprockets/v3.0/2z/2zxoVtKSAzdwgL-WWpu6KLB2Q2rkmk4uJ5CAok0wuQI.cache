@@ -1,7 +1,0 @@
-I"k(function() {
-  $(window).load(function() {
-    alert('All images are loaded');
-  });
-
-}).call(this);
-:ET
