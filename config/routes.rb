@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     post 'user/login'
+    get 'user/new'
 
-    post 'user/admin_login'
     get 'user/admin_login'
+    post 'user/admin_login'
     
     get 'dashboard/index'
     

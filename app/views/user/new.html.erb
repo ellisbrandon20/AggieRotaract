@@ -1,7 +1,7 @@
 <h1>Create New User</h1>
 
 <!--since our method is a POST http request there is only one route that is mapped with this which is the user#create so you can simply use url: => user_path  -->
-<%= form_tag :method => :post, :class => 'form-signin', :url => user_path do %>
+<%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :url => new_user_path, :action => 'create' do %>
 
   <div class="col-xs-3">
   	<input name="UIN" type="text" class="form-control" pattern="\d{9}" maxlength="9" placeholder="UIN" autofocus="">
