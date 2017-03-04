@@ -51,11 +51,19 @@ class UserController < ApplicationController
 	end
 
 	def admin_login
-		puts("You logged in as ADMIN, hooray!")
+		password = "password"
+		if params[:admin_password] == password
+			# redirect_to root_path(:login_error => "invalid_password")
+			session[:admin] = true
+			redirect_to dashboard_index_path
+		end
 	end
 	
 	def create
 		# this is the method that is to be called when signing up a new member
+		# ----- NOT SURE how to put data in database
+		puts("in user create()")
+		redirect_to dashboard_index_path
 	end
 
 	def logout
