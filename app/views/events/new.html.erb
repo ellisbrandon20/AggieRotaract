@@ -1,3 +1,4 @@
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
 <%= form_for :event, url: events_path do |f| %>
   <p>
     <%= f.label :name %><br>
@@ -20,40 +21,36 @@
   </p>
   
   <p>
-    <%= f.label :UIN %><br>
-    <%= f.text_area :UIN %>
-  </p>
-  
-  <p>
     <%= f.label :date %><br>
-    <%= f.text_area :date %>
+    <!--<input type="text" data-provide='datepicker' >-->
+    <%= f.text_field :date, :data => {:provide => "datepicker"}%>
   </p>
   
   <p>
     <%= f.label :start_time %><br>
-    <%= f.text_area :start_time %>
+    <%= f.text_field :start_time %>
   </p>
   
   <p>
     <%= f.label :end_time %><br>
-    <%= f.text_area :end_time %>
+    <%= f.text_field :end_time %>
   </p>
   
   <p>
     <%= f.label :max_points %><br>
-    <%= f.text_area :max_points %>
+    <%= f.text_field :max_points, :type=>"number" %>
   </p>
   
   <p>
     <%= f.label :contact %><br>
-    <%= f.text_area :contact %>
+    <%= f.text_field :contact %>
   </p>
   
   <p>
     <%= f.label :image %><br>
-    <%= f.text_area :image %>
+    <%= f.text_field :image %>
   </p>
- 
+
   <p>
     <%= f.submit %>
   </p>
