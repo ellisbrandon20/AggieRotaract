@@ -2282,3 +2282,54 @@ To silence this deprecation warning, add the following:
 Completed 200 OK in 69ms (Views: 62.4ms | ActiveRecord: 1.4ms)
 
 
+Started GET "/" for 10.240.1.60 at 2017-03-04 18:01:25 +0000
+Cannot render console from 10.240.1.60! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 624ms (Views: 610.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 10.240.1.32 at 2017-03-04 18:01:28 +0000
+Cannot render console from 10.240.1.32! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (date >= '2017-03-04')[0m
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__1469007241281888982_70220550827420 at /home/ubuntu/workspace/app/views/events/index.html.erb:2)
+DEPRECATION WARNING: Time columns will become time zone aware in Rails 5.1. This
+still causes `String`s to be parsed as if they were in `Time.zone`,
+and `Time`s to be converted to `Time.zone`.
+
+To keep the old behavior, you must add the following to your initializer:
+
+    config.active_record.time_zone_aware_types = [:datetime]
+
+To silence this deprecation warning, add the following:
+
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+ (called from _app_views_events_index_html_erb__1469007241281888982_70220550827420 at /home/ubuntu/workspace/app/views/events/index.html.erb:2)
+  Rendered events/index.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 72ms (Views: 60.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/events" for 10.240.0.187 at 2017-03-04 18:05:51 +0000
+Cannot render console from 10.240.0.187! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (date >= '2017-03-04')[0m
+  Rendered events/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 42ms (Views: 39.3ms | ActiveRecord: 0.6ms)
+
+
