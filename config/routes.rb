@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'user/new'
 
     get 'user/admin_login'
-    post 'user/admin_login'
+    post 'user/admin_password_validation'
     
     get 'dashboard/index'
     
