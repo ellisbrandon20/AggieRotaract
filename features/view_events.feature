@@ -7,5 +7,9 @@ Scenario: Events List
   Given I have events titled Big Event, Habitat for Humanity
   When I visit "events"
   Then I should see events
-#   Then I should see "Big Event"
-#   And I should see "Habitat for Humanity"
+  
+Scenario: Events List
+  Given I have events titled Big Event, Habitat for Humanity
+  When I visit "events"
+  Then I should see "Big Event"
+  And I should see "Habitat for Humanity"

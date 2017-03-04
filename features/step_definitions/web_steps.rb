@@ -16,10 +16,14 @@ When(/^I visit "([^"]*)"$/) do |arg1|
   visit(arg1)
 end
 
-Then(/^I should see "([^\"]*)"$/) do |text|
-    response.should contain(text)
-end
+# Then(/^I should see "([^\"]*)"$/) do |text|
+#     #page.should have_content(text)
+#     #page.find_by_id("event_title").text(text)
+# end
 
-Then(/^I should not see "([^\"]*)"$/) do |text|
-    response.should_not contain(text)
-end
+#page.find("#some-id")[:class].include?("some-class")
+
+
+# Then(/^I should not see "([^\"]*)"$/) do |text|
+#     response.should_not contain(text)
+# end
