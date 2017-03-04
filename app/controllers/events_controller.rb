@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-    require 'date'
     
     def new
     end

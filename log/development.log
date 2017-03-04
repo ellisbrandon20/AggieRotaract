@@ -2529,3 +2529,19 @@ Processing by EventsController#show as HTML
 Completed 200 OK in 128ms (Views: 125.4ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/events/new" for 10.240.0.179 at 2017-03-04 23:01:24 +0000
+Cannot render console from 10.240.0.179! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 134ms (Views: 132.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events/new" for 10.240.1.17 at 2017-03-04 23:01:24 +0000
+Cannot render console from 10.240.1.17! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 156ms (Views: 154.5ms | ActiveRecord: 0.0ms)
+
+
