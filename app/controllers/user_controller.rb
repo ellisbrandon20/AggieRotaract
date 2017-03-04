@@ -44,6 +44,7 @@ class UserController < ApplicationController
 				puts("USER DOES NOT EXISTS")
 				
 				# error input or user does not exist, send an error back to login page in the address bar like: ?login_error=something
+				flash[:user_login_error] = "Invalid UIN. Do you need to Sign Up?"
 				redirect_to root_path(:login_error => "invalid_user")
 			end
 		end
@@ -57,7 +58,8 @@ class UserController < ApplicationController
 			session[:admin] = true
 			redirect_to dashboard_index_path
 		else
-			redirect_to root_path(:login_error => "invalid_password")
+			flash[:admin_login_error] = "Incorrect Admin password."
+			redirect_to root_path
 		end
 	end
 	

@@ -1,6 +1,23 @@
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'login' do %>
     <h1 class="form-signin-heading text-muted">Sign Up/Log In</h1>
 
+  <html>
+    <!-- <head/> -->
+    <style>
+        body {
+          color: red;
+        }
+    </style>
+
+    <body>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+      <% end -%>
+ 
+      <!-- more content -->
+    </body>
+  </html>
+
   <input name="login_UIN" type="text" class="form-control" maxlength="9" placeholder="UIN" required="" autofocus="">
   <div class="row">
     <div class="col-md-8">
