@@ -5,8 +5,6 @@ class EventsController < ApplicationController
     
     
     def create
-        #@event = Event.new(event_params)
-        
         @event = Event.create!(:name => event_params[:name],
                  :description => event_params[:description],
                  :address => event_params[:address],
@@ -17,7 +15,7 @@ class EventsController < ApplicationController
                  :max_points => event_params[:max_points],
                  :contact => event_params[:contact],
                  :image => event_params[:image])
-        
+                 
         @event.save
         redirect_to @event
     end

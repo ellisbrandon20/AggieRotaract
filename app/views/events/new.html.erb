@@ -17,8 +17,9 @@
   
   <p>
     <%= f.label :meeting %><br>
-    <%= f.text_area :meeting %>
-  </p>
+    <input type="radio" name="meeting" value=1> Yes
+    <input type="radio" name="meeting" value=0> No
+    </p>
   
   <p>
     <%= f.label :date %><br>
@@ -45,7 +46,6 @@
     <%= f.label :contact %><br>
     <%= f.text_field :contact %>
   </p>
-  
   <p>
     <%= f.label :image %><br>
     <%= f.text_field :image %>
@@ -55,3 +55,19 @@
     <%= f.submit %>
   </p>
 <% end %>
+
+ <%= form_tag '/img_upload/create', { :multipart => true } do %>  
+    <p>
+      <%= file_field_tag 'upload[file]'  %>
+    </p>
+    <p>
+        <%= submit_tag "Upload" %>
+    </p>
+  <% end %>
+  
+  <script>
+    document.getElementById("upload_file").onchange = function(){
+      document.getElementById('event_image').value = document.getElementById('upload_file').value 
+    }
+  </script>
+  
