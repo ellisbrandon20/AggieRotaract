@@ -1,9 +1,22 @@
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'admin_password_validation' do %>
-    <h1 class="form-signin-heading text-muted">Admin Log In</h1>
+    <html>
+    <!-- <head/> -->
+    <style>
+        .center {
+          margin: auto;
+          width: 30%;
+          padding: 10px;
+        }
+    </style>
+  </html>
 
-  <input name="admin_password" type="password" class="form-control" placeholder="Admin Password" required="" autofocus="">
+  <h1 class="form-signin-heading text-muted center">Admin Log In</h1>
+
+  <div class="center">
+ 	<input name="admin_password" type="password" class="form-control" placeholder="Admin Password" required="" autofocus="">
+ </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="center">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
     </div>
   </div>

@@ -1,11 +1,15 @@
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'login' do %>
-    <h1 class="form-signin-heading text-muted">Sign Up/Log In</h1>
-
   <html>
     <!-- <head/> -->
     <style>
         body {
           color: red;
+        }
+
+        .center {
+          margin: auto;
+          width: 40%;
+          padding: 10px;
         }
     </style>
 
@@ -18,9 +22,14 @@
     </body>
   </html>
 
-  <input name="login_UIN" type="text" class="form-control" maxlength="9" placeholder="UIN" required="" autofocus="">
-  <div class="row">
-    <div class="col-md-8">
+  <h1 class="form-signin-heading text-muted center">Sign Up/Log In</h1>
+
+  <div class="center">
+    <input name="login_UIN" type="text" class="form-control" maxlength="9" placeholder="UIN" required="" autofocus="">
+  </div>
+
+  <div class="center">
+    <div class="col-md-6">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
     </div>
     <div class="col-md-4">
