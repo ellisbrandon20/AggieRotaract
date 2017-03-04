@@ -10,22 +10,3 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301221506) do
-
-  create_table "events", force: :cascade do |t|
-    t.string   "name"
-    t.text     "address"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "meeting"
-    t.integer  "UIN"
-    t.date     "date"
-    t.text     "description"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.float    "max_points"
-    t.integer  "contact"
-    t.string   "image"
-  end
-
-end
