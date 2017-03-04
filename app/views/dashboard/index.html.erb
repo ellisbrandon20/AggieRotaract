@@ -1,3 +1,3 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
-<p>For some reason there is an error with the nav bar on this page??????????????????????</p>
+
+<%= render :partial => "admin_dashboard" if session[:admin] %>
+<%= render :partial => "member_dashboard" if !session[:admin] %>

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     post 'user/login'
     get 'user/new'
     post 'user/logout'
-
     get 'user/admin_login'
     post 'user/admin_password_validation'
+    
+    post 'events/new'
     
     get 'dashboard/index'
     
