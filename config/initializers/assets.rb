@@ -13,6 +13,8 @@ Rails.application.config.assets.version = '1.0'
 # JS Files
 Rails.application.config.assets.precompile += %w( jquery.min.js )
 Rails.application.config.assets.precompile += %w( bootstrap.min.js )
+Rails.application.config.assets.precompile += %w( events.js )
 
 # CSS Files
 Rails.application.config.assets.precompile += %w( bootstrap.min.css )
+

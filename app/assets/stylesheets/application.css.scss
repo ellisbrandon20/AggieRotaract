@@ -12,9 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-datepicker
  */
+
+ 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-datepicker";
  
 .navbar .nav.pull-right {
     float: right;
@@ -22,7 +26,7 @@
     vertical-align: auto;
 }
 .body-content{
-    padding-top: 4em;     
+    padding-top: 5em;     
 }
 .nav-item{
     padding-right: 2em;

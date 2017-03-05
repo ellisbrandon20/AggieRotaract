@@ -8,11 +8,18 @@ Rails.application.routes.draw do
     post 'user/admin_password_validation'
     
     post 'events/new'
+    #   get 'events/new'
     
     get 'dashboard/index'
+    post 'dashboard/index'
+    
+    post 'img_upload/create'
     
     root 'user#login'
     
     resources :events
     resources :user
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

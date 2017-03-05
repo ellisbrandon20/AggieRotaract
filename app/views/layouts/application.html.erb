@@ -8,6 +8,8 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    
   </head>
 
   <body>
@@ -40,7 +42,7 @@
           <ul class="nav navbar-nav navbar-right">
           <ul class="nav pull-right nav-item-log-out">
             <%= form_tag :method => :post, :controller => 'user', :action => 'logout' do %>
-              <button class="btn" id="logout_id">Log Out</button>
+              <button class="btn btn-default" id="logout_id">Log Out</button>
             <% end %>
           </ul>
           

@@ -83,4 +83,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # adding /assets/javascripts/events.js to list of files to be compiled
+  config.assets.precompile += %w( events.js )
 end
