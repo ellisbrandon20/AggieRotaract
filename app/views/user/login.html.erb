@@ -1,6 +1,8 @@
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'login' do %>
   <h1 class="form-signin-heading text-muted center">Log In/Sign Up</h1>
 
+  <%= render 'layouts/flash_messages' %>
+
   <html>
     <!-- <head/> -->
     <style>
@@ -14,16 +16,6 @@
           padding: 10px;
         }
     </style>
-
-    <div class="center">
-      <body>
-        <% flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, class: name %>
-        <% end -%>
-   
-        <!-- more content -->
-      </body>
-    </div>
   </html>
 
   <div class="center">
