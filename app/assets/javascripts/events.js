@@ -1,13 +1,9 @@
-// $(document).ready(function(){
-//     var $editItem, $elements, $link, $pluslink, i;
-//     $elements = document.getElementsByClassName('address');
-//     i = 0;
-//     while (i < $elements.length) {
-//         $editItem = $elements[i];
-//         $link = $editItem.text;
-//         $pluslink = $link.replace(/\s+/g, '+');
-//         $elements[i].href = 'https://www.google.com/maps?q=' + $pluslink;
-//         $elements[i].text = 'Google Maps Link';
-//         i++;
-//     }
-// });
+function grab_img_file(){
+    return document.getElementById("upload_file").files[0].name;
+}
+
+function update_img(){
+    var img_file = grab_img_file();
+    var src = "/assets/" + img_file;
+    document.getElementById("image_tag_id").src = src;
+}

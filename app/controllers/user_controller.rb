@@ -32,6 +32,7 @@ class UserController < ApplicationController
 				
 				# if uin is correct assign this session variable
 				session[:user_uin] = user_uin
+				session[:admin] = false
 				# the session variable is used to control which users data to display like their points and etc.
 				
 				# successful login redirect to dashbaord path
@@ -64,10 +65,23 @@ class UserController < ApplicationController
 	end
 	
 	def create
+		address = params[:street] + ' ' + params[:city] + ', ' + params[:state] + ' ' + params[:zip]
 		# this is the method that is to be called when signing up a new member
-		# ----- NOT SURE how to put data in database
-		puts("in user create()")
-		redirect_to dashboard_index_path
+		@new_user = User.create!(:name => params[:name],
+                 :UIN => params[:UIN],
+                 :phone => params[:phone],
+                 :email => params[:email],
+                 :address => address,
+                 :classification => params[:classification],
+                 :major => params[:major],
+                 :shirt => params[:shirt],
+                 :gender => params[:gender],
+                 :officer => false,
+                 :active => true)
+                 
+        @new_user.save
+		flash[:success] = "Created User: " + @new_user.name
+		redirect_to root_path
 	end
 
 	def logout

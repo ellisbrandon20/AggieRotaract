@@ -18,40 +18,40 @@
   <div class="center">
     <h1>Create New User</h1>
     <label>
-  	 <input name="UIN" type="text" class="form-control" pattern="\d{9}" maxlength="9" placeholder="UIN" autofocus="">
+  	 <input name="UIN" type="text" class="form-control" pattern="\d{9}" maxlength="9" placeholder="UIN" autofocus="" required>
     </label>
 
     <label>
-      <input name="Name" type="text" class="form-control" pattern="[a-zA-Z ]+" placeholder="Name" autofocus="">
+      <input name="name" type="text" class="form-control" pattern="[a-zA-Z ]+" placeholder="Name" autofocus="" required>
     </label>
 
     <label>
-      <input name="Phone" type="text" class="form-control" pattern="\d{10}" maxlength="10" placeholder="Phone" autofocus="">
+      <input name="phone" type="text" class="form-control" pattern="\d{10}" maxlength="10" placeholder="Phone" autofocus="" required>
     </label>
   	
     <label>
-      <input name="Email" type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Email" autofocus="">
+      <input name="email" type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Email" autofocus="" required>
     </label>
 
     <label>
-      <input name="Street" type="text" class="form-control" placeholder="Street" autofocus="">
+      <input name="street" type="text" class="form-control" placeholder="Street" autofocus="" required>
     </label>
 
     <label>
-      <input name="City" type="text" class="form-control" placeholder="City" autofocus="">
+      <input name="city" type="text" class="form-control" placeholder="City" autofocus="" required>
     </label>
 
     <label>
-      <input name="State" type="text" class="form-control" placeholder="State" autofocus="">
+      <input name="state" type="text" class="form-control" placeholder="State" autofocus="" required>
     </label>
   	
     <label>
-      <input name="ZIP Code" type="text" class="form-control" placeholder="ZIP Code" autofocus="">
+      <input name="zip" type="text" class="form-control" placeholder="ZIP Code" autofocus="" required>
     </label>
   	
     <label>
       Classification:
-      <select name="Classification">
+      <select name="classification" required>
         <option value="Freshman">Freshman</option>
         <option value="Sophomore">Sophomore</option>
         <option value="Junior">Junior</option>
@@ -61,12 +61,12 @@
     </label>
   	
     <label>
-      <input name="Major" type="text" class="form-control" maxlength="9" placeholder="Major" autofocus="">
+      <input name="major" type="text" class="form-control" maxlength="9" placeholder="Major" autofocus="" required>
     </label>
   	
     <label>
       Shirt Size:
-      <select name="Shirt Size">
+      <select name="shirt" required>
         <option value="X-Small">X-Small</option>
         <option value="Small">Small</option>
         <option value="Medium">Medium</option>
@@ -79,7 +79,7 @@
 
     <label>
       Gender:
-      <form action="">
+      <form action="" name="gender" required>
         <input type="radio" name="gender" value="male"> Male
         <input type="radio" name="gender" value="female"> Female
       </form>
@@ -88,5 +88,9 @@
   	<div class="col-md-8">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Create User</button>
     </div>
+    <div class="col-md-8" style="padding-top: 1em;">
+      <a href="/" class="btn btn-lg btn-default btn-block" >Go Back</a>
+    </div>
   </div>
 <% end %>
+    

@@ -24,7 +24,16 @@ class EventsController < ApplicationController
                  :image => params[:image])
                  
         @event.save
-        redirect_to @event
+        
+        
+        
+        # respond_to do
+        #     format.html {}
+        #     format.js { render :js => "update_img();" }
+        # end
+        # render :js => "update_img();"
+        flash[:success] = "Successfully Created Event: " + @event.name
+        redirect_to dashboard_index_path 
     end
     
     def show
