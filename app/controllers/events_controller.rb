@@ -20,6 +20,7 @@ class EventsController < ApplicationController
                  :start_time => params[:start_time],
                  :end_time => params[:end_time],
                  :max_points => params[:max_points],
+                 :capacity => params[:capacity],
                  :contact => params[:contact],
                  :image => params[:image])
                  
