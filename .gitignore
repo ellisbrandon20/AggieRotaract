@@ -1,6 +1,6 @@
 *.DS_Store
-tmp/
-log/
+/tmp/
+/log/
 /tmp/cache
 /db/*.sqlite3
 *.sqlite3
