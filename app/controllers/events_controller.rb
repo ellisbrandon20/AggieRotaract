@@ -9,8 +9,13 @@ class EventsController < ApplicationController
     end
     
     def create
-        date_arr = params[:date].split('/')
-        date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
+        
+        if not params[:date].nil?
+            date_arr = params[:date].split('/')
+            date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
+        else
+            date = "2017-03-15"
+        end
         
         @event = Event.create!(:name => params[:name],
                  :description => params[:description],
