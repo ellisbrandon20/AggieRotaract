@@ -12,12 +12,8 @@ class EventsController < ApplicationController
     
     def create
         
-        if not params[:date].nil?
-            date_arr = params[:date].split('/')
-            date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
-        else
-            date = "2017-03-15"
-        end
+        # convert date input to correct format for database
+        date = date_conversion
         
         @event = Event.create!(:name => params[:name],
                  :description => params[:description],
@@ -61,5 +57,15 @@ class EventsController < ApplicationController
                 puts event_contact.email
                 event.contact = event_contact.email
             end
+        end
+        
+        def date_conversion
+            if not params[:date].nil?
+                date_arr = params[:date].split('/')
+                date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
+            else
+                date = "2017-03-15"
+            return date
+        end
         end
 end
