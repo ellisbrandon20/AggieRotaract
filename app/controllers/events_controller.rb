@@ -2,7 +2,7 @@ class EventsController < ApplicationController
     def index
         curr_time = DateTime.now.to_date
         @all_events = Event.all
-        @upcoming_events = @all_events.where("date >= :date", {date: curr_time})
+        @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
     end
     
     def new
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
         @event = Event.create!(:name => params[:name],
                  :description => params[:description],
                  :address => params[:address],
-                 :meeting => params[:meeting] == '1' ? true : false,
+                 :meeting => params[:meeting],
                  :date => date,
                  :start_time => params[:start_time],
                  :end_time => params[:end_time],
