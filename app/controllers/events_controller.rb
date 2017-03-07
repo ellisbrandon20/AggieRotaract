@@ -29,8 +29,6 @@ class EventsController < ApplicationController
                  
         @event.save
         
-        
-        
         # respond_to do
         #     format.html {}
         #     format.js { render :js => "update_img();" }
@@ -60,6 +58,7 @@ class EventsController < ApplicationController
         end
         
         def date_conversion
+            #convert date input of MM/DD/YYYY to DD-MM-YYYY
             if not params[:date].nil?
                 date_arr = params[:date].split('/')
                 date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
