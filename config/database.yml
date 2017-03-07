@@ -6,12 +6,17 @@
 #
 default: &default
   adapter: sqlite3
+  #adapter: postgresql
+  #encoding: SQL_ASCII
   pool: 5
   timeout: 5000
+  #username: aggie_rotaract
+  #password: password
 
 development:
   <<: *default
   database: db/development.sqlite3
+  #database: db/development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,10 +24,12 @@ development:
 test: &test
   <<: *default
   database: db/test.sqlite3
+  #database: db/test
 
 production:
   <<: *default
   database: db/production.sqlite3
+  #database: db/production
 
 cucumber:
   <<: *test
