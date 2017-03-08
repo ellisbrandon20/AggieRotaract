@@ -6,6 +6,10 @@ end
 #   visit path_to(page_name)
 # end
 
+Given(/^I am on the page "([^"]*)"$/) do |arg1|
+  visit(arg1)
+end
+
 When(/^I press "([^"]*)"$/) do |arg1|
   click_button(arg1)
 end
