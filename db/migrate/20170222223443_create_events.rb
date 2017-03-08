@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.integer :capacity
       t.float :max_points
       t.boolean :meeting
-      t.integer :contact
+      t.string :contact
       t.string :image
 
       t.timestamps

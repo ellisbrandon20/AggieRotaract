@@ -52,8 +52,8 @@ class EventsController < ApplicationController
             # make the contact attribute represent the EMAIL instead of UIN 
             @upcoming_events_email.each do |event|
                 event_contact = User.find_by(UIN: event.contact)
-                puts event_contact.email
-                event.contact = event_contact.email
+                puts event_contact.name
+                event.contact = event_contact.name
             end
         end
         

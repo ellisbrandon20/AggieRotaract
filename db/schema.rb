@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170227212531) do
     t.integer  "capacity"
     t.float    "max_points"
     t.boolean  "meeting"
-    t.integer  "contact"
+    t.string   "contact"
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
