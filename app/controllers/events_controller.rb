@@ -34,7 +34,9 @@ class EventsController < ApplicationController
         #     format.js { render :js => "update_img();" }
         # end
         # render :js => "update_img();"
-        flash[:success] = "Successfully Created Event: " + @event.name
+        if !@event.name.nil?
+            flash[:success] = "Successfully Created Event: " + @event.name
+        end
         redirect_to dashboard_index_path 
     end
     
