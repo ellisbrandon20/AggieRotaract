@@ -66,6 +66,7 @@ group :development do
   gem 'database_cleaner'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'autotest-rails'
   
 end
 

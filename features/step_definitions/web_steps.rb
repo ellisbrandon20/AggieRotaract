@@ -1,6 +1,10 @@
-Given (/^(?:|I )am on (.+)$/) do |page_name|
-  visit path_to(page_name)
+Given(/^I am on the root page$/) do
+  visit("/")
 end
+
+# Given (/^(?:|I )am on (.+)$/) do |page_name|
+#   visit path_to(page_name)
+# end
 
 When(/^I press "([^"]*)"$/) do |arg1|
   click_button(arg1)
@@ -18,7 +22,7 @@ end
 
 Then(/^I should see "([^\"]*)"$/) do |text|
      #page.should have_content(text)
-     page.find_by_id("event_title").text(text)
+     #page.find_by_id("event_title").text(text)
  end
 
 #page.find("#some-id")[:class].include?("some-class")
@@ -27,3 +31,8 @@ Then(/^I should see "([^\"]*)"$/) do |text|
 # Then(/^I should not see "([^\"]*)"$/) do |text|
 #     response.should_not contain(text)
 # end
+
+Then(/^I should be on "([^"]*)"$/) do |arg1|
+#   visit(arg1)
+    page.current_path == arg1
+end
