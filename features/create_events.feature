@@ -6,4 +6,4 @@ Feature: Create Event
 Scenario: Create Event
   Given I am on the page "events/new"
   When event information is inputted
-  Then I press "Save Event"
+#   Then I press "Save Event"
