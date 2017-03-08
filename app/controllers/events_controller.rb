@@ -64,7 +64,7 @@ class EventsController < ApplicationController
                 date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
             else
                 date = "2017-03-15"
+            end
             return date
-        end
         end
 end
