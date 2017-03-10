@@ -55,6 +55,12 @@ class UserController < ApplicationController
                  
         @new_user.save
 		flash[:success] = "Created User: " + @new_user.name
+		
+		# NEED TO RUN THESE 2 LINES WHEN WE CLICK ON THE BUTTON
+		puts "----------------- " + URI(request.referer || '').path
+		puts "================= " + request.referrer
+		#"/user/new"
+		
 		redirect_to root_path
 	end
 

@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails', '~> 0.1.3'
+gem 'bootstrap-select-rails'
 
 
 group :development, :test do

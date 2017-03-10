@@ -44,6 +44,16 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
     end
     
+    def meeting
+        curr_time = DateTime.now.to_date
+        all_events = Event.all
+        # populate dropdown list
+        @upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
+    end
+    
+    def meeting_signin
+    end
+    
     
     private
         def event_params
