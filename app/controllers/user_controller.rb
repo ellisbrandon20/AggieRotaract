@@ -39,6 +39,11 @@ class UserController < ApplicationController
 		end
 	end
 	
+	def new
+		# creates the correct "Go Back" link for user creation since we use the form in 2 different locations: Login, Meeting Sign In
+		session[:new_user_back] = URI(request.referer || '').path
+	end
+	
 	def create
 		address = params[:street] + ' ' + params[:city] + ', ' + params[:state] + ' ' + params[:zip]
 		@new_user = User.create!(:name => params[:name],
@@ -55,11 +60,6 @@ class UserController < ApplicationController
                  
         @new_user.save
 		flash[:success] = "Created User: " + @new_user.name
-		
-		# NEED TO RUN THESE 2 LINES WHEN WE CLICK ON THE BUTTON
-		puts "----------------- " + URI(request.referer || '').path
-		puts "================= " + request.referrer
-		#"/user/new"
 		
 		redirect_to root_path
 	end
