@@ -61,7 +61,8 @@ class UserController < ApplicationController
         @new_user.save
 		flash[:success] = "Created User: " + @new_user.name
 		
-		redirect_to root_path
+		#redirect_to root_path
+		redirect_to session[:new_user_back]
 	end
 
 	def logout
