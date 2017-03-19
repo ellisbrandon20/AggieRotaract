@@ -1,0 +1,38 @@
+<h1 class="title">Meeting Sign In</h1>
+<%= render 'layouts/flash_messages' %>
+<div class="meeting-form">
+    <%= form_tag :method => :post, :class => '', :controller => 'points', :url => points_meeting_signin_path, :action => 'meeting_signin' do %>
+    
+        <div class="row col-sm-12 form-group"> <!-- Dropdown list -->
+            <select class="btn-group bootstrap-select selectpicker show-tick" name="meeting_id">
+                
+                <% if params[:event_id].nil? %>
+                    <option disabled selected value> -- Select Meeting -- </option>
+                <% end %>
+                
+                <% @upcoming_meetings.each do |event| %>
+                    <% if event.id = params[:event_id] %>
+                        <option value=<%= event.id %> selected> <%= event.name %> </option>
+                    <% else %>
+                        <option value=<%= event.id %>> <%= event.name %> </option>
+                    <% end %>
+                <% end %>
+            </select>
+        </div>
+        <div class="row col-sm-12 form-group"> <!-- UIN label -->
+            UIN:
+        </div>
+        <div class="row col-sm-12 form-group"> <!-- UIN text box -->
+            <input class="form-control" type="text" name="uin"  placeholder="UIN" value="" required>
+        </div>
+        <div class="row col-sm-12 form-group"> <!-- Buttons -->
+            <div class="col-md-6">
+                <button name="login_button" id="login_button_id" class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+            </div>
+            <div class="col-md-4">
+                <a href=<%= new_user_path %> id="sign_up_button_id" class="btn btn-lg btn-link btn-block">Sign Up</a>
+            </div>
+        </div>
+    
+    <% end %>
+</div>
