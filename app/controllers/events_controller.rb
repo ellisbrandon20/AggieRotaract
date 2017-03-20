@@ -51,9 +51,23 @@ class EventsController < ApplicationController
     def update
         @event = Event.find(params[:id])
         puts "============" + @event.name
-        @movie.update_attributes!(movie_params)
-        flash[:notice] = "#{@movie.title} was successfully updated."
-        redirect_to movie_path(@movie)
+        # convert date input to correct format for database
+        date = date_conversion
+        @event.update_attributes!(:name => params[:name],
+                 :description => params[:description],
+                 :address => params[:address],
+                 :meeting => params[:meeting],
+                 :date => date,
+                 :start_time => params[:start_time],
+                 :end_time => params[:end_time],
+                 :max_points => params[:max_points],
+                 :capacity => params[:capacity],
+                 :contact => params[:contact],
+                 :image => params[:image])
+        # @movie.update_attributes!(movie_params)
+        flash[:success] = "#{@event.name} was successfully updated."
+        #redirect_to movie_path(@movie)
+        redirect_to events_path
     end
     
     

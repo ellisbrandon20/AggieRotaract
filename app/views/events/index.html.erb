@@ -1,6 +1,8 @@
 <%= javascript_include_tag "events" %>
 
 <h1 class="title">Upcoming Events</h1>
+<%= render 'layouts/flash_messages' %>
+<br>
 <% @upcoming_events_email.each do |event| %>
     <div class="event-card">
         <div class="row">
