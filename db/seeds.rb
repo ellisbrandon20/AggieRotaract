@@ -48,3 +48,12 @@ users = [
 users.each do |user|
     User.create!(user)
 end
+
+attendances = [
+    {:UIN => 123456789, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-01'},
+    {:UIN => 123456789, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-01'}
+]
+
+attendances.each do |attendance|
+    Attendance.create!(attendance)
+end

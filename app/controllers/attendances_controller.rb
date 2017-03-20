@@ -1,9 +1,20 @@
 class AttendancesController < ApplicationController
     def index
         curr_time = DateTime.now.to_date
+        @all_attendances = Attendance.all
         @all_events = Event.all
-        @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
-        @upcoming_events_email = @upcoming_events
-        #contact_uin_to_email
+        
+        @events_user_attd = Array.new
+        
+        @all_attendances.each do |event|
+
+            if event.UIN == session[:user_uin].to_i then
+                @events_user_attd.append(event.id)
+            end
+
+        end
+        
+        @user_upcoming_events = Event.find(@events_user_attd)
+    
     end
 end
