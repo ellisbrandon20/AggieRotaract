@@ -34,7 +34,7 @@ class UserController < ApplicationController
 			session[:admin] = true
 			redirect_to dashboard_index_path
 		else
-			flash[:error] = "Incorrect Admin password."
+			flash[:danger] = "Incorrect Admin password."
 			redirect_to root_path
 		end
 	end
