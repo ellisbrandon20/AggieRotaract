@@ -3,7 +3,7 @@
   <div class="edit-form">
       <div class="row">
         <div class="col-sm-6">
-          <%= form_tag events_path(@event), :method => :put do %>
+          <%= form_tag  :controller => 'events', :action => 'update', :method => :put do %>
             <div class="form-group row col-sm-12">
               <%= label_tag :name %>
             </div>
