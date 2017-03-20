@@ -8,6 +8,8 @@ To run on cloud9:
 - bundle install (should only be for first time) 
 - rails s -p $PORT -b $IP
 
+You can view this application on Heroku:
+https://glacial-hamlet-90409.herokuapp.com/
 
 
 
