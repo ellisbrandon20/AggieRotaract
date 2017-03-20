@@ -53,6 +53,7 @@ class PointsController < ApplicationController
                 #if not, offer to create new user
                 flash[:warning] = "Invalid UIN. Do you need to Sign Up?"
                 puts "------------------------- user does not exists"
+                redirect_to points_meeting_path
             end
         end      
     end
