@@ -13,9 +13,9 @@
                 
                 <% @upcoming_meetings.each do |event| %>
                     <% if event.id == params[:event_id] %>
-                        <option value=<%= event.id %> selected> <%= event.name %> </option>
+                        <option id="meeting-option" value=<%= event.id %> selected> <%= event.name %> </option>
                     <% else %>
-                        <option value=<%= event.id %>> <%= event.name %> </option>
+                        <option id="meeting-option" value=<%= event.id %>> <%= event.name %> </option>
                     <% end %>
                 <% end %>
             </select>
@@ -24,7 +24,7 @@
             UIN:
         </div>
         <div class="row col-sm-12 form-group"> <!-- UIN text box -->
-            <input class="form-control" type="text" name="uin"  placeholder="UIN" value="" required>
+            <input id="uin_input" class="form-control" type="text" name="uin"  placeholder="UIN" value="" required>
         </div>
         <div class="row col-sm-12 form-group"> <!-- Buttons -->
             <div class="col-md-6">
