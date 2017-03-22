@@ -12,7 +12,7 @@
                 <% end %>
                 
                 <% @upcoming_meetings.each do |event| %>
-                    <% if event.id = params[:event_id] %>
+                    <% if event.id == params[:event_id] %>
                         <option value=<%= event.id %> selected> <%= event.name %> </option>
                     <% else %>
                         <option value=<%= event.id %>> <%= event.name %> </option>
