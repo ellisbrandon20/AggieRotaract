@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     end
     
     def new
+        grab_officers
     end
     
     def create
@@ -46,11 +47,14 @@ class EventsController < ApplicationController
     
     def edit
         @event = Event.find(params[:id])
+        
+        grab_officers
+        
     end
     
     def update
         @event = Event.find(params[:id])
-        puts "============" + @event.name
+        puts "============ edit " + @event.name
         # convert date input to correct format for database
         date = date_conversion
         @event.update_attributes!(:name => params[:name],
@@ -93,5 +97,12 @@ class EventsController < ApplicationController
                 date = "2017-03-15"
             end
             return date
+        end
+        
+        def grab_officers
+            @officers = User.where("officer = :officer", {officer: [true]})
+            @officers.each do |officer|
+                puts "-----officer:" + officer.name + "---uin:" + officer.UIN.to_s
+            end
         end
 end

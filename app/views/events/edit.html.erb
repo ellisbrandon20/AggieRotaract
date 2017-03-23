@@ -86,7 +86,17 @@
               <%= label_tag :contact %>
             </div>
             <div class="form-group row col-sm-12">
-              <input name="contact" id="contact_id" class="form-control" value="<%= @event.contact %>" pattern="[0-9]{9}" required>
+              <select class="btn-group bootstrap-select selectpicker show-tick" name="contact" required>
+                <!-- list the officers -->
+                <% @officers.each do |officer| %>
+                  <!-- must convert UIN to string because that is how we store it in Event Model -->
+                  <% if officer.UIN.to_s == @event.contact %>
+                      <option selected value=<%= officer.UIN %> selected> <%= officer.name %> </option>
+                  <% else %>
+                      <option value=<%= officer.UIN %>> <%= officer.name %> </option>
+                  <% end %>
+                <% end %>
+              </select>
             </div>
             
             <div class="form-group row col-sm-12">
