@@ -10,48 +10,49 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row col-sm-12">
-                        <h3 id="event_title"><%= event.name %></h3>
+                        <h3 id="event_title"><%= event[:active_record].name %></h3>
                     </div>
                     <div class="row col-sm-12">
                         <b>Time: </b>
                         <div class="event-item-margin">
-                            <%= event.start_time.strftime("%I:%M %p")%>
+                            <%= event[:active_record].start_time.strftime("%I:%M %p")%>
                             -
-                            <%= event.end_time.strftime("%I:%M %p") %>
+                            <%= event[:active_record].end_time.strftime("%I:%M %p") %>
                         </div>
                     </div>
                     <div class="row col-sm-12">
                         <b>Date: </b>
                         <div class="event-item-margin">
-                            <%= event.date.strftime("%B %d, %Y") %>
+                            <%= event[:active_record].date.strftime("%B %d, %Y") %>
+                            <%= event[:wait_list_pos] %>
                         </div>
                     </div>
                     <div class="row col-sm-12">
                         <b>Contact: </b>
                         <div class="event-item-margin">
-                            <%= event.contact %>
+                            <%= event[:active_record].contact %>
                         </div>
                     </div>
                     <b>Description: </b>
                     <div class="row col-sm-12">
-                        <%= event.description %>
+                        <%= event[:active_record].description %>
                     </div>
                 </div>
                 
                 <div class="col-sm-3">
                     <div class="row col-sm-12">
                         Points: 
-                        <%= event.max_points %>
+                        <%= event[:active_record].max_points %>
                     </div>
                     <div class="row col-sm-12">
                         Spots Remaining: 12
-                        <!--<%= event.capacity %>-->
+                        <!--<%= event[:active_record].capacity %>-->
                     </div>
                     <div class="row col-sm-12 event-image">
-                        <%= image_tag(event.image, class: "img-thumbnail") %>
+                        <%= image_tag(event[:active_record].image, class: "img-thumbnail") %>
                     </div>
                     <div class="row col-sm-12">
-                        <a href="" id="address" class="address" target="_blank"><%= event.address %></a>
+                        <a href="" id="address" class="address" target="_blank"><%= event[:active_record].address %></a>
                     </div>
                     <div class="row col-sm-12">
                          <!--if admin -->
