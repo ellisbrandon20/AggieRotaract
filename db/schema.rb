@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308213057) do
+ActiveRecord::Schema.define(version: 20170324183254) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "UIN"
@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(version: 20170308213057) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "points", force: :cascade do |t|
