@@ -69,8 +69,13 @@
                         </div>
                     
                     <!-- general user -->    
-                    <% else %>
+                    <% elsif Attendance.where(:UIN => session[:user_uin]) %>
                      <!--Check to see if member is signed up. Show 'signup' button if not signed up and 'remove me' button otherwise-->
+                        <div class="col-sm-12 event-btn">
+                            <%= button_to "Remove Me", { :action => "sign_up_for_event", :event_name => event.name },  {class: 'btn btn-block'} %>
+                        </div>
+
+                    <% else %>
                         <div class="col-sm-12 event-btn">
                             <%= button_to "Sign Up", { :action => "sign_up_for_event", :event_name => event.name }, {class: 'btn btn-success btn-block'} %>
                         </div>
