@@ -10,10 +10,14 @@ class AttendancesController < ApplicationController
 
 	def create
 		@attendance = Attendance.new
-    	@attendance.user = current_user
-    	@attendance.event = Attendance.find(params[:event_id])
+    	@attendance = Attendance.create!(:UIN => params[:user_uin],
+    		:event_id => 0,
+    		:car_ride => params[:car_ride],
+    		:comments => params[:comment]
+    		)
     	if @attendance.save
-      		redirect_to events_path, notice: "You are registered!"
+    		flash.notice = "You are registered!"
+      		redirect_to events_path
     	else
       		render action: 'new'
     	end
