@@ -9,6 +9,11 @@ class EventsController < ApplicationController
     
     def new
     end
+
+    def remove_from_event
+        Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
+        redirect_to :back
+    end
     
     def create
         
