@@ -1,6 +1,7 @@
 class AttendancesController < ApplicationController
 	def index
-	end
+        @all_attendance = Attendance.all
+    end
 
 	def new
 		@attendance = Attendance.new
@@ -10,7 +11,7 @@ class AttendancesController < ApplicationController
 
 	def create
 		@attendance = Attendance.new
-    	@attendance = Attendance.create!(:UIN => params[:user_uin],
+    	@attendance = Attendance.create!(:UIN => session[:user_uin],
     		:event_id => 0,
     		:car_ride => params[:car_ride],
     		:comments => params[:comment]
