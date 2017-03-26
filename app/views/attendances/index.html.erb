@@ -1,0 +1,125 @@
+<center><h1>Welcome <%= @user.name%></h1></center>
+<br><br>
+<h1 class="title">Upcoming Events</h1>
+
+<% if @user_upcoming_events.nil? %>
+    <div> You are not signed up for any events. </div>
+<% else %>
+    <% @user_upcoming_events.each do |event| %>
+        <div class="event-card">
+            <div class="row">
+                <div class="col-sm-5">
+                    
+                    <!-- title -->
+                    <div class="row col-sm-12">
+                        <h3 id="event_title"><%= event[:active_record].name %></h3>
+                    </div>
+                    
+                    <!-- status labels -->
+                    <div class="row col-xs-12">
+                        
+                        
+                        
+                        
+                        <!-- if user is on going list display -->
+                        <% if event[:wait_list_pos] == 0 %>
+                            <span class="label label-success event-wl-label">
+                                <span class="wl-text">Going</span>
+                            </span>
+                        <!-- else display -->
+                        <% else %>
+                            <span class="label label-warning event-wl-label">
+                                <span class="wl-text">Wait Listed</span>
+                            </span>
+                            <span class="event-item-margin" id="wait_list_pos"> (<%= event[:wait_list_pos] %>) </span>
+                        <!-- end -->
+                        <% end %>
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    <!-- date -->
+                    <div class="row col-sm-12">
+                        <b>Date: </b>
+                        <div class="event-item-margin">
+                            <%= event[:active_record].date.strftime("%B %d, %Y") %>
+                        </div>
+                    </div>
+                    
+                    <!-- time -->
+                    <div class="row col-sm-12">
+                        <b>Time: </b>
+                        <div class="event-item-margin">
+                            <%= event[:active_record].start_time.strftime("%I:%M %p")%>
+                            -
+                            <%= event[:active_record].end_time.strftime("%I:%M %p") %>
+                        </div>
+                    </div>
+                    
+                    <!-- contact -->
+                    <div class="row col-sm-12">
+                        <b>Contact: </b>
+                        <div class="event-item-margin">
+                            <%= event[:active_record].contact %>
+                        </div>
+                    </div>
+                    
+                    <!-- address link -->
+                    <div class="row col-sm-12">
+                        <b>Location: </b>
+                        <a href="" id="address" class="event-item-margin address" target="_blank"><%= event[:active_record].address %></a>
+                    </div>
+                </div>
+            
+            
+            
+            
+            
+            <!-- center -->
+            <div class="row col-sm-5 event-image">
+                        <%= image_tag(event[:active_record].image, class: "img-thumbnail") %>
+            </div>
+            
+            
+            
+            
+            
+            <!-- right -->
+            <div class="row col-sm-offset-2 btn-group">
+                <div class="event-btn">
+                    <button type="button" class="btn btn-default">View Details</button>
+                </div>
+                <div class="event-btn">
+                    <button type="button" class="btn btn-default">Edit Comment</button>
+                </div>
+                <div class="event-btn">
+                    <button type="button" class="btn btn-danger">Remove Me</button>
+                </div>
+            </div>
+            
+            
+            </div> <!-- end event-card row -->
+        </div> <!-- end event-card --> 
+        <br>
+        <br>
+    <% end %>
+<% end %>
+
+<script>
+// couldnt get the script to run from any of the coffee files 
+$(document).ready(function(){
+    var $editItem, $elements, $link, $pluslink, i;
+    $elements = document.getElementsByClassName('address');
+    i = 0;
+    while (i < $elements.length) {
+        $editItem = $elements[i];
+        $link = $editItem.text;
+        $pluslink = $link.replace(/\s+/g, '+');
+        $elements[i].href = 'https://www.google.com/maps?q=' + $pluslink;
+        $elements[i].text = 'Google Maps Link';
+        i++;
+    }
+});
+</script>

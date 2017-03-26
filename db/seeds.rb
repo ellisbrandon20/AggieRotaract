@@ -62,3 +62,37 @@ events = [
 events.each do |event|
     Event.create!(event)
 end
+
+users = [
+  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "male", :officer => true, :active => true
+  },
+  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "male", :officer => true, :active => true
+  }
+]
+
+
+users.each do |user|
+    User.create!(user)
+end
+
+attendances = [
+    
+    {:UIN => 987654321, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:37:13'},
+    {:UIN => 123456789, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 0, :event_id => 1, :time_stamp => '2017-03-26 08:00:00'},
+    {:UIN => 223344556, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:40:13'},
+    {:UIN => 554433221, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:50:13'},
+    
+    {:UIN => 987654321, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 0, :event_id => 2, :time_stamp => '2017-03-26 08:00:00'},
+    {:UIN => 123456789, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:50:13'},
+    {:UIN => 223344556, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:40:13'},
+    {:UIN => 554433221, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:30:13'}
+    
+]
+
+attendances.each do |attendance|
+    Attendance.create!(attendance)
+end
