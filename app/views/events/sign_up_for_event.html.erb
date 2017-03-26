@@ -17,13 +17,42 @@
 
   <div class="center">
     <h1>Sign Up for Event</h1>
-
+    
     <label>
-      Do you need a car ride?:
-      <form action="" name="car_ride" required>
-        <input type="radio" name="car_ride" value="true"> Yes
-        <input type="radio" name="car_ride" value="false"> No
-      </form>
+      What method of contact do you preferr?
+      <div class="form-group row col-sm-12">
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pref_contact" value=email required >  Email
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pref_contact" value=call >  Call
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pref_contact" value=text >  Text
+          </label>
+        </div>
+      </div>
+     </label>
+      
+    <label>
+      Do you need a car ride?
+      <div class="form-group row col-sm-12">
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="car_ride" value=true required >  Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="car_ride" value=false >  No
+          </label>
+        </div>
+      </div>
     </label>
 
     <label>

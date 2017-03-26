@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20170324183254) do
     t.integer  "event_id"
     t.datetime "time_stamp"
     t.boolean  "approved"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "pref_contact"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170324183254) do
     t.integer  "capacity"
     t.float    "max_points"
     t.boolean  "meeting"
-    t.integer  "contact"
+    t.string   "contact"
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

@@ -9,11 +9,15 @@ class AttendancesController < ApplicationController
 	end
 
 	def create
-		@attendance = Attendance.new
+		
+		#puts "-------------pref_contact: " +  params[:pref_contact]
+		
+		
     	@attendance = Attendance.create!(:UIN => session[:user_uin],
     		:event_id => params[:event_id],
     		:car_ride => params[:car_ride],
-    		:comments => params[:comment]
+    		:comments => params[:comment],
+    		:pref_contact => params[:pref_contact]
     		)
     	if @attendance.save
     		flash.notice = "You are registered!"
