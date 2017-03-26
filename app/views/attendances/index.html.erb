@@ -23,10 +23,14 @@
                         
                         <!-- if user is on going list display -->
                         <% if event[:wait_list_pos] == 0 %>
-                            <span class="label label-success">Going</span>
+                            <span class="label label-success event-wl-label">
+                                <span class="wl-text">Going</span>
+                            </span>
                         <!-- else display -->
                         <% else %>
-                            <span class="label label-warning">Wait Listed</span>
+                            <span class="label label-warning event-wl-label">
+                                <span class="wl-text">Wait Listed</span>
+                            </span>
                             <span class="event-item-margin" id="wait_list_pos"> (<%= event[:wait_list_pos] %>) </span>
                         <!-- end -->
                         <% end %>
