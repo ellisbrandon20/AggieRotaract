@@ -65,19 +65,20 @@
                             </div>
                         </div>
                         <div class="row col-xs-12 event-btn">
-                                <button type="button" class="btn btn-default btn-block">View Sign Ups</button>
+                            <button type="button" class="btn btn-default btn-block">View Sign Ups</button>
                         </div>
                     
                     <!-- general user -->    
-                    <% elsif Attendance.where(:UIN => session[:user_uin]).where(:event_id => 0).present? %>
+                    <% elsif Attendance.where(:UIN => session[:user_uin]).where(:event_id => event.id).present? %>
                      <!--Check to see if member is signed up. Show 'signup' button if not signed up and 'remove me' button otherwise-->
                         <div class="col-sm-12 event-btn">
-                            <%= button_to "Remove Me", { :action => "sign_up_for_event", :event_name => event.name },  {class: 'btn btn-block'} %>
+                            <%= button_to "Remove Me", { :action => "remove_from_event", :event_id => event.id },
+                            {class: 'btn btn-danger btn-block'} %>
                         </div>
 
                     <% else %>
                         <div class="col-sm-12 event-btn">
-                            <%= button_to "Sign Up", { :action => "sign_up_for_event", :event_name => event.name }, {class: 'btn btn-success btn-block'} %>
+                            <%= button_to "Sign Up", { :action => "sign_up_for_event", :event_id => event.id }, {class: 'btn btn-success btn-block'} %>
                         </div>
                     <% end %>
                     <!-- end --> 
