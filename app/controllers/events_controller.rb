@@ -4,7 +4,7 @@ class EventsController < ApplicationController
         @all_events = Event.all
         @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         @upcoming_events_email = @upcoming_events
-        contact_uin_to_email
+        contact_uin_to_name
     end
     
     def new
@@ -50,7 +50,7 @@ class EventsController < ApplicationController
             params.require(:event).permit(:name, :description, :address, :meeting, :UIN, :date, :start_time, :end_time, :max_points, :contact, :image)
         end
         
-        def contact_uin_to_email
+        def contact_uin_to_name
             # make the contact attribute represent the EMAIL instead of UIN 
             @upcoming_events_email.each do |event|
                 event_contact = User.find_by(UIN: event.contact)
