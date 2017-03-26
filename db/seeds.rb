@@ -25,7 +25,27 @@ events = [
             {:name => 'Today', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
            :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
            :date => '2017-03-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 3.0, 
-           :meeting => false, :contact => 123456789, :image => 'big_event.jpeg'}
+           :meeting => false, :contact => 123456789, :image => 'big_event.jpeg'},
+           
+            {:name => 'Jared is cool Party', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
+           :description => 'To celebrate how cool Jared is. The best guy I know.',
+           :date => '2017-03-27',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 6, :max_points => 3.0, 
+           :meeting => false, :contact => 123456789, :image => 'jared.jpeg'},
+           
+           {:name => 'PC Master Race meeting', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
+           :description => 'To talk  about how consoles suck.',
+           :date => '2017-03-27',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 6, :max_points => 3.0, 
+           :meeting => true, :contact => 123456789, :image => 'jared.jpeg'},
+           
+           {:name => 'Past event', :address => 'test for past events',
+           :description => 'Why can\'t we be friends',
+           :date => '2017-03-25',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 17, :max_points => 3.0, 
+           :meeting => true, :contact => 123456789, :image => 'jared.jpeg'},
+           
+           {:name => 'Different UIN', :address => 'test for different user',
+           :description => 'Why can\'t we be friends',
+           :date => '2017-04-25',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 17, :max_points => 3.0, 
+           :meeting => true, :contact => 987654321, :image => 'jared.jpeg'}
          ]
          
 
