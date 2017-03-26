@@ -57,7 +57,12 @@ class AttendancesController < ApplicationController
             puts "Sorted Waitlisted attendances for event"
             p sorted_waitlisted_attendances_for_event
             
-            waitlist_position = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin]} + 1 
+            index = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin]}
+            
+            if !index.nil?
+                waitlist_position = index + 1
+            end
+            
             
             
             
