@@ -34,9 +34,14 @@ class UserController < ApplicationController
 			session[:admin] = true
 			redirect_to dashboard_index_path
 		else
-			flash[:error] = "Incorrect Admin password."
+			flash[:danger] = "Incorrect Admin password."
 			redirect_to root_path
 		end
+	end
+	
+	def new
+		# creates the correct "Go Back" link for user creation since we use the form in 2 different locations: Login, Meeting Sign In
+		session[:new_user_back] = URI(request.referer || '').path
 	end
 	
 	def create
@@ -55,7 +60,9 @@ class UserController < ApplicationController
                  
         @new_user.save
 		flash[:success] = "Created User: " + @new_user.name
-		redirect_to root_path
+		
+		#redirect_to root_path
+		redirect_to session[:new_user_back]
 	end
 
 	def logout

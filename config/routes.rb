@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     post 'user/admin_password_validation'
     
     post 'events/new'
+    get 'points/meeting'
+    post 'points/meeting_signin'
+    
     #   get 'events/new'
     
     get 'dashboard/index'
