@@ -10,6 +10,11 @@ class EventsController < ApplicationController
     def new
         grab_officers
     end
+
+    def remove_from_event
+        Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
+        redirect_to :back
+    end
     
     def create
         
@@ -42,7 +47,7 @@ class EventsController < ApplicationController
     end
     
     def show
-        @event = Event.find(params[:id])
+        @event = Event.find_by name: params[:event_name]
     end
     
     def edit

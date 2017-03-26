@@ -8,7 +8,7 @@ class CreateAttendances < ActiveRecord::Migration[5.0]
       t.integer :event_id
       t.datetime :time_stamp
       t.boolean :approved
-
+      t.string :pref_contact
       t.timestamps
     end
   end
