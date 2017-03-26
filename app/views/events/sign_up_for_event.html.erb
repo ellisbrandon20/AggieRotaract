@@ -13,7 +13,7 @@
     </style>
 </html>
 
-<%= form_tag :method => :post, :class => 'form-signin', :controller => 'attendances', :action => 'create' do %>
+<%= form_tag :method => :post, :class => 'form-signin', :controller => 'attendances', :action => 'create', :event_id => params[:event_id] do %>
 
   <div class="center">
     <h1>Sign Up for Event</h1>
