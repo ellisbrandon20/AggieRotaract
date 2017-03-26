@@ -45,17 +45,23 @@ class AttendancesController < ApplicationController
             attendances_for_event = all_attendances.find_all {|x| x.event_id == event.id}
             puts "Attendances for event"
             puts attendances_for_event.size
-            p attendances_for_event
+            attendances_for_event.each do |att|
+                puts att.UIN
+            end
             
             #Get all wait listed atendances for this event
             waitlisted_attendances_for_event = attendances_for_event.find_all {|x| x.wait_listed == true}
             puts "Waitlisted attendances for event"
-            p waitlisted_attendances_for_event
+            waitlisted_attendances_for_event.each do |att|
+                puts att.UIN
+            end
             
             #sort by the time
             sorted_waitlisted_attendances_for_event = waitlisted_attendances_for_event.sort { |a,b| a.time_stamp <=> b.time_stamp }
             puts "Sorted Waitlisted attendances for event"
-            p sorted_waitlisted_attendances_for_event
+            sorted_waitlisted_attendances_for_event.each do |att|
+                puts att.UIN
+            end
             
             index = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin]}
             
