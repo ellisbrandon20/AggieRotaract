@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post 'user/admin_password_validation'
     
     post 'events/new'
+    get 'events/sign_up_for_event'
     post 'events/sign_up_for_event'
     post 'events/remove_from_event'
     #   get 'events/new'
