@@ -8,15 +8,13 @@ Rails.application.routes.draw do
     post 'user/admin_password_validation'
     
     post 'events/new'
-<<<<<<< HEAD
-    get 'points/meeting'
-    post 'points/meeting_signin'
-    
-=======
     get 'events/sign_up_for_event'
     post 'events/sign_up_for_event'
     post 'events/remove_from_event'
->>>>>>> EventSignUp
+    
+    get 'points/meeting'
+    post 'points/meeting_signin'
+    
     #   get 'events/new'
     
     get 'dashboard/index'
