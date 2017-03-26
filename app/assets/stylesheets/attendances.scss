@@ -1,3 +1,38 @@
 // Place all the styles related to the attendances controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.event-card{
+    outline: black solid thick;
+    margin-left: 10em;
+    margin-right: 10em;
+    outline-width: 2px;
+    padding: 1.5em;
+}
+
+.event-image{
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.event-item-margin{
+    margin-left: 1em;
+}
+
+.event-btn{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    padding-top: 1em;
+}
+
+.create-form{
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+.column-left{ float: left; width: 33%; }
+
+.column-right{ float: right; width: 33%; }
+
+.column-center{ display: inline-block; width: 33%; }
+
