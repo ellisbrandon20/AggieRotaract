@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227212531) do
+ActiveRecord::Schema.define(version: 20170308213057) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer  "UIN"
+    t.boolean  "car_ride"
+    t.text     "comments"
+    t.boolean  "wait_listed"
+    t.integer  "event_id"
+    t.datetime "time_stamp"
+    t.boolean  "approved"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170227212531) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.integer  "event_id"
+    t.float    "points"
+    t.integer  "UIN"
+    t.datetime "issue_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,6 +10,11 @@ class ImgUploadController < ApplicationController
     name = upload[:file].original_filename
     
     directory = "app/assets/images"
+    # POSSIBLE BUG WITH HEROKU
+    #   heroku does not have this absolute path????
+    
+    
+    
     path = File.join(directory, name)
     
     File.open(path, "wb") { |f| f.write(upload[:file].read) }

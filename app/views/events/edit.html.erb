@@ -1,0 +1,164 @@
+
+<h1 class="title">Edit Event</h1>
+  <div class="edit-form">
+      <div class="row">
+        <div class="col-sm-6">
+          <!--< form_tag :method => :put,  :controller => 'events', :action => 'update' do %>-->
+          <%= form_tag event_path(@event), :method => :put do %>
+            <div class="form-group row col-sm-12">
+              <%= label_tag :name %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <input name="name" id="name_id" type="text" class="form-control" placeholder="Event Name" autofocus="" required value='<%= @event.name %>'>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :description %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <textarea class="form-control" name="description" id="description_id" rows="5"  placeholder="Description" required><%= @event.description %></textarea>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+                <%= label_tag :address %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <textarea class="form-control" name="address" id="address_id" rows="3" placeholder="Address" required><%= @event.address %></textarea>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+                <%= label_tag :meeting %>
+            </div>
+            <div class="form-group row col-sm-12">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="meeting" value=true >  Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="meeting" value=false checked="checked">  No
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :date %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <div class='input-group date' id='datetimepicker1'>
+                <input name="date" id="date_id" type="text" class="form-control" placeholder="" autofocus="" data-provide="datepicker" required value='<%= @event.date.strftime("%m/%d/%Y") %>'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :start_time %>
+            </div>
+            <div class="form-group row col-sm-12">
+                <input name="start_time" id="start_time_id" class="form-control" type="time" value="<%= @event.start_time.strftime("%H:%M") %>" required>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :end_time %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <input name="end_time" id="end_time_id" class="form-control" type="time" value="<%= @event.start_time.strftime("%H:%M") %>" required>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :max_points %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <input name="max_points" id="max_points_id" class="form-control" type="number" value="<%= @event.max_points %>" required>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :volunteer_capacity %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <input name="capacity" id="capacity_id" class="form-control" type="number" value="<%= @event.capacity %>" required>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :contact %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <select class="btn-group bootstrap-select selectpicker show-tick" name="contact" required>
+                <!-- list the officers -->
+                <% @officers.each do |officer| %>
+                  <!-- must convert UIN to string because that is how we store it in Event Model -->
+                  <% if officer.UIN.to_s == @event.contact %>
+                      <option selected value=<%= officer.UIN %> selected> <%= officer.name %> </option>
+                  <% else %>
+                      <option value=<%= officer.UIN %>> <%= officer.name %> </option>
+                  <% end %>
+                <% end %>
+              </select>
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <%= label_tag :image %>
+            </div>
+            <div class="form-group row col-sm-12">
+              <input name="image" id="image_id" class="form-control" value="<%= @event.image %>" >
+            </div>
+            
+            <div class="form-group row col-sm-12">
+              <div class="offset-sm-7 col-sm-2">
+                <a href="<%= events_path %>" id="cancel_create_btn" class="btn btn-default">Cancel</a>
+              </div>
+              <div class="col-sm-2">
+                <%= submit_tag "Submit", :class => "btn btn-success"%>
+              </div>
+            </div>
+            
+          <% end %>
+        </div> <!-- end col-sm-6 -->
+        
+        <div class="col-sm-6">
+          <div class="form-group row col-sm-12">
+            <%= form_tag '/img_upload/create', { :multipart => true} do %>  
+              <p>
+                <%= file_field_tag 'upload[file]'  %>
+              </p>
+              <p>
+                  <!--%= submit_tag "Upload", :class => "btn btn-default", :onclick => "update_img()"%>-->
+                  <%= submit_tag "Upload", :class => "btn btn-default" %>
+              </p>
+            <% end %>
+          </div>
+          <div class="row col-sm-12 event-image">
+              <%= image_tag(@event.image, class: "img-thumbnail") %>
+              <!--<img src="" id="image_tag_id" class="img-thumbnail">-->
+          </div>
+        </div> <!-- end of col-sm-6 -->
+        
+      </div>
+  </div>
+  
+        <script>
+  function grab_img_file(){
+    return document.getElementById("upload_file").files[0].name;
+  }
+  document.getElementById("upload_file").onchange = function(){
+    document.getElementById('image_id').value = grab_img_file();
+  }
+  function update_img(){
+    var img_file = grab_img_file();
+    var src = "/assets/" + img_file;
+    document.getElementById("image_tag_id").src = src;
+  }
+  // $("#upload_file").on('submit', function(e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //       type: $(this).prop('method'),
+  //       url : $(this).prop('action'),
+  //       data: $(this).serialize()
+  //   }).done(function() {
+  //       update_img();
+  //   });
+  // });
+</script>

@@ -111,7 +111,14 @@
           <%= f.label :contact %>
         </div>
         <div class="form-group row col-sm-12">
-          <input name="contact" id="contact_id" class="form-control" value="" pattern="[0-9]{9}" required>
+          <!--<input name="contact" id="contact_id" class="form-control" value="" pattern="[0-9]{9}" required>-->
+          <select class="btn-group bootstrap-select selectpicker show-tick" name="contact" required>
+                <option disabled selected value> -- Select Officer -- </option>
+                <!-- list the officers -->
+                <% @officers.each do |officer| %>
+                  <option value=<%= officer.UIN %>> <%= officer.name %> </option>
+                <% end %>
+              </select>
         </div>
         
         
