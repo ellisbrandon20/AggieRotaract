@@ -38,8 +38,7 @@ class AttendancesController < ApplicationController
         usr_upcoming_events.each do |event|
             
             
-            # fix this hardcode thing
-            waitlist_position = 1
+        
             
             #Get all attendance for this event
             attendances_for_event = all_attendances.find_all {|x| x.event_id == event.id}
@@ -57,16 +56,21 @@ class AttendancesController < ApplicationController
             end
             
             #sort by the time
-            sorted_waitlisted_attendances_for_event = waitlisted_attendances_for_event.sort { |a,b| a.time_stamp <=> b.time_stamp }
+            sorted_waitlisted_attendances_for_event = waitlisted_attendances_for_event.sort! { |a,b| a.time_stamp <=> b.time_stamp }
             puts "Sorted Waitlisted attendances for event"
             sorted_waitlisted_attendances_for_event.each do |att|
                 puts att.UIN
             end
             
-            index = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin]}
+            index = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin].to_i}
+            
+            puts "Index" + index.to_s
+            
             
             if !index.nil?
                 waitlist_position = index + 1
+            else
+                waitlist_position = 0
             end
             
             
@@ -80,6 +84,7 @@ class AttendancesController < ApplicationController
             @user_upcoming_events.append(UpcomingEventData.new(event,waitlist_position))
         end
 
+        puts "User upcoming events length"
         puts @user_upcoming_events.length
     end
     
