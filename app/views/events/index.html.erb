@@ -1,5 +1,9 @@
 <%= javascript_include_tag "events" %>
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h1 class="title">Upcoming Events</h1>
 <%= render 'layouts/flash_messages' %>
 <br>
@@ -63,14 +67,20 @@
                             </div>
                         </div>
                         <div class="row col-xs-12 event-btn">
-                                <button type="button" class="btn btn-default btn-block">View Sign Ups</button>
+                            <button type="button" class="btn btn-default btn-block">View Sign Ups</button>
                         </div>
                     
                     <!-- general user -->    
-                    <% else %>
+                    <% elsif Attendance.where(:UIN => session[:user_uin]).where(:event_id => event.id).present? %>
                      <!--Check to see if member is signed up. Show 'signup' button if not signed up and 'remove me' button otherwise-->
                         <div class="col-sm-12 event-btn">
-                            <button type="button" class="btn btn-success btn-block">Sign Up</button>
+                            <%= button_to "Remove Me", { :action => "remove_from_event", :event_id => event.id },
+                            {class: 'btn btn-danger btn-block'} %>
+                        </div>
+
+                    <% else %>
+                        <div class="col-sm-12 event-btn">
+                            <%= button_to "Sign Up", { :action => "sign_up_for_event", :event_id => event.id }, {class: 'btn btn-success btn-block'} %>
                         </div>
                     <% end %>
                     <!-- end --> 

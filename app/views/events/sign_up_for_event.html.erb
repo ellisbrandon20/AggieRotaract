@@ -1,0 +1,71 @@
+<html>
+    <!-- <head/> -->
+    <style>
+        .center {
+          margin: auto;
+          width: 30%;
+          padding: 10px;
+        }
+
+        label { padding-bottom: 10px;
+          font-weight: normal;
+        }
+    </style>
+</html>
+
+<%= form_tag :method => :post, :class => 'form-signin', :controller => 'attendances', :action => 'create', :event_id => params[:event_id] do %>
+
+  <div class="center">
+    <h1>Sign Up for Event</h1>
+    
+    <label>
+      What method of contact do you preferr?
+      <div class="form-group row col-sm-12">
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pref_contact" value=email required >  Email
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pref_contact" value=call >  Call
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="pref_contact" value=text >  Text
+          </label>
+        </div>
+      </div>
+     </label>
+      
+    <label>
+      Do you need a car ride?
+      <div class="form-group row col-sm-12">
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="car_ride" value=true required >  Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="car_ride" value=false >  No
+          </label>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      Any special comments?:<br />
+      <textarea name='comment' id='comment' cols="50"></textarea><br />
+    </label>
+
+  	<div class="col-md-8">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up!</button>
+    </div>
+    <div class="col-md-8" style="padding-top: 1em;">
+      <a href="javascript:history.back()" class="btn btn-lg btn-default btn-block" >Go Back</a>
+    </div>
+  </div>
+<% end %>
+    
