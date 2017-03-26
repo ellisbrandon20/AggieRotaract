@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     
     post 'events/new'
     post 'events/sign_up_for_event'
+    post 'events/remove_from_event'
     #   get 'events/new'
     
     get 'dashboard/index'
