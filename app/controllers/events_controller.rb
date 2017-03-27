@@ -12,7 +12,20 @@ class EventsController < ApplicationController
     end
 
     def remove_from_event
+        
+        if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
+            if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
+                @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
+                @sorted_waitlist = @waitlist.sort { |a,b| a.time_stamp <=> b.time_stamp }
+                @sorted_waitlist[0].update_attribute :wait_listed, false
+            end
+        end
+        # find out is user is going
+            # query grab Attendances.where event_id = id waitlist = true
+            # doe the sort
+            # make index 0 user waitlist boolean = false
         Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
+        
         redirect_to :back
     end
     
