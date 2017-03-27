@@ -11,14 +11,20 @@ class AttendancesController < ApplicationController
 	def create
 		
 		# determine if user is on going list or waitlisted
-		
+		@current_event=Event.find(params[:event_id])
+	#	if number_people_registered<@current_event.capacity
+	#	    @waiting=false
+	#	else
+		    @waiting=true
+	#	end
 		
 		
     	@attendance = Attendance.create!(:UIN => session[:user_uin],
     		:event_id => params[:event_id],
     		:car_ride => params[:car_ride],
     		:comments => params[:comment],
-    		:pref_contact => params[:pref_contact]
+    		:pref_contact => params[:pref_contact],
+    		:wait_listed => @waiting
     		)
     	if @attendance.save
     		flash.notice = "You are registered!"
@@ -118,6 +124,12 @@ class AttendancesController < ApplicationController
     end
     
     def show
+    end
+    
+    def number_people_registered
+        @count=Attendance.where(event_id: params[:event_id]).count
+        puts @count
+        return @count
     end
     
     
