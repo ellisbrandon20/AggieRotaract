@@ -18,12 +18,12 @@
     <!-- ****************************************************************-->
     <!-- ************** UNCOMMENT THIS FOR PRODUCTION *******************-->
     <!-- ****************************************************************-->
-    <!-- if user tries to access pages of the website without logging in they are redirected to the login page -->
-    <!--< if session[:user_uin].nil? or session[:admin].nil? %>-->
-    <!--  <script type="text/javascript">-->
-          <!--window.location.href="/"  // redirect to root path if user is not logged in-->
-    <!--  </script>-->
-    <!--< end %>-->
+     if user tries to access pages of the website without logging in they are redirected to the login page 
+    <% if session[:user_uin].nil? or session[:admin].nil? %>
+      <script type="text/javascript">
+          window.location.href="/"  // redirect to root path if user is not logged in
+      </script>
+    < end %>
 
 
    <!-- Nav Bar -->
