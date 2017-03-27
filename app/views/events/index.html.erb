@@ -1,9 +1,4 @@
 <%= javascript_include_tag "events" %>
-
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
 <h1 class="title">Upcoming Events</h1>
 <%= render 'layouts/flash_messages' %>
 <br>
@@ -46,7 +41,7 @@
                     <%= event.max_points %>
                 </div>
                 <div class="row col-sm-12">
-                    Spots Remaining: 12
+                    Spots Remaining: <%= event.capacity-(Attendance.where(event_id: event.id, wait_listed: false).count)%>
                     <!--<%= event.capacity %>-->
                 </div>
                 <div class="row col-sm-12 event-image">

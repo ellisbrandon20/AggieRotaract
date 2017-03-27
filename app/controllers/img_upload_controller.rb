@@ -19,7 +19,7 @@ class ImgUploadController < ApplicationController
     
     File.open(path, "wb") { |f| f.write(upload[:file].read) }
     
-    flash[:notice] = "File uploaded"
+    flash[:success] = "File uploaded"
     session[:image_upload] = name
     
   end

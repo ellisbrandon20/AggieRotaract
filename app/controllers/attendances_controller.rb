@@ -12,11 +12,11 @@ class AttendancesController < ApplicationController
 		
 		# determine if user is on going list or waitlisted
 		@current_event=Event.find(params[:event_id])
-	#	if number_people_registered<@current_event.capacity
-	#	    @waiting=false
-	#	else
+		if number_people_registered<@current_event.capacity
+		    @waiting=false
+		else
 		    @waiting=true
-	#	end
+		end
 		
 		
     	@attendance = Attendance.create!(:UIN => session[:user_uin],
