@@ -90,6 +90,10 @@
     </div>
     <br>
 <% end %>
+<% @upcoming_events_email.each do |event| %>
+<%= event.name %>
+<%= cl_image_tag(event.image, class: "img-thumbnail") %>
+<%end%>
 
 <script>
 // couldnt get the script to run from any of the coffee files 

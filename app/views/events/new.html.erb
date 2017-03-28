@@ -1,4 +1,4 @@
-
+<%= cloudinary_js_config %>
 <h1 class="title">Create Event</h1>
   <div class="create-form">
     <%= form_for :event, url: events_path do |f| %>
@@ -162,10 +162,9 @@
               <!--%= image_tag(@img_file, class: "img-thumbnail") %>-->
         <!--      <img src="" id="image_tag_id" class="img-thumbnail">-->
         <!--  </div>-->
+           
            <%= cl_image_upload_tag(:image_id) %>
           
-          
-          <%= cloudinary_js_config %>
         </div>
         <% end %>
       </div>
