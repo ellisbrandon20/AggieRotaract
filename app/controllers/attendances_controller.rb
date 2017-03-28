@@ -27,7 +27,7 @@ class AttendancesController < ApplicationController
     		:wait_listed => @waiting
     		)
     	if @attendance.save
-    		flash.notice = "You are registered!"
+    		flash[:success] = "You are registered!"
       		redirect_to events_path
     	else
       		render action: 'new'

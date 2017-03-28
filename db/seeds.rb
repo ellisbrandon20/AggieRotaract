@@ -48,12 +48,12 @@ events = [
           {:name => 'Meeting 1', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
           :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
           :date => '2017-06-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 3.0, 
-          :meeting => false, :contact => 123456789, :image => 'big_event.jpeg'},
+          :meeting => true, :contact => 123456789, :image => 'big_event.jpeg'},
            
           {:name => 'Meeting 2', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
           :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
           :date => '2017-06-02', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
-          :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
+          :meeting => true, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
           
          
          ]
@@ -79,20 +79,20 @@ users.each do |user|
     User.create!(user)
 end
 
-attendances = [
+# attendances = [
     
-    {:UIN => 987654321, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:37:13'},
-    {:UIN => 123456789, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 0, :event_id => 1, :time_stamp => '2017-03-26 08:00:00'},
-    {:UIN => 223344556, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:40:13'},
-    {:UIN => 554433221, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:50:13'},
+#     {:UIN => 987654321, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:37:13'},
+#     {:UIN => 123456789, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 0, :event_id => 1, :time_stamp => '2017-03-26 08:00:00'},
+#     {:UIN => 223344556, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:40:13'},
+#     {:UIN => 554433221, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 1, :time_stamp => '2017-03-26 19:50:13'},
     
-    {:UIN => 987654321, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 0, :event_id => 2, :time_stamp => '2017-03-26 08:00:00'},
-    {:UIN => 123456789, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:50:13'},
-    {:UIN => 223344556, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:40:13'},
-    {:UIN => 554433221, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:30:13'}
+#     {:UIN => 987654321, :car_ride => 0, :comments => "fun fun fun", :wait_listed => 0, :event_id => 2, :time_stamp => '2017-03-26 08:00:00'},
+#     {:UIN => 123456789, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:50:13'},
+#     {:UIN => 223344556, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:40:13'},
+#     {:UIN => 554433221, :car_ride => 0, :comments => "more fun fun fun", :wait_listed => 1, :event_id => 2, :time_stamp => '2017-03-26 19:30:13'}
     
-]
+# ]
 
-attendances.each do |attendance|
-    Attendance.create!(attendance)
-end
+# attendances.each do |attendance|
+#     Attendance.create!(attendance)
+# end

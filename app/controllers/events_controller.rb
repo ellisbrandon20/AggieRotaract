@@ -25,7 +25,7 @@ class EventsController < ApplicationController
             # doe the sort
             # make index 0 user waitlist boolean = false
         Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
-        
+        flash[:success] = "You have been removed from the event!"
         redirect_to :back
     end
     
