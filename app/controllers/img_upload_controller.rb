@@ -9,7 +9,9 @@ class ImgUploadController < ApplicationController
     upload=params[:upload]
     name = upload[:file].original_filename
     
-    directory = "app/app/assets/images"
+    puts Dir.pwd
+    
+    directory = "app/assets/images"
     # POSSIBLE BUG WITH HEROKU
     #   heroku does not have this absolute path????
     
