@@ -11,11 +11,8 @@ class ImgUploadController < ApplicationController
     
     puts Dir.pwd
     
+    # this is where we store temporary files and in the Events#create action we upload the images to cloudinary
     directory = "public/images"
-    # POSSIBLE BUG WITH HEROKU
-    #   heroku does not have this absolute path????
-    
-    
     
     path = File.join(directory, name)
     

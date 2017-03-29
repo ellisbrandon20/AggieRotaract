@@ -31,11 +31,14 @@ class EventsController < ApplicationController
     
     def create
         
+        #upload image to cloudinary for storage
         puts "--- uploading file to cloud"
         puts Dir.pwd
         file_dir = "public/images/" + params[:image]
         Cloudinary::Uploader.upload(file_dir, :use_filename => true, :unique_filename => false)
         puts "--- uploading complete!!!!!!"
+        
+        
         # convert date input to correct format for database
         date = date_conversion
         
