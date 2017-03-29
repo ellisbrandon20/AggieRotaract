@@ -18,6 +18,7 @@
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require_tree .
+//= require cloudinary
 function grab_img_file(){
     return document.getElementById("upload_file").files[0].name;
 }

@@ -1,170 +1,173 @@
-
+<%= cloudinary_js_config %>
 <h1 class="title">Create Event</h1>
   <div class="create-form">
     <%= form_for :event, url: events_path do |f| %>
-    <div class="row">
-      <div class="col-sm-6">
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :name %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <input name="name" id="name_id" type="text" class="form-control" placeholder="Event Name" autofocus="" required>
-        </div>
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :description %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <textarea class="form-control" name="description" id="description_id" rows="5"  placeholder="Description" required></textarea>
-        </div>
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-            <%= f.label :address %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <textarea class="form-control" name="address" id="address_id" rows="3" placeholder="Address" required></textarea>
-        </div>
-        
-        
-        
-        
+      <div class="row">
+        <div class="col-sm-6">
+          
+          
+          
           <div class="form-group row col-sm-12">
-            <%= f.label :meeting %>
+            <%= f.label :name %>
           </div>
           <div class="form-group row col-sm-12">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="meeting" value=true required>  Yes
-              </label>
+            <input name="name" id="name_id" type="text" class="form-control" placeholder="Event Name" autofocus="" required>
+          </div>
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :description %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <textarea class="form-control" name="description" id="description_id" rows="5"  placeholder="Description" required></textarea>
+          </div>
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+              <%= f.label :address %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <textarea class="form-control" name="address" id="address_id" rows="3" placeholder="Address" required></textarea>
+          </div>
+          
+          
+          
+          
+            <div class="form-group row col-sm-12">
+              <%= f.label :meeting %>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="meeting" value=false >  No
-              </label>
+            <div class="form-group row col-sm-12">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="meeting" value=true required>  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="meeting" value=false >  No
+                </label>
+              </div>
+            </div>
+          
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :date %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <div class='input-group date' id='datetimepicker1'>
+              <input name="date" id="date_id" type="text" class="form-control" placeholder="" autofocus="" data-provide="datepicker" required>
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
           </div>
-        
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :date %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <div class='input-group date' id='datetimepicker1'>
-            <input name="date" id="date_id" type="text" class="form-control" placeholder="" autofocus="" data-provide="datepicker" required>
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+          
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :start_time %>
           </div>
-        </div>
-        
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :start_time %>
-        </div>
-        <div class="form-group row col-sm-12">
-            <input name="start_time" id="start_time_id" class="form-control" type="time" value="13:45:00" required>
-        </div>
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :end_time %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <input name="end_time" id="end_time_id" class="form-control" type="time" value="14:45:00" required>
-        </div>
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :max_points %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <input name="max_points" id="max_points_id" class="form-control" type="number" value="0.0" required>
-        </div>
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :volunteer_capacity %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <input name="capacity" id="capacity_id" class="form-control" type="number" value="0" required>
-        </div>
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :contact %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <!--<input name="contact" id="contact_id" class="form-control" value="" pattern="[0-9]{9}" required>-->
-          <select class="btn-group bootstrap-select selectpicker show-tick" name="contact" required>
-                <option disabled selected value> -- Select Officer -- </option>
-                <!-- list the officers -->
-                <% @officers.each do |officer| %>
-                  <option value=<%= officer.UIN %>> <%= officer.name %> </option>
-                <% end %>
-              </select>
-        </div>
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <%= f.label :image %>
-        </div>
-        <div class="form-group row col-sm-12">
-          <input name="image" id="image_id" class="form-control" value="" >
-        </div>
-        
-        
-        
-        
-        <div class="form-group row col-sm-12">
-          <div class="offset-sm-7 col-sm-2">
-            <a href=<%= dashboard_index_path %> id="cancel_create_btn" class="btn btn-default">Cancel</a>
+          <div class="form-group row col-sm-12">
+              <input name="start_time" id="start_time_id" class="form-control" type="time" value="13:45:00" required>
           </div>
-          <div class="col-sm-2">
-            <%= f.submit :class => "btn btn-success"%>
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :end_time %>
           </div>
+          <div class="form-group row col-sm-12">
+            <input name="end_time" id="end_time_id" class="form-control" type="time" value="14:45:00" required>
+          </div>
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :max_points %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <input name="max_points" id="max_points_id" class="form-control" type="number" value="0.0" required>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :volunteer_capacity %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <input name="capacity" id="capacity_id" class="form-control" type="number" value="0" required>
+          </div>
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :contact %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <!--<input name="contact" id="contact_id" class="form-control" value="" pattern="[0-9]{9}" required>-->
+            <select class="btn-group bootstrap-select selectpicker show-tick" name="contact" required>
+                  <option disabled selected value> -- Select Officer -- </option>
+                  <!-- list the officers -->
+                  <% @officers.each do |officer| %>
+                    <option value=<%= officer.UIN %>> <%= officer.name %> </option>
+                  <% end %>
+                </select>
+          </div>
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :image %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <input name="image" id="image_id" class="form-control" value="" >
+          </div>
+          
+          
+          
+          
+          <div class="form-group row col-sm-12">
+            <div class="offset-sm-7 col-sm-2">
+              <a href=<%= dashboard_index_path %> id="cancel_create_btn" class="btn btn-default">Cancel</a>
+            </div>
+            <div class="col-sm-2">
+              <%= f.submit :class => "btn btn-success"%>
+            </div>
+          </div>
+          
+          
+        </div>
+        
+        <div class="col-sm-6">
+        <!--  <div class="form-group row col-sm-12">-->
+        <!--    %= form_tag '/img_upload/create', { :multipart => true} do %>  -->
+        <!--      <p>-->
+        <!--        %= file_field_tag 'upload[file]'  %>-->
+        <!--      </p>-->
+        <!--      <p>-->
+                  <!--%= submit_tag "Upload", :class => "btn btn-default", :onclick => "update_img()"%>-->
+        <!--          %= submit_tag "Upload", :class => "btn btn-default" %>-->
+        <!--      </p>-->
+        <!--    % end %>-->
+        <!--  </div>-->
+        <!--  <div class="row col-sm-12 event-image">-->
+              <!--%= image_tag(@img_file, class: "img-thumbnail") %>-->
+        <!--      <img src="" id="image_tag_id" class="img-thumbnail">-->
+        <!--  </div>-->
+           
+           <%= cl_image_upload_tag(:image_id) %>
+          
         </div>
         <% end %>
-        
       </div>
-      
-      <div class="col-sm-6">
-        <div class="form-group row col-sm-12">
-          <%= form_tag '/img_upload/create', { :multipart => true} do %>  
-            <p>
-              <%= file_field_tag 'upload[file]'  %>
-            </p>
-            <p>
-                <!--%= submit_tag "Upload", :class => "btn btn-default", :onclick => "update_img()"%>-->
-                <%= submit_tag "Upload", :class => "btn btn-default" %>
-            </p>
-          <% end %>
-        </div>
-        <div class="row col-sm-12 event-image">
-            <!--%= image_tag(@img_file, class: "img-thumbnail") %>-->
-            <img src="" id="image_tag_id" class="img-thumbnail">
-        </div>
-        
-      </div>
-    </div>
     
     
       
@@ -192,4 +195,10 @@
   //       update_img();
   //   });
   // });
+  
+  $(function() {
+    if($.fn.cloudinary_fileupload !== undefined) {
+      $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    }
+  });
 </script>
