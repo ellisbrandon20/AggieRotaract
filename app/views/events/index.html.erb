@@ -45,7 +45,8 @@
                     <!--<%= event.capacity %>-->
                 </div>
                 <div class="row col-sm-12 event-image">
-                    <%= image_tag(event.image, class: "img-thumbnail") %>
+                    <!-- images are stored on cloudinary -->
+                    <%= cl_image_tag(event.image, class: "img-thumbnail") %>
                 </div>
                 <div class="row col-sm-12">
                     <a href="" id="address" class="address" target="_blank"><%= event.address %></a>
@@ -85,10 +86,6 @@
     </div>
     <br>
 <% end %>
-<% @upcoming_events_email.each do |event| %>
-<%= event.name %>
-<%= cl_image_tag(event.image, class: "img-thumbnail") %>
-<%end%>
 
 <script>
 // couldnt get the script to run from any of the coffee files 
