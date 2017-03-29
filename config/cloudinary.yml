@@ -2,7 +2,7 @@
 development:
   cloud_name: aggie-rotaract
   api_key: <%= ENV["cloud_key"] %>
-  api_secret: l-qSz0dZqP0rKE8tlQ8rw3mUW-Y
+  api_secret: <%= ENV["cloud_secret"] %>
   enhance_image_tag: true
   static_image_support: false
 production:

@@ -9,7 +9,7 @@ class ImgUploadController < ApplicationController
     upload=params[:upload]
     name = upload[:file].original_filename
     
-    directory = "app/assets/images"
+    directory = "app/app/assets/images"
     # POSSIBLE BUG WITH HEROKU
     #   heroku does not have this absolute path????
     
@@ -19,8 +19,10 @@ class ImgUploadController < ApplicationController
     
     File.open(path, "wb") { |f| f.write(upload[:file].read) }
     
-    flash[:notice] = "File uploaded"
+    flash[:success] = "File uploaded"
     session[:image_upload] = name
+    
+    puts "----- complete"
     
   end
 end
