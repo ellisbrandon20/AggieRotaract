@@ -1,0 +1,37 @@
+<% if !@users.nil? %>
+    <h1 class="title">Approve Points for "<%= @event.name %>"</h1>
+    <br/>
+    
+    <div class="page-margins">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>UIN</th>
+                        <th>Name</th>
+                        <th><%= @event.name %></th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td><%= user[:active_record].UIN %></td>
+                            <td><%= user[:name] %></td>
+                            <td>x</td>
+                            <td><input name="points" id="points_id" class="" type="number" step="0.5" value=<%= @event.max_points %> required></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="col-sm-offset-6">
+            <button class="btn btn-md btn-default" >Add a Member</button>
+            <button class="btn btn-md btn-success" type="">Submit Points</button>
+        </div>
+        
+    </div> <!-- .page-margins --> 
+<% else %>
+<h3>Suck my dick Aggie Rotaract, No users were signed up for this event</h3>
+<% end %>

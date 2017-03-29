@@ -60,4 +60,40 @@ class PointsController < ApplicationController
     
     def show
     end
+    
+    def select_approve_points
+        curr_time = DateTime.now.to_date
+        @past_events = Event.where("date <= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
+        
+    end
+    
+    
+    UserAttendance = Struct.new(:active_record, :name)
+    
+    def view_users_approval
+        @user_attendance = Attendance.where("event_id = :event_id and approved = :approved and wait_listed = :wait_listed", {event_id: params[:event], approved: [false], wait_listed: [false]})
+        @event = Event.find(params[:event])
+        
+        @users = Array.new
+        @user_attendance.each do |user_att|
+            uin = user_att.UIN
+            user = User.find_by(UIN: uin)
+            
+            @users.append(UserAttendance.new(user_att, user.name))
+        end
+        
+        @users.each do |user|
+            puts "--- user name:" + user[:name]
+            puts "--- user uin:" + user[:active_record].UIN.to_s
+        end
+        
+        if @users.nil? then puts "USERS IS FUCKING NIL" end 
+        if !@users.nil? then puts "USERS IS OK" end 
+        
+        # redirect_to view_users_approval(:event_id => meeting, :event_name => meeting.name)
+    end
+    
+    def approve_points
+        
+    end
 end

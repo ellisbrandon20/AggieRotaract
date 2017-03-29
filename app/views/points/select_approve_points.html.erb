@@ -1,0 +1,28 @@
+<h1 class="text-center">Select Event to Approve Points</h1>
+<br/>
+<%= form_tag :method => :post, :class => 'form-signin', :controller => 'points', :action => 'view_users_approval' do %>
+    
+    <div class="row">
+        <div class="row col-sm-offset-4">
+            <select class="btn-group bootstrap-select selectpicker show-tick" name="event" required>
+                <% if params[:event_id].nil? %>
+                    <option disabled selected value> -- Select Event -- </option>
+                <% end %>
+                <% @past_events.each do |event| %>
+                    <% if event.id == params[:event_id] %>
+                        <option value=<%= event.id %>selected> <%= event.name %> </option>
+                    <% else %>
+                        <option value=<%= event.id %>> <%= event.name %> </option>
+                    <% end %>
+                <% end %>
+            </select>
+        </div>
+
+        <div class="row form-actions">
+            <button class="btn btn-md btn-primary btn-block col-sm-offset-6" type="submit">Load Users</button>
+        </div>
+    </div>
+    
+<% end %>
+
+
