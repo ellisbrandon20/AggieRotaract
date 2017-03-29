@@ -3,18 +3,21 @@
 
 To run on local machine: 
 - rails s
-
+<br/>
 To run on cloud9: 
 - bundle install (should only be for first time) 
 - rails s -p $PORT -b $IP
-
+<br/>
 To clean out the database:
 - rake db:drop db:create db:migrate db:seed
-
+<br/>
 You can view this application on Heroku:
 https://glacial-hamlet-90409.herokuapp.com/
-
-
+<br/>
+Images:
+- This project uses Cloudinary as a free storage for all images for this application.
+- https://cloudinary.com
+- Tutorial: http://cloudinary.com/documentation/rails_image_upload#server_side_upload
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
