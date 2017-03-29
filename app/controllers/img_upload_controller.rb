@@ -11,7 +11,7 @@ class ImgUploadController < ApplicationController
     
     puts Dir.pwd
     
-    directory = "app/assets/images"
+    directory = "public/images"
     # POSSIBLE BUG WITH HEROKU
     #   heroku does not have this absolute path????
     
