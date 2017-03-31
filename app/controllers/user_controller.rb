@@ -82,6 +82,7 @@ class UserController < ApplicationController
 	
 	def edit
 		@user = User.find params[:id]
+		@shirt_sizes = ["XS","S","M", :L]
 	end
 	
 	def update
@@ -90,6 +91,7 @@ class UserController < ApplicationController
 			#@user = User.find_by(:UIN => session[:user_uin])
 			puts "Not admin\n"
 		end
+		
 		
         @user = User.find(params[:id])
         puts "============ edit " + @user.name
