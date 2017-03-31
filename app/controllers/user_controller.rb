@@ -82,7 +82,8 @@ class UserController < ApplicationController
 	
 	def edit
 		@user = User.find params[:id]
-		@shirt_sizes = ["XS","S","M", :L]
+		@shirt_sizes = ["XS","S","M", "L", "XL", "XXL"]
+		@classifications = ["Freshman","Sophomore","Junior","Senior"]
 	end
 	
 	def update

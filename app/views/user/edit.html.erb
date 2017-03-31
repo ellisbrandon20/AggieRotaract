@@ -1,3 +1,8 @@
+<style style="text/css">
+  .caret {
+    border-color: transparent !important;
+  }
+</style>
 
 <h1 class="title">Edit User</h1>
   <div class="create-form">
@@ -39,7 +44,15 @@
             <%= f.label :classification %>
           </div>
           <div class="form-group row col-sm-12">
-                  <%= f.text_field :classification, :value => @user.classification, name: "classification", class: "form-control", id:"classification_id", type:"text", :required=>true %>
+            <select class="btn-group bootstrap-select selectpicker show-tick" name="shirt" required>
+                  <% @classifications.each do |classification| %>
+                    <% if classification == @user.classification %>
+                      <option value=<%= classification %> selected><%= classification %> </option>
+                    <% else %>
+                      <option value=<%= classification %>><%= classification %> </option>
+                    <% end %>
+                  <% end %>
+                </select>
           </div>
           
           <div class="form-group row col-sm-12">
@@ -47,13 +60,6 @@
           </div>
           <div class="form-group row col-sm-12">
                   <%= f.text_field :major, :value => @user.major, name: "major", class: "form-control", id:"major_id", type:"text", :required=>true %>
-          </div>
-          
-          <div class="form-group row col-sm-12">
-            <%= f.label :shirt %>
-          </div>
-          <div class="form-group row col-sm-12">
-                  <%= f.text_field :shirt, :value => @user.shirt, name: "shirt", class: "form-control", id:"shirt_id", type:"text", :required=>true %>
           </div>
           
           <div class="form-group row col-sm-12">
@@ -71,12 +77,6 @@
                 </select>
           </div>
           
-          <div class="form-group row col-sm-12">
-            <%= f.label :gender %>
-          </div>
-          <div class="form-group row col-sm-12">
-                  <%= f.text_field :gender, :value => @user.gender, name: "gender", class: "form-control", id:"gender_id", type:"text", :required=>true %>
-          </div>
           
           <div class="form-group row col-sm-12">
               <%= f.label :gender %>
@@ -85,35 +85,69 @@
             <div class="form-check">
               <label class="form-check-label">
                 <% if @user.gender == "male" %>
-                  <input class="form-check-input" type="radio" name="gender" checked="checked" value=male required>  Male
+                  <%= radio_button_tag(:gender, "male",checked="true") %> <%= :Male %>
                 <% else %>
-                  <input class="form-check-input" type="radio" name="gender" value=male required>  Male
+                  <%= radio_button_tag(:gender, "male") %> <%= :Male %>
                 <% end %>
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label">
                 <% if @user.gender == "female" %>
-                  <input class="form-check-input" type="radio" name="gender" checked="checked" value=female >  Female
+                  <%= radio_button_tag(:gender, "female", checked="true") %> <%= :Female %>
                 <% else %>
-                  <input class="form-check-input" type="radio" name="gender" value=female >  Female
+                  <%= radio_button_tag(:gender, "female") %> <%= :Female %>
                 <% end %>
               </label>
             </div>
           </div>
           
           <div class="form-group row col-sm-12">
-            <%= f.label :officer %>
+              <%= f.label :officer %>
           </div>
           <div class="form-group row col-sm-12">
-                  <%= f.text_field :officer, :value => @user.officer, name: "officer", class: "form-control", id:"officer_id", type:"text", :required=>true %>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.officer %>
+                  <%= radio_button_tag(:officer, "true",checked="true") %> <%= :Yes %>
+                <% else %>
+                  <%= radio_button_tag(:officer, "true") %> <%= :Yes %>
+                <% end %>
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.officer %>
+                  <%= radio_button_tag(:officer, "false") %> <%= :No %>
+                <% else %>
+                  <%= radio_button_tag(:officer, "false", checked="true") %> <%= :No %>
+                <% end %>
+              </label>
+            </div>
           </div>
           
           <div class="form-group row col-sm-12">
-            <%= f.label :active %>
+              <%= f.label :active %>
           </div>
           <div class="form-group row col-sm-12">
-                  <%= f.text_field :active, :value => @user.active, name: "active", class: "form-control", id:"active_id", type:"text", :required=>true %>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.active %>
+                  <%= radio_button_tag(:active, "true",checked="true") %> <%= :Yes %>
+                <% else %>
+                  <%= radio_button_tag(:active, "true") %> <%= :Yes %>
+                <% end %>
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.active %>
+                  <%= radio_button_tag(:active, "false") %> <%= :No %>
+                <% else %>
+                  <%= radio_button_tag(:active, "false", checked="true") %> <%= :No %>
+                <% end %>
+              </label>
+            </div>
           </div>
           
           <div class="form-group row col-sm-12">
