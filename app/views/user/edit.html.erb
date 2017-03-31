@@ -1,0 +1,98 @@
+
+<h1 class="title">Edit User</h1>
+  <div class="create-form">
+    <%= form_for :user, url: user_path do |f| %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= form_tag user_list_path, :method => :put do %>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :name %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :name, :value => @user.name, name: "name", class: "form-control", id:"name_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :phone %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :phone, :value => @user.phone, name: "phone", class: "form-control", id:"phone_id", type:"text", :required=>true %>
+          </div>
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :email %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :email, :value => @user.email, name: "email", class: "form-control", id:"email_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :address %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :address, :value => @user.address, name: "address", class: "form-control", id:"address_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :classification %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :classification, :value => @user.classification, name: "classification", class: "form-control", id:"classification_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :major %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :major, :value => @user.major, name: "major", class: "form-control", id:"major_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :shirt %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :shirt, :value => @user.shirt, name: "shirt", class: "form-control", id:"shirt_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :gender %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :gender, :value => @user.gender, name: "gender", class: "form-control", id:"gender_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :officer %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :officer, :value => @user.officer, name: "officer", class: "form-control", id:"officer_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :active %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :active, :value => @user.active, name: "active", class: "form-control", id:"active_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <div class="offset-sm-7 col-sm-2">
+              <a href="<%= user_list_path %>" id="cancel_create_btn" class="btn btn-default">Cancel</a>
+            </div>
+            <div class="col-sm-2">
+              <%= submit_tag "Submit", :class => "btn btn-success"%>
+            </div>
+          </div>
+          
+          
+          
+  
+          
+          
+        <% end %>  
+        </div>
+      </div>
+      <% end%>
+  </div>

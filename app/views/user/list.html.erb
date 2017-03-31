@@ -1,0 +1,62 @@
+<style style="text/css">
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #dedede;
+}
+    
+    .table-fixed thead {
+  width: 150%;
+}
+.table-fixed tbody {
+  height: 600px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+</style>
+
+
+
+<div class="container">
+  
+  
+  <h2>Select User</h2>
+  <p>Please select a user to edit</p>            
+  <table class="table table-fixed table-hover">
+    
+    <thead>
+      <tr>
+        <th class="col-xs-2">Name</th><th class="col-xs-5">UIN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr data-link="<%= edit_user_path(user) %>">
+            <td class="col-xs-3"><%= user.name %></td><td class="col-xs-7"><%= user.UIN %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <% if flash[:success] %>
+    <div class="alert <%= "alert-success" %> fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      Hello
+  </div>
+  <% end %>
+</div>
+
+<script>
+    $("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})
+</script>
+
+<script>
+  setTimeout("$('.alert').fadeOut('slow')", 1000)
+</script>
