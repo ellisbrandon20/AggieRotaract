@@ -30,11 +30,13 @@ class EventsController < ApplicationController
         redirect_to :back
     end
     
-    def delete
-        Attendance.where(:event_id => params[:event_id]).destroy_all
+    def destroy
+        puts params[:id]
+        Attendance.where(:event_id => params[:id]).destroy_all
         #Events.where(:event_id => params[:event_id]).destroy_all
-        Event.find(params[:event_id]).destroy
-        flash[:success] = "You have deleted this event!"
+        Event.find(params[:id]).destroy()
+        redirect_to :back
+        flash[:success] = "You successfully deleted " + params[:event_name] + "!"
     end
     
     def create
