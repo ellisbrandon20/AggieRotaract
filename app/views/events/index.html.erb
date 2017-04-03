@@ -59,7 +59,8 @@
                                 <a href=<%= edit_event_path(event) %> class="btn btn-default btn-block">Edit</a>
                             </div>
                             <div class="col-xs-6 event-btn">
-                                <button type="button" class="btn btn-danger btn-block">Delete</button>
+                                <!--<= button_to "Delete Event", { :method => "destroy", :event_id => event.id } %>-->
+                                <%= link_to 'Delete', controller: 'EventsController', action: 'destroy', id: 1, method: :delete %>
                             </div>
                         </div>
                         <div class="row col-xs-12 event-btn">
