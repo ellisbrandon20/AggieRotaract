@@ -1,0 +1,26 @@
+<h1 class="title">My Points</h1>
+<style>
+	table, th, td {
+	    border: 1px solid black;
+	    text-align: center;
+	}
+</style>
+
+<table style="width:50%" align="center">
+  <tr align="center">
+    <th>Event/Meeting</th>
+    <th>Date</th> 
+    <th>Points</th>
+    <th></th>
+  </tr>
+<% Point.all.each do |point| %>
+	  <tr align="center">
+	  	<% event = Event.all.find_by(id: point.id) %>
+	    <td> <%= event.name %> </td>
+	    <td> <%= point.issue_date %> </td>
+	    <td> <%= point.points %> </td>
+	    <td> <%= button_to "View Event", :class => "btn btn-default btn-lg", :id =>"points_view_event_btn" %> </td>
+	  </tr>
+<% end %>
+
+</table>

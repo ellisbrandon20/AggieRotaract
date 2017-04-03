@@ -19,8 +19,10 @@ class PointsController < ApplicationController
     def meeting
         curr_time = DateTime.now.to_date
         all_events = Event.all
+        all_points = Point.all
         # populate dropdown list
         @upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
+        @user_points = Point.all.where(:UIN => session[:user_uin])
     end
     
     def meeting_signin
