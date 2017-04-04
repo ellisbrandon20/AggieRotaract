@@ -1,3 +1,4 @@
+<%= render 'layouts/flash_messages' %>
 <% if !@users.nil? %>
     <h1 class="title">Approve Points for "<%= @event.name %>"</h1>
     <br/>
@@ -20,6 +21,12 @@
                             <td><%= user[:name] %></td>
                             <td>x</td>
                             <td><input name="points" id="points_id" class="" type="number" step="0.5" value=<%= @event.max_points %> required></td>
+                            <td>
+                                <%= link_to events_remove_from_event_path(:remove_me_location => "approve_points", :user_uin => user[:active_record].UIN, :event_id => @event.id),
+                                    :method => :post, class: "btn btn-danger" do %>
+                                        <span class='glyphicon glyphicon-remove' aria-hidden='true' style='color: white'></span>
+                                <% end %>
+                            </td>
                         </tr>
                     <% end %>
                 </tbody>
@@ -27,11 +34,12 @@
         </div>
         
         <div class="col-sm-offset-6">
-            <button class="btn btn-md btn-default" >Add a Member</button>
+            
+            <a href=<%= new_attendance_path(:event_id => @event.id) %> name="/attendances/new" id="add_attendance_button_id" class="btn btn-md btn-default">Add a Member</a>
             <button class="btn btn-md btn-success" type="">Submit Points</button>
         </div>
         
     </div> <!-- .page-margins --> 
 <% else %>
-<h3>Suck my dick Aggie Rotaract, No users were signed up for this event</h3>
+<h3>CARLOS WHAT WERE YOU THINKING</h3>
 <% end %>

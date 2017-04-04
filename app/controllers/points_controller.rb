@@ -75,6 +75,13 @@ class PointsController < ApplicationController
         @event = Event.find(params[:event])
         
         @users = Array.new
+        
+        puts "user_attendance: "
+        @user_attendance.each do |user_att|
+            uin = user_att.UIN
+            puts "--- uin:" + uin.to_s
+        end
+        
         @user_attendance.each do |user_att|
             uin = user_att.UIN
             user = User.find_by(UIN: uin)

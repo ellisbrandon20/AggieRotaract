@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     # post 'points/select_approve_event'
     get 'points/select_approve_points'
     post 'points/view_users_approval'
+    # we needed a GET request
+    get 'points/view_users_approval'
     
     #   get 'events/new'
     

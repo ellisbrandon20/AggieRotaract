@@ -13,20 +13,38 @@ class EventsController < ApplicationController
 
     def remove_from_event
         
-        if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
-            if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
-                @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
-                @sorted_waitlist = @waitlist.sort { |a,b| a.time_stamp <=> b.time_stamp }
-                @sorted_waitlist[0].update_attribute :wait_listed, false
+        if params[:remove_me_location] != "approve_points" # removing member from list from the approval points page
+            if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
+                if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
+                    @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
+                    @sorted_waitlist = @waitlist.sort { |a,b| a.time_stamp <=> b.time_stamp }
+                    @sorted_waitlist[0].update_attribute :wait_listed, false
+                end
             end
         end
         # find out is user is going
             # query grab Attendances.where event_id = id waitlist = true
             # doe the sort
             # make index 0 user waitlist boolean = false
-        Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
-        flash[:success] = "You have been removed from the event!"
-        redirect_to :back
+        
+        # admin removing member from the attendance list in the approve points page (/points/view_users_approval)
+        uin = session[:user_uin]
+        if !params[:user_uin].nil? 
+            uin = params[:user_uin] 
+        end
+        puts "--- remove me"
+        puts "---- uin:" + uin
+        puts "---- event_id" + params[:event_id]
+        
+        Attendance.where(:UIN => uin).where(:event_id => params[:event_id]).destroy_all
+        if !params[:user_uin].nil?
+            flash[:success] = "User has been removed from the event!"
+            redirect_to points_view_users_approval_path(:event => params[:event_id])
+        else
+            flash[:success] = "You have been removed from the event!"
+            redirect_to :back
+        end
+        
     end
     
     def create
