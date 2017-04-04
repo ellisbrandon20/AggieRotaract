@@ -4,7 +4,7 @@ class EventsController < ApplicationController
         @all_events = Event.all
         @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         @upcoming_events_email = @upcoming_events
-        contact_uin_to_name
+        contact_uin_to_email
     end
     
     def new
@@ -50,12 +50,13 @@ class EventsController < ApplicationController
     def create
         
         #upload image to cloudinary for storage
-        puts "--- uploading file to cloud"
-        puts Dir.pwd
-        file_dir = "public/images/" + params[:image]
-        Cloudinary::Uploader.upload(file_dir, :use_filename => true, :unique_filename => false)
-        puts "--- uploading complete!!!!!!"
-        
+        if !params[:image].nil?
+            puts "--- uploading file to cloud"
+            puts Dir.pwd
+            file_dir = "public/images/" + params[:image]
+            Cloudinary::Uploader.upload(file_dir, :use_filename => true, :unique_filename => false)
+            puts "--- uploading complete!!!!!!"
+        end
         
         # convert date input to correct format for database
         date = date_conversion
@@ -124,11 +125,11 @@ class EventsController < ApplicationController
             params.require(:event).permit(:name, :description, :address, :meeting, :UIN, :date, :start_time, :end_time, :max_points, :contact, :image)
         end
         
-        def contact_uin_to_name
+        def contact_uin_to_email
             # make the contact attribute represent the EMAIL instead of UIN 
             @upcoming_events_email.each do |event|
                 event_contact = User.find_by(UIN: event.contact)
-                event.contact = event_contact.name   
+                event.contact = event_contact.email   
             end
         end
         

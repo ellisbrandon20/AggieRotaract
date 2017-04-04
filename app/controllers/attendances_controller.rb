@@ -1,7 +1,4 @@
 class AttendancesController < ApplicationController
-	def index
-        @all_attendance = Attendance.all
-	end
 	def new
 # 		@attendance = Attendance.new
 # 		@attendance.user = current_user
@@ -87,7 +84,7 @@ class AttendancesController < ApplicationController
         usr_upcoming_events = Event.find(events_user_attd)
         
         # convert uin to name from the Events model
-        usr_upcoming_events = contact_uin_to_name(usr_upcoming_events)
+        usr_upcoming_events = contact_uin_to_email(usr_upcoming_events)
         
         #Calculate the waitlist position
         
@@ -157,12 +154,12 @@ class AttendancesController < ApplicationController
     
     
     private
-        def contact_uin_to_name(usr_upcoming_events)
+        def contact_uin_to_email(usr_upcoming_events)
             # make the contact attribute represent the EMAIL instead of UIN 
             usr_upcoming_events.each do |event|
                 event_contact = User.find_by(UIN: event.contact)
                 puts event_contact.name
-                event.contact = event_contact.name
+                event.contact = event_contact.email
             end
             return usr_upcoming_events
         end

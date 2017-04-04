@@ -19,6 +19,7 @@
                       :date => '2017-06-01', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
                       :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
                       
+                      # events to test approve points 
                       {:name => 'past event 1', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
                       :date => '2017-01-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 3.0, 
@@ -28,6 +29,12 @@
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-01-01', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
                       :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
+                      
+                      # event to make sure i didnt break any of the controller actions sign up and remove me
+                      {:name => 'test sign up and remove', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
+                      :description => 'TEST',
+                      :date => '2017-06-02', :start_time => '08:00:00', :end_time => '12:00:00', :capacity => 01, :max_points => 1.0, 
+                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'}
                     ]
                      
             
