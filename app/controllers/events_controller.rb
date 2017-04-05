@@ -13,7 +13,12 @@ class EventsController < ApplicationController
 
     def remove_from_event
         
-        if params[:remove_me_location] != "approve_points" # removing member from list from the approval points page
+        if params[:remove_me_location] == "approve_points" # removing member from list from the approval points page
+            # if the points are already in the database we need to remove that record as well essentially removing the points fomr that user
+            if Point.exists?(:event_id => params[:event_id],:UIN => params[:user_uin])
+                Point.find_by(:event_id => params[:event_id],:UIN =>  params[:user_uin]).destroy
+            end
+        else
             if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
                 if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
                     @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
@@ -37,8 +42,9 @@ class EventsController < ApplicationController
         puts "---- event_id" + params[:event_id]
         
         Attendance.where(:UIN => uin).where(:event_id => params[:event_id]).destroy_all
+        
         if !params[:user_uin].nil?
-            flash[:success] = "User has been removed from the event!"
+            flash[:success] = "The user was deleted from the event and we removed the points for them!"
             redirect_to points_view_users_approval_path(:event => params[:event_id])
         else
             flash[:success] = "You have been removed from the event!"

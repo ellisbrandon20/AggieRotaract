@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
 # 		@attendance = Attendance.new
 # 		@attendance.user = current_user
 # 		@attendance.event = Attendance.find(params[:event_id])
-        @all_users = User.all
+        @all_users = User.order('name').all
         puts params[:event_id]
 	end
 

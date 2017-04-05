@@ -1,18 +1,38 @@
 class PointsController < ApplicationController
     
     def create
-        # # point = Point.create!(:event_id => params[:meeting_id],
-        # #                       :points => points,
-        # #                       :UIN => params[:uin],
-        # #                       :issue_date => issue_date)
-        # puts "------------- CREATE"
-        # point = Point.create!(params[:points_params])
-        # point.save
-        # puts "-------------- SAVE"
+        
+        
+        
+        @user_uin = params[:user_uin]
+        @user_points = params[:points]
+        
+        # loops through both arrays pairing the values by index
+        # or if looking at the table on website then it is by row matching the uin and the points
+        @user_uin.zip(@user_points).each do |uin, points|
+            curr_time = DateTime.now.to_date
             
-        # flash[:success] = name + " has successfully signed in"
-        # puts "-------------- REDIRECT"
-        # redirect_to events_meeting_signin
+            # if admin resubmits the form we need to overwrite the data in there not append
+            if Point.exists?(:event_id => params[:event_id],:UIN => uin)
+                Point.find_by(:event_id => params[:event_id],:UIN => uin).destroy
+            end
+            
+            @point = Point.create!(:event_id => params[:event_id],
+                                    :UIN => uin,
+                                    :points => points,
+                                    :issue_date => curr_time)
+            
+            @point.save
+                
+            # set the approved variable to true in Attendance model
+            @attendance_record = Attendance.find_by(UIN: uin, event_id: params[:event_id])
+            @attendance_record.update_attribute(:approved, true)
+            @attendance_record.save
+        end
+     
+        flash[:success] = "Points were successfully distributed"
+    
+        redirect_to points_view_users_approval_path(:event => params[:event_id])
     end
     
     
@@ -68,39 +88,27 @@ class PointsController < ApplicationController
     end
     
     
-    UserAttendance = Struct.new(:active_record, :name)
+    UserAttendance = Struct.new(:active_record, :name, :points)
     
     def view_users_approval
-        @user_attendance = Attendance.where("event_id = :event_id and approved = :approved and wait_listed = :wait_listed", {event_id: params[:event], approved: [false], wait_listed: [false]})
+        # @user_attendance = Attendance.where("event_id = :event_id and approved = :approved and wait_listed = :wait_listed", {event_id: params[:event], approved: [false], wait_listed: [false]})
+        @user_attendance = Attendance.where("event_id = :event_id and wait_listed = :wait_listed", {event_id: params[:event], wait_listed: [false]})
         @event = Event.find(params[:event])
         
         @users = Array.new
         
-        puts "user_attendance: "
-        @user_attendance.each do |user_att|
-            uin = user_att.UIN
-            puts "--- uin:" + uin.to_s
-        end
-        
         @user_attendance.each do |user_att|
             uin = user_att.UIN
             user = User.find_by(UIN: uin)
+            # @points = Point.where("event_id = :event_id", {event_id: params[:event]})
+            points_record = Point.find_by(event_id: params[:event], UIN: uin)
             
-            @users.append(UserAttendance.new(user_att, user.name))
+            if points_record.nil?
+                @users.append(UserAttendance.new(user_att, user.name, 0))
+            else
+                @users.append(UserAttendance.new(user_att, user.name, points_record.points))
+            end 
         end
-        
-        @users.each do |user|
-            puts "--- user name:" + user[:name]
-            puts "--- user uin:" + user[:active_record].UIN.to_s
-        end
-        
-        if @users.nil? then puts "USERS IS FUCKING NIL" end 
-        if !@users.nil? then puts "USERS IS OK" end 
-        
-        # redirect_to view_users_approval(:event_id => meeting, :event_name => meeting.name)
     end
-    
-    def approve_points
-        
-    end
+
 end
