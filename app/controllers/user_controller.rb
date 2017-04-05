@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 	layout "login"
 	
+	
 	def login
 		# check if admin or member is trying to login
 		if params[:login_UIN] == "admin"
@@ -77,13 +78,16 @@ class UserController < ApplicationController
 	
 	#displays all the users that can be editted
 	def list
+		
 		@users = User.all
+		render layout: "application"
 	end
 	
 	def edit
 		@user = User.find params[:id]
 		@shirt_sizes = ["XS","S","M", "L", "XL", "XXL"]
 		@classifications = ["Freshman","Sophomore","Junior","Senior"]
+		render layout: "application"
 	end
 	
 	def update
