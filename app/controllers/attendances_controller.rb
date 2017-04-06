@@ -39,6 +39,7 @@ class AttendancesController < ApplicationController
     
     def index
         @user = User.find_by(UIN: session[:user_uin])
+        curr_time = DateTime.now.to_date
         
         # grab all attendances data
         all_attendances = Attendance.all
@@ -71,53 +72,51 @@ class AttendancesController < ApplicationController
         
         # array to store the Event Information, and whether the user is "waitlisted" or "going"
         @user_upcoming_events = Array.new
-        usr_upcoming_events.each do |event|
-            
-            
         
-            
-            #Get all attendance for this event
-            attendances_for_event = all_attendances.find_all {|x| x.event_id == event.id}
-            puts "Attendances for event"
-            puts attendances_for_event.size
-            attendances_for_event.each do |att|
-                puts att.UIN
-            end
-            
-            #Get all wait listed atendances for this event
-            waitlisted_attendances_for_event = attendances_for_event.find_all {|x| x.wait_listed == true}
-            puts "Waitlisted attendances for event"
-            waitlisted_attendances_for_event.each do |att|
-                puts att.UIN
-            end
-            
-            #sort by the time
-            sorted_waitlisted_attendances_for_event = waitlisted_attendances_for_event.sort! { |a,b| a.time_stamp <=> b.time_stamp }
-            puts "Sorted Waitlisted attendances for event"
-            sorted_waitlisted_attendances_for_event.each do |att|
-                puts att.UIN
-            end
-            
-            index = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin].to_i}
-            
-            puts "Index" + index.to_s
-            
-            
-            if !index.nil?
-                waitlist_position = index + 1
+        #loop through each attendances of the current user to calculate their waitlist
+        usr_upcoming_events.each do |event|
+        
+            if(event.date >= curr_time)
+                #Get all attendance for this event
+                attendances_for_event = all_attendances.find_all {|x| x.event_id == event.id}
+                puts "Attendances for event"
+                puts attendances_for_event.size
+                attendances_for_event.each do |att|
+                    puts att.UIN
+                end
+                
+                #Get all wait listed atendances for this event
+                waitlisted_attendances_for_event = attendances_for_event.find_all {|x| x.wait_listed == true}
+                puts "Waitlisted attendances for event"
+                waitlisted_attendances_for_event.each do |att|
+                    puts att.UIN
+                end
+                
+                #sort by the time
+                sorted_waitlisted_attendances_for_event = waitlisted_attendances_for_event.sort! { |a,b| a.time_stamp <=> b.time_stamp }
+                puts "Sorted Waitlisted attendances for event"
+                sorted_waitlisted_attendances_for_event.each do |att|
+                    puts att.UIN
+                end
+                
+                index = sorted_waitlisted_attendances_for_event.index{|x| x.UIN == session[:user_uin].to_i}
+                
+                puts "Index" + index.to_s
+                
+                if !index.nil?
+                    waitlist_position = index + 1
+                else
+                    waitlist_position = 0
+                end
+                
+                # this variable will work like a hash 
+                    # ":active_record" gets you the Event info and 
+                    # ":wait_list_pos" tells you if the user is "going" or "waitlisted"
+                    
+                @user_upcoming_events.append(UpcomingEventData.new(event,waitlist_position))
             else
-                waitlist_position = 0
+                puts "Event past date."
             end
-            
-            
-            
-            
-            
-            
-            # this variable will work like a hash 
-                # ":active_record" gets you the Event info and 
-                # ":wait_list_pos" tells you if the user is "going" or "waitlisted"
-            @user_upcoming_events.append(UpcomingEventData.new(event,waitlist_position))
         end
 
         puts "User upcoming events length"
