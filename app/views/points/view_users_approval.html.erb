@@ -1,0 +1,52 @@
+<%= render 'layouts/flash_messages' %>
+<% if !@users.nil? %>
+    <h1 class="title">Approve Points for "<%= @event.name %>"</h1>
+    <br/>
+    
+    <div class="page-margins">
+        
+        <%= form_tag :method => :post, :controller => 'points', :action => 'create', :event_id => @event.id do %>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">UIN</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-2"><%= @event.name %></th>
+                            <th class="col-md-3">Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @users.each do |user| %>
+                            <tr>
+                                <td>
+                                    <%= user[:active_record].UIN %>
+                                    <!-- below is the only way i could figure out how to pass the uins -->
+                                    <input type="hidden" name="user_uin[]" value=<%= user[:active_record].UIN %> />
+                                </td>
+                                <td><%= user[:name] %></td>
+                                <td><%= user[:points]%></td>
+                                <td>
+                                    <input name="points[]" id="points_id" class="col-sm-4" type="number" step="0.5" value=<%= @event.max_points %> required>
+                                    </td>
+                                <td>
+                                    <%= link_to events_remove_from_event_path(:remove_me_location => "approve_points", :user_uin => user[:active_record].UIN, :event_id => @event.id),
+                                        :method => :post, class: "btn btn-danger pull-right" do %>
+                                            <span class='glyphicon glyphicon-remove' aria-hidden='true' style='color: white'></span>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pull-right">
+                <a href=<%= new_attendance_path(:event_id => @event.id) %> name="/attendances/new" id="add_attendance_button_id" class="btn btn-md btn-default">Add a Member</a>
+                <button class="btn btn-md btn-success" type="submit">Submit Points</button>
+            </div>
+        <% end %>
+    </div> <!-- .page-margins --> 
+<% else %>
+<h3>CARLOS WHAT WERE YOU THINKING</h3>
+<% end %>
