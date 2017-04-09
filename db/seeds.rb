@@ -68,9 +68,7 @@ events = [
           {:name => 'Meeting 2', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
           :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
           :date => '2017-06-02', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 1.0, 
-          :meeting => true, :contact => 987654321, :image => ''},
-          
-         
+          :meeting => true, :contact => 987654321, :image => ''}
          ]
          
 
