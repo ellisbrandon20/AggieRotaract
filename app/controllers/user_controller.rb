@@ -43,6 +43,10 @@ class UserController < ApplicationController
 	def new
 		# creates the correct "Go Back" link for user creation since we use the form in 2 different locations: Login, Meeting Sign In
 		session[:new_user_back] = URI(request.referer || '').path
+		puts "user_back:" + session[:new_user_back]
+		if session[:new_user_back] == "/points/meeting"
+			render layout: "application"
+		end
 	end
 	
 	def create

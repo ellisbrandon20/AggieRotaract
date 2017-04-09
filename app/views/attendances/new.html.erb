@@ -1,0 +1,56 @@
+<style>
+    label { 
+        padding-bottom: 10px;
+        font-weight: normal;
+    }
+</style>
+
+
+<%= form_tag :method => :post, :class => '', :controller => 'attendances', :action => 'create' do %>
+    <h1 class="title"> Add User to Event </h1>
+    
+    <html>
+    <!-- <head/> -->
+    <style>
+        .center {
+          margin: auto;
+          width: 50%;
+          padding: 10px;
+        }
+    </style>
+  </html>
+    
+        <div class="page-margins">
+        <!-- UIN/NAME -->
+            <div class="row">
+                <div class="col-sm-1 col-md-offset-4">Name: </div>
+                <select class="btn-group bootstrap-select selectpicker show-tick" name="user" required>
+                    <% if params[:all_users].nil? %>
+                        <option disabled selected value> -- Select User -- </option>
+                    <% end %>
+                    <% @all_users.each do |user| %>
+                            <option value=<%= user.UIN %>> <%= user.name %> </option>
+                    <% end %>
+                </select>
+            </div>
+        
+        <%= hidden_field_tag :event_id , params[:event_id] %>
+        <%= hidden_field_tag :pref_contact , "call" %>
+        <%= hidden_field_tag :car_ride ,  false %>
+        <%= hidden_field_tag :wait_list ,  false %>
+        <%= hidden_field_tag :comment ,  "" %>
+        
+            <div class="login-btn-padding">
+                <div class='row'>
+                    <div class='col-sm-offset-4 col-sm-2'>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                    </div>
+                    <div class='col-sm-2'>
+                        <!--<p>FIX GO BACK BUTTON</p>-->
+                        <a href="<%= points_view_users_approval_path(:event => params[:event_id]) %>" class="btn btn-lg btn-default btn-block" >Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+<% end %>

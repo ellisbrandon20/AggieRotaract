@@ -4,8 +4,7 @@ class EventsController < ApplicationController
         @all_events = Event.all
         @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         @upcoming_events_email = @upcoming_events
-        contact_uin_to_name
-        
+        contact_uin_to_email
     end
     
     def new
@@ -14,20 +13,44 @@ class EventsController < ApplicationController
 
     def remove_from_event
         
-        if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
-            if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
-                @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
-                @sorted_waitlist = @waitlist.sort { |a,b| a.time_stamp <=> b.time_stamp }
-                @sorted_waitlist[0].update_attribute :wait_listed, false
+        if params[:remove_me_location] == "approve_points" # removing member from list from the approval points page
+            # if the points are already in the database we need to remove that record as well essentially removing the points fomr that user
+            if Point.exists?(:event_id => params[:event_id],:UIN => params[:user_uin])
+                Point.find_by(:event_id => params[:event_id],:UIN =>  params[:user_uin]).destroy
+            end
+        else
+            if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
+                if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
+                    @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
+                    @sorted_waitlist = @waitlist.sort { |a,b| a.time_stamp <=> b.time_stamp }
+                    @sorted_waitlist[0].update_attribute :wait_listed, false
+                end
             end
         end
         # find out is user is going
             # query grab Attendances.where event_id = id waitlist = true
             # doe the sort
             # make index 0 user waitlist boolean = false
-        Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
-        flash[:success] = "You have been removed from the event!"
-        redirect_to :back
+        
+        # admin removing member from the attendance list in the approve points page (/points/view_users_approval)
+        uin = session[:user_uin]
+        if !params[:user_uin].nil? 
+            uin = params[:user_uin] 
+        end
+        puts "--- remove me"
+        puts "---- uin:" + uin
+        puts "---- event_id" + params[:event_id]
+        
+        Attendance.where(:UIN => uin).where(:event_id => params[:event_id]).destroy_all
+        
+        if !params[:user_uin].nil?
+            flash[:success] = "The user was deleted from the event and we removed the points for them!"
+            redirect_to points_view_users_approval_path(:event => params[:event_id])
+        else
+            flash[:success] = "You have been removed from the event!"
+            redirect_to :back
+        end
+        
     end
     
     def destroy
@@ -42,12 +65,13 @@ class EventsController < ApplicationController
     def create
         
         #upload image to cloudinary for storage
-        puts "--- uploading file to cloud"
-        puts Dir.pwd
-        file_dir = "public/images/" + params[:image]
-        Cloudinary::Uploader.upload(file_dir, :use_filename => true, :unique_filename => false)
-        puts "--- uploading complete!!!!!!"
-        
+        if !params[:image].nil?
+            puts "--- uploading file to cloud"
+            puts Dir.pwd
+            file_dir = "public/images/" + params[:image]
+            Cloudinary::Uploader.upload(file_dir, :use_filename => true, :unique_filename => false)
+            puts "--- uploading complete!!!!!!"
+        end
         
         # convert date input to correct format for database
         date = date_conversion
@@ -116,11 +140,11 @@ class EventsController < ApplicationController
             params.require(:event).permit(:name, :description, :address, :meeting, :UIN, :date, :start_time, :end_time, :max_points, :contact, :image)
         end
         
-        def contact_uin_to_name
+        def contact_uin_to_email
             # make the contact attribute represent the EMAIL instead of UIN 
             @upcoming_events_email.each do |event|
                 event_contact = User.find_by(UIN: event.contact)
-                event.contact = event_contact.name   
+                event.contact = event_contact.email   
             end
         end
         

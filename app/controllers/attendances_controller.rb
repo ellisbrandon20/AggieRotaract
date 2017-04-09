@@ -5,36 +5,58 @@ class AttendancesController < ApplicationController
 	end
   
 	def new
-		@attendance = Attendance.new
-		@attendance.user = current_user
-		@attendance.event = Attendance.find(params[:event_id])
+# 		@attendance = Attendance.new
+# 		@attendance.user = current_user
+# 		@attendance.event = Attendance.find(params[:event_id])
+        @all_users = User.order('name').all
+        puts params[:event_id]
 	end
 
 	def create
 		
 		# determine if user is on going list or waitlisted
 		@current_event=Event.find(params[:event_id])
-		if number_people_registered<@current_event.capacity
-		    @waiting=false
-		else
-		    @waiting=true
-		end
+		if params[:wait_list].nil?
+		    if number_people_registered < @current_event.capacity
+    		    @waiting = false
+    		else
+    		    @waiting = true
+    		end
+    	else
+    	    @waiting = false
+    	    puts "--- waiting is false "
+    	end
 		
 		puts "---- pref_contact: " + params[:pref_contact]
 		
-    	@attendance = Attendance.create!(:UIN => session[:user_uin],
+		# params[:user] comes from /attendances/new when admin is adding an entry for 
+        # approving points for user that attended event but that was not signed up for
+        uin = session[:user_uin]
+		if session[:admin] then uin = params[:user] end
+		
+    	@attendance = Attendance.create!(:UIN => uin,
     		:event_id => params[:event_id],
     		:car_ride => params[:car_ride],
     		:comments => params[:comment],
     		:pref_contact => params[:pref_contact],
-    		:wait_listed => @waiting
+    		:wait_listed => @waiting,
+    		:approved => false
     		)
     	if @attendance.save
     		flash[:success] = "You are registered!"
-      		redirect_to events_path
     	else
-      		render action: 'new'
+    	    flash[:danger] = "Try again we could not save that record"
     	end
+    	
+    	if session[:admin]
+    	    # action called by admin to add member to attendance record post event
+    	    puts "---- redirecting to view_users_approval"
+    	    redirect_to points_view_users_approval_path(:event => params[:event_id])
+    	else
+    	    # action called by users when signing up for event
+    	    redirect_to events_path
+    	end
+    	
 	end
 
     UpcomingEventData = Struct.new(:active_record, :wait_list_pos)
@@ -68,7 +90,7 @@ class AttendancesController < ApplicationController
         usr_upcoming_events = Event.find(events_user_attd)
         
         # convert uin to name from the Events model
-        usr_upcoming_events = contact_uin_to_name(usr_upcoming_events)
+        usr_upcoming_events = contact_uin_to_email(usr_upcoming_events)
         
         #Calculate the waitlist position
         
@@ -155,12 +177,12 @@ class AttendancesController < ApplicationController
     
     
     private
-        def contact_uin_to_name(usr_upcoming_events)
+        def contact_uin_to_email(usr_upcoming_events)
             # make the contact attribute represent the EMAIL instead of UIN 
             usr_upcoming_events.each do |event|
                 event_contact = User.find_by(UIN: event.contact)
                 puts event_contact.name
-                event.contact = event_contact.name
+                event.contact = event_contact.email
             end
             return usr_upcoming_events
         end

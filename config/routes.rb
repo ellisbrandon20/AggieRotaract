@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     
     get 'points/meeting'
     post 'points/meeting_signin'
+    # get 'points/view_approve_event'
+    # post 'points/select_approve_event'
+    get 'points/select_approve_points'
+    post 'points/view_users_approval'
+    get 'points/view_users_approval'
+    post '/points/approve_points'
     
     #   get 'events/new'
     
