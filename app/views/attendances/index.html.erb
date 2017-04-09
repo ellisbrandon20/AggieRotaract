@@ -1,5 +1,7 @@
 <center><h1>Welcome <%= @user.name%></h1></center>
 <br><br>
+
+<%= render 'layouts/flash_messages' %>
 <h1 class="title">Your Upcoming Events</h1>
 
 <% if @user_upcoming_events.size == 0 %>
@@ -95,7 +97,8 @@
                     <button type="button" class="btn btn-default">Edit Comment</button>
                 </div>
                 <div class="event-btn">
-                    <button type="button" class="btn btn-danger">Remove Me</button>
+                    <%= button_to "Remove Me", { :action => "remove_from_event", :event_id => event[:active_record].id },
+                            {class: 'btn btn-danger btn-block'} %>
                 </div>
             </div>
             

@@ -1,5 +1,9 @@
 class AttendancesController < ApplicationController
-
+	def index
+        @all_attendance = Attendance.all
+        @user_attendance = Attendance.all.where(:UIN => session[:user_uin])
+	end
+  
 	def new
 # 		@attendance = Attendance.new
 # 		@attendance.user = current_user
@@ -141,6 +145,25 @@ class AttendancesController < ApplicationController
 
         puts "User upcoming events length"
         puts @user_upcoming_events.length
+    end
+
+    def remove_from_event
+        
+        if Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).where(:wait_listed => false).present?
+            if Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true).present?
+                @waitlist=Attendance.where(:event_id => params[:event_id]).where(:wait_listed => true)
+                @sorted_waitlist = @waitlist.sort { |a,b| a.time_stamp <=> b.time_stamp }
+                @sorted_waitlist[0].update_attribute :wait_listed, false
+            end
+        end
+        # find out is user is going
+            # query grab Attendances.where event_id = id waitlist = true
+            # doe the sort
+            # make index 0 user waitlist boolean = false
+        Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
+        flash[:success] = "You have been removed from the event!"
+        redirect_to :back
+        # session[:remove_me_back] = URI(request.referer || ‘’).path
     end
     
     def show

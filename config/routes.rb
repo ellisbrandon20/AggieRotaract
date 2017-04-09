@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'events/sign_up_for_event'
     post 'events/sign_up_for_event'
     post 'events/remove_from_event'
+    post 'attendances/remove_from_event'
     
     get 'points/meeting'
     post 'points/meeting_signin'
