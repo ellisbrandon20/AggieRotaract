@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 	layout "login"
 	
+	
 	def login
 		# check if admin or member is trying to login
 		if params[:login_UIN] == "admin"
@@ -75,4 +76,47 @@ class UserController < ApplicationController
 		redirect_to root_path
 	end
 	
+	#displays all the users that can be editted
+	def list
+		
+		@users = User.all
+		render layout: "application"
+	end
+	
+	def edit
+		@user = User.find params[:id]
+		@shirt_sizes = ["X-Small","Small","Medium", "Large", "X-Large", "XX-Large", "XXX-Large"]
+		@classifications = ["Freshman","Sophomore","Junior","Senior","Graduate"]
+		render layout: "application"
+	end
+	
+	def update
+		
+		if !session[:admin]
+			#@user = User.find_by(:UIN => session[:user_uin])
+			puts "Not admin\n"
+		end
+		
+		
+        @user = User.find(params[:id])
+        puts "============ edit " + @user.name
+        # convert date input to correct format for database
+       
+       
+        
+        @user.update_attributes!(:name => params[:name],
+                 :phone => params[:phone],
+                 :email => params[:email],
+                 :address => params[:address],
+                 :classification => params[:classification],
+                 :major => params[:major],
+                 :shirt => params[:shirt],
+                 :gender => params[:gender],
+                 :officer => params[:officer],
+                 :active => params[:active],
+                 :updated_at => DateTime.now)
+        # @movie.update_attributes!(movie_params)
+        flash[:success] = "#{@user.name} was successfully updated."
+        redirect_to user_list_path
+	end
 end

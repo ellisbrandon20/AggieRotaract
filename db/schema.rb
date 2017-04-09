@@ -41,11 +41,6 @@ ActiveRecord::Schema.define(version: 20170324183254) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "participations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "points", force: :cascade do |t|
     t.integer  "event_id"
     t.float    "points"

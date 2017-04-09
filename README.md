@@ -1,8 +1,6 @@
 # AggieRotaract 431 Project
-
-
 To run on local machine: 
-- rails s
+- rails s  
 
 To run on cloud9: 
 - bundle install (should only be for first time) 
@@ -14,7 +12,10 @@ To clean out the database:
 You can view this application on Heroku:
 https://glacial-hamlet-90409.herokuapp.com/
 
-
+Images:
+- This project uses Cloudinary as a free storage for all images for this application.
+- https://cloudinary.com
+- Tutorial: http://cloudinary.com/documentation/rails_image_upload#server_side_upload
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
