@@ -18,17 +18,6 @@
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-07-16', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
                       :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
-
-                      {:name => 'Kyle Field Clean Up', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
-                      :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
-                      :date => '2017-07-16', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
-                      
-                      # event to test signup waitlist feature
-                      {:name => 'Kyle Field Clean up', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
-                      :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
-                      :date => '2017-07-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 1, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg'},
                       
                       # events to test approve points 
                       {:name => 'past event 1', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
@@ -39,7 +28,13 @@
                       {:name => 'past event 2', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-01-01', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'}
+                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
+                      
+                      # event to test signup waitlist feature
+                      {:name => 'Kyle Field Clean up', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
+                      :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
+                      :date => '2017-07-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 1, :max_points => 2.0, 
+                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg'}
                     ]
                      
             
