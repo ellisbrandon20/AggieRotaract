@@ -1,0 +1,171 @@
+<style style="text/css">
+  .caret {
+    border-color: transparent !important;
+  }
+</style>
+
+<h1 class="title">Edit User</h1>
+  <div class="create-form">
+    <%= form_for :user, url: user_path do |f| %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= form_tag user_list_path, :method => :put do %>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :name %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :name, :value => @user.name, name: "name", class: "form-control", id:"name_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :phone %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :phone, :value => @user.phone, name: "phone", class: "form-control", id:"phone_id", type:"text", :required=>true %>
+          </div>
+          
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :email %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :email, :value => @user.email, name: "email", class: "form-control", id:"email_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :address %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :address, :value => @user.address, name: "address", class: "form-control", id:"address_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :classification %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <select class="btn-group bootstrap-select selectpicker show-tick" name="shirt" required>
+                  <% @classifications.each do |classification| %>
+                    <% if classification == @user.classification %>
+                      <option value=<%= classification %> selected><%= classification %> </option>
+                    <% else %>
+                      <option value=<%= classification %>><%= classification %> </option>
+                    <% end %>
+                  <% end %>
+                </select>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :major %>
+          </div>
+          <div class="form-group row col-sm-12">
+                  <%= f.text_field :major, :value => @user.major, name: "major", class: "form-control", id:"major_id", type:"text", :required=>true %>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <%= f.label :shirt %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <select class="btn-group bootstrap-select selectpicker show-tick" name="shirt" required>
+                  <% @shirt_sizes.each do |size| %>
+                    <% if size == @user.shirt %>
+                      <option value=<%= size %> selected><%= size %> </option>
+                    <% else %>
+                      <option value=<%= size %>><%= size %> </option>
+                    <% end %>
+                  <% end %>
+                </select>
+          </div>
+          
+          
+          <div class="form-group row col-sm-12">
+              <%= f.label :gender %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.gender == "male" %>
+                  <%= radio_button_tag(:gender, "male",checked="true") %> <%= :Male %>
+                <% else %>
+                  <%= radio_button_tag(:gender, "male") %> <%= :Male %>
+                <% end %>
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.gender == "female" %>
+                  <%= radio_button_tag(:gender, "female", checked="true") %> <%= :Female %>
+                <% else %>
+                  <%= radio_button_tag(:gender, "female") %> <%= :Female %>
+                <% end %>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+              <%= f.label :officer %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.officer %>
+                  <%= radio_button_tag(:officer, "true",checked="true") %> <%= :Yes %>
+                <% else %>
+                  <%= radio_button_tag(:officer, "true") %> <%= :Yes %>
+                <% end %>
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.officer %>
+                  <%= radio_button_tag(:officer, "false") %> <%= :No %>
+                <% else %>
+                  <%= radio_button_tag(:officer, "false", checked="true") %> <%= :No %>
+                <% end %>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+              <%= f.label :active %>
+          </div>
+          <div class="form-group row col-sm-12">
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.active %>
+                  <%= radio_button_tag(:active, "true",checked="true") %> <%= :Yes %>
+                <% else %>
+                  <%= radio_button_tag(:active, "true") %> <%= :Yes %>
+                <% end %>
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <% if @user.active %>
+                  <%= radio_button_tag(:active, "false") %> <%= :No %>
+                <% else %>
+                  <%= radio_button_tag(:active, "false", checked="true") %> <%= :No %>
+                <% end %>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group row col-sm-12">
+            <div class="offset-sm-7 col-sm-2">
+              <a href="<%= user_list_path %>" id="cancel_create_btn" class="btn btn-default">Cancel</a>
+            </div>
+            <div class="col-sm-2">
+              <%= submit_tag "Submit", :class => "btn btn-success"%>
+            </div>
+          </div>
+          
+          
+          
+  
+          
+          
+        <% end %>  
+        </div>
+      </div>
+      <% end%>
+  </div>

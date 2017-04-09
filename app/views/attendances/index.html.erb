@@ -3,8 +3,8 @@
 <h1 class="title">Upcoming Events</h1>
 <%= render 'layouts/flash_messages' %>
 
-<% if @user_upcoming_events.nil? %>
-    <div> You are not signed up for any events. </div>
+<% if @user_upcoming_events.size == 0 %>
+    <h2><div class="label label-warning center-label"> You are not signed up for any events. </div></h3>
 <% else %>
     <% @user_upcoming_events.each do |event| %>
         <div class="event-card">
