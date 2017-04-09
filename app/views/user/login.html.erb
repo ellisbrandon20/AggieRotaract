@@ -1,36 +1,42 @@
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'user', :action => 'login' do %>
-  <h1 class="form-signin-heading text-muted center">Log In/Sign Up</h1>
+  <h1 class="form-signin-heading text-muted center" style="color:white !important;">Log In/Sign Up</h1>
 
   <%= render 'layouts/flash_messages' %>
 
   <html>
-    <!-- <head/> -->
     <style>
-        body {
-          color: red;
-        }
-
         .center {
           margin: auto;
           width: 40%;
           padding: 10px;
         }
+        body {
+          background-image: url("http://res.cloudinary.com/aggie-rotaract/image/upload/v1491769469/Aggie-Rotaract-Homepage.jpg");
+          background-size: cover !important;
+        }
     </style>
   </html>
-
-  <div class="center">
-    <input name="login_UIN" id="login_UIN_id" type="text" class="form-control" maxlength="9" placeholder="UIN" required="" autofocus="">
-    
-    <div class="login-btn-padding">
-      <div class="col-md-6">
-        <button name="login_button" id="login_button_id" class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-      </div>
-      <div class="col-md-4">
-        <a href=<%= new_user_path %> name="/user/login" id="sign_up_button_id" class="btn btn-lg btn-link btn-block">Sign Up</a>
+  <body>
+    <div class="center">
+      <input name="login_UIN" id="login_UIN_id" type="text" class="form-control" maxlength="9" placeholder="UIN" required="" autofocus="">
+      
+      <div class="login-btn-padding">
+        <div class="col-md-6">
+          <button name="login_button" id="login_button_id" class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+        </div>
+        <div class="col-md-6">
+          <a href=<%= new_user_path %> name="/user/login" id="sign_up_button_id" class="btn btn-lg btn-default btn-block">Sign Up</a>
+        </div>
       </div>
     </div>
-  </div>
+  </body></body>
 <% end %>
+
+<!--%= cl_image_tag("Aggie-Rotaract-Homepage.jpeg")%>-->
+
+<style>
+  
+</style>
 
 <!--%= cl_image_tag("sample.jpg", :alt => "Sample Image", -->
 <!--  :width => 100, :height => 150) %> -->
