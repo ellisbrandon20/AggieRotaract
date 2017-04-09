@@ -72,137 +72,125 @@ users = [
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456710, :name => "Jared Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456711, :name => "Mary Shirley", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456712, :name => "Sam Simmons", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456713, :name => "Megan Holle", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456714, :name => "Natalie Niel", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456715, :name => "Jon Smith", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456716, :name => "Jill Penny", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456717, :name => "Amanda Cerami", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456718, :name => "Andre Jones", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456719, :name => "Megan Baker", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456721, :name => "Lori Niel", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456722, :name => "Lindy Niel", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456723, :name => "Katy Shirly", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456724, :name => "Russel Shirley", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456725, :name => "Tre Barry", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456726, :name => "Tyler Anker", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456727, :name => "Austin Anker", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456728, :name => "Erin Anker", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456729, :name => "Jeff Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456730, :name => "Nick Jackson", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456731, :name => "Colin Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456732, :name => "Leighton Harrison", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456733, :name => "Joel Harrison", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456734, :name => "Nikki Harrison", :phone => "1234567890", :email => "me@tamu.edu", 
+    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
+    :gender => "female", :officer => true, :active => true
+  },
+  {:UIN => 123456735, :name => "Parker Harrison", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456736, :name => "Bella Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
+    :gender => "female", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456737, :name => "Aubrey Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
+    :gender => "female", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456738, :name => "Faith Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
+    :gender => "female", :officer => true, :active => true
   },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456739, :name => "Emma Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
+    :gender => "female", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 123456740, :name => "Julie Russell", :phone => "1234567890", :email => "me@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
-  },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
-    :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
-    :gender => "male", :officer => true, :active => true
+    :gender => "female", :officer => true, :active => true
   }
 ]
 

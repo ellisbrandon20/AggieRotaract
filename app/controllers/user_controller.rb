@@ -85,8 +85,8 @@ class UserController < ApplicationController
 	
 	def edit
 		@user = User.find params[:id]
-		@shirt_sizes = ["XS","S","M", "L", "XL", "XXL"]
-		@classifications = ["Freshman","Sophomore","Junior","Senior"]
+		@shirt_sizes = ["X-Small","Small","Medium", "Large", "X-Large", "XX-Large", "XXX-Large"]
+		@classifications = ["Freshman","Sophomore","Junior","Senior","Graduate"]
 		render layout: "application"
 	end
 	
