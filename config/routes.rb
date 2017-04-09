@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'user/logout'
     get 'user/admin_login'
     post 'user/admin_password_validation'
+    get 'user/list'
     
     post 'events/new'
     get 'events/sign_up_for_event'
