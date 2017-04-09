@@ -79,7 +79,7 @@ class UserController < ApplicationController
 	#displays all the users that can be editted
 	def list
 		
-		@users = User.all
+		@users = User.order(:name).all
 		render layout: "application"
 	end
 	

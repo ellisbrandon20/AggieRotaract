@@ -3,18 +3,18 @@
   background-color: #dedede;
 }
     
-.table-fixed thead {
-  width: 100%;
-}
-.table-fixed tbody {
-  height: 200px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  display: block;
-  width:150%;
-  float: left;
-  border-bottom-width: 0;
-}
+/*.table-fixed thead {*/
+/*  width: 100%;*/
+/*}*/
+/*.table-fixed tbody {*/
+/*  height: 200px;*/
+/*  overflow-y: scroll;*/
+/*  overflow-x: hidden;*/
+/*  display: block;*/
+/*  width:150%;*/
+/*  float: left;*/
+/*  border-bottom-width: 0;*/
+/*}*/
 /*.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {*/
 /*  display: block;*/
 /*}*/
@@ -48,17 +48,20 @@
             <!--<th>Insert Name here</th>-->
             <!--<th>Points</th>-->
             <th class="col-sm-1">Name</th>
-            <th class="col-sm-2">UIN</th>
+            <th class="col-sm-1">UIN</th>
+            <th class="col-sm-1">Officer</th>
+            <th class="col-sm-1">Active</th>
+            <th class="col-sm-1">Email</th></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr data-link="<%= edit_user_path(user) %>">
-              <td class="col-sm-3"><%= user.name %></td>
-              <td class="col-sm-3"><%= user.UIN %></td>
-              <td class="col-sm-2"><%= user.officer %></td>
-              <td class="col-sm-2"><%= user.active %></td>
-              <td class="col-sm-2"><%= user.email %></td>
+              <td><%= user.name %></td>
+              <td><%= user.UIN %></td>
+              <td><%= user.officer %></td>
+              <td><%= user.active %></td>
+              <td><%= user.email %></td>
               <!--<td><= user.UIN %></td>-->
               <!--<td><= user.name %></td>-->
               <!--<td>x</td>-->
