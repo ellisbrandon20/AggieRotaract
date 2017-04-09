@@ -53,6 +53,15 @@ class EventsController < ApplicationController
         
     end
     
+    def destroy
+        puts params[:id]
+        Attendance.where(:event_id => params[:id]).destroy_all
+        #Events.where(:event_id => params[:event_id]).destroy_all
+        Event.find(params[:id]).destroy()
+        redirect_to :back
+        flash[:success] = "You successfully deleted " + params[:event_name] + "!"
+    end
+    
     def create
         
         #upload image to cloudinary for storage
