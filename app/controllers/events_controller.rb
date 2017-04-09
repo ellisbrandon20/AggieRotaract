@@ -5,6 +5,7 @@ class EventsController < ApplicationController
         @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         @upcoming_events_email = @upcoming_events
         contact_uin_to_name
+        
     end
     
     def new
@@ -27,6 +28,15 @@ class EventsController < ApplicationController
         Attendance.where(:UIN => session[:user_uin]).where(:event_id => params[:event_id]).destroy_all
         flash[:success] = "You have been removed from the event!"
         redirect_to :back
+    end
+    
+    def destroy
+        puts params[:id]
+        Attendance.where(:event_id => params[:id]).destroy_all
+        #Events.where(:event_id => params[:event_id]).destroy_all
+        Event.find(params[:id]).destroy()
+        redirect_to :back
+        flash[:success] = "You successfully deleted " + params[:event_name] + "!"
     end
     
     def create
