@@ -135,5 +135,25 @@ class PointsController < ApplicationController
             end 
         end
     end
+    
+    MemberActivity = Struct.new(:event,:points)
+    
+    def member_activity_table
+        
+        #@upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
+        #@user_points = Point.all.where(:UIN => session[:user_uin])
+        
+        my_attendances = Point.all.where("UIN = :UIN",{UIN: 123456789})
+        
+        @events = []
+        
+        my_attendances.each do |attendance|
+            @events.append(Event.find(attendance.event_id))
+        end
+        
+        
+        
+        #@events = Event.all.where("UIN = :UIN",{UIN: 123456789})
+    end
 
 end

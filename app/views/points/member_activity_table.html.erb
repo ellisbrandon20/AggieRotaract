@@ -1,0 +1,38 @@
+<h1 class="title">Member Activity</h1>
+<div class="page-margins">
+    <div class="row">
+        <div class="col-md-3">
+            Member:
+        </div>
+        <div class="col-md-9">
+            UIN:
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            Hello:
+        </div>
+        <div class="col-md-9">
+            Hey:
+        </div>
+    </div>
+    
+	<div class="table-responsive">
+	  <table class="table table-striped">
+		  <tr>
+		    <th>Event/Meeting</th>
+		    <th>Date</th> 
+		    <th>Points</th>
+		    <th></th>
+		  </tr>
+			<% @events.each do |event| %>
+				<tr>
+				  <!-- <tr align="center"> -->
+				    <td> <%= event.name %> </td>
+				    <td> <%= event.date %> </td>
+				    <!-- <td> <%= button_to "View Event", :class => "btn btn-default", :id =>"points_view_event_btn" %> </td> -->
+				  </tr>
+			<% end %>
+		</table>
+	</div>
+</div>
