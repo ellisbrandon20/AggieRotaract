@@ -1,4 +1,9 @@
 <h1 class="title">My Points</h1>
+<% total=0%>
+<% @events.each do |event| %>
+    <% total=event[:active_record].points+total%>
+<% end %>
+<h2> Total Points: <%= total %></h2>
 <div class="page-margins">
 	<div class="table-responsive">
 	  <table class="table table-striped">
