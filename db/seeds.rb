@@ -34,7 +34,24 @@
                       {:name => 'Kyle Field Clean up', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-07-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 1, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg'}
+                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg'},
+                      
+                      # events to seed in points for users
+                      {:name => 'Yogurt Land Profit Share', :address => '1800 S Texas Ave, College Station, TX 77840',
+                      :description => 'Profit share for our organization at Yogurtland',
+                      :date => '2017-01-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 10, :max_points => 2.0, 
+                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png'},
+                      
+                      {:name => 'Rotary Breakfast', :address => '1800 S Texas Ave, College Station, TX 77840',
+                      :description => 'Breakfast with community Rotary members, possibility of eating breakfast with someone that used to have career with your degree',
+                      :date => '2017-02-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 10, :max_points => 2.0, 
+                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png'},
+                      
+                      {:name => 'Aggie Replant', :address => '1800 S Texas Ave, College Station, TX 77840',
+                      :description => 'Replanting trees in the surrounding area.',
+                      :date => '2017-03-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 10, :max_points => 2.0, 
+                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png'}
+                      
                     ]
                      
             
@@ -62,11 +79,11 @@ meetings.each do |event|
 end
 
 users = [
-  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "me@tamu.edu", 
+  {:UIN => 123456789, :name => "Carlos Cardin", :phone => "1234567890", :email => "CarlosCardin@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
-  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "me@tamu.edu", 
+  {:UIN => 987654321, :name => "Brandon Ellis", :phone => "0987654321", :email => "BrandonEllis@tamu.edu", 
     :address => "GSC Agronomy Rd.", :classification => "Freshman", :major => "CSCE", :shirt => "M",
     :gender => "male", :officer => true, :active => true
   },
@@ -197,15 +214,15 @@ users.each do |user|
     User.create!(user)
 end
 
-# points = [
-#   {:event_id => 1, :points => 37, :UIN => 123456789, :issue_date => '2017-01-15'},
-#   {:event_id => 2, :points => 56, :UIN => 123456789, :issue_date => '2017-01-18'},
-#   {:event_id => 3, :points => 11, :UIN => 123456789, :issue_date => '2017-01-20'},
-# ]
+points = [
+  {:event_id => 6, :points => 3.5, :UIN => 123456789, :issue_date => '2017-01-21'},
+  {:event_id => 7, :points => 2, :UIN => 123456789, :issue_date => '2017-02-21'},
+  {:event_id => 8, :points => 4.5, :UIN => 123456789, :issue_date => '2017-03-21'},
+]
 
-# points.each do |point|
-#   Point.create!(point)
-# end
+points.each do |point|
+  Point.create!(point)
+end
 
 # testing the past events for approving points
 attendances = [
