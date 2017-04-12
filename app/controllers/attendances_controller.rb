@@ -175,6 +175,12 @@ class AttendancesController < ApplicationController
         return @count
     end
     
+    def view_details
+        # grab the event details
+        @event = Event.find(params[:event_id])
+        
+        # grab the going list
+    end
     
     private
         def contact_uin_to_email(usr_upcoming_events)

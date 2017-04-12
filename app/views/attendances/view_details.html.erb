@@ -1,0 +1,81 @@
+<h1 class="title">View Details</h1>
+
+<!-- event card -->
+<div class="event-card">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="row col-sm-12">
+                <h3 id="event_title"><%= @event.name %></h3>
+            </div>
+            <div class="row col-sm-12">
+                <b>Time: </b>
+                <div class="event-item-margin">
+                    <%= @event.start_time.strftime("%I:%M %p")%>
+                    -
+                    <%= @event.end_time.strftime("%I:%M %p") %>
+                </div>
+            </div>
+            <div class="row col-sm-12">
+                <b>Date: </b>
+                <div class="event-item-margin">
+                    <%= @event.date.strftime("%B %d, %Y") %>
+                </div>
+            </div>
+            <div class="row col-sm-12">
+                <b>Contact: </b>
+                <div class="event-item-margin">
+                    <%= @event.contact %>
+                </div>
+            </div>
+            <b>Description: </b>
+            <div class="row col-sm-12">
+                <%= @event.description %>
+            </div>
+        </div>
+            
+        <div class="col-sm-3">
+            <div class="row col-sm-12">
+                Points: 
+                <%= @event.max_points %>
+            </div>
+            <div class="row col-sm-12 event-image">
+                <!-- images are stored on cloudinary -->
+                <%= cl_image_tag(@event.image, class: "img-thumbnail") %>
+            </div>
+            <div class="row col-sm-12">
+                <a href="" id="address" class="address" target="_blank"><%= @event.address %></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- going list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// couldnt get the script to run from any of the coffee files 
+$(document).ready(function(){
+    var $editItem, $elements, $link, $pluslink, i;
+    $elements = document.getElementsByClassName('address');
+    i = 0;
+    while (i < $elements.length) {
+        $editItem = $elements[i];
+        $link = $editItem.text;
+        $pluslink = $link.replace(/\s+/g, '+');
+        $elements[i].href = 'https://www.google.com/maps?q=' + $pluslink;
+        $elements[i].text = 'Google Maps Link';
+        i++;
+    }
+});
+</script>
