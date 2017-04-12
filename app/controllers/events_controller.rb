@@ -65,7 +65,8 @@ class EventsController < ApplicationController
     def create
         
         #upload image to cloudinary for storage
-        if !params[:image].nil?
+        puts "--- image: " + params[:image]
+        if !params[:image].empty?
             puts "--- uploading file to cloud"
             puts Dir.pwd
             file_dir = "public/images/" + params[:image]
