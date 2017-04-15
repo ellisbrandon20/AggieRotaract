@@ -1,0 +1,43 @@
+<h1 class="title">Member Activity</h1>
+<div class="page-margins">
+    <div class="row">
+        <div class="col-md-3">
+            Member: 
+            <%= @user.name %>
+        </div>
+        <div class="col-md-9">
+            UIN: 
+            <%= @user.UIN %>
+        </div>
+    </div>
+    <br>
+	<div class="table-responsive">
+	  <table class="table table-striped">
+		  <tr>
+		    <th class="col-sm-4">Event/Meeting</th>
+		    <th class="col-sm-4">Date</th> 
+		    <th class="col-sm-4">Points</th>
+		  </tr>
+			<!--< @users_event_points.each do |activity| %>-->
+			<!--	<tr>-->
+				  <!-- <tr align="center"> -->
+			<!--	    <td> <= activity[:event].name %> </td>-->
+			<!--	    <td> <= activity[:event].date %> </td>-->
+			<!--	    <td><input name="name" type="text" class="form-control" style="width:50px;" value="<= activity[:points].points %>" required></td>-->
+				    <!-- <td> <= button_to "View Event", :class => "btn btn-default", :id =>"points_view_event_btn" %> </td> -->
+			<!--	  </tr>-->
+			<!--< end %>-->
+		</table>
+	</div>
+	<%= button_to "Update Points", points_update_points_path(:temp=> :temp), :class => "btn btn-default btn-lg", :id =>"create-event-btn" %>
+	<br>
+	<%= form_for Point.new do |f|%>
+  		<% f.points.each do |photo| %>
+    		<%= f.fields_for photo do |photo_form| %>
+      			<%= photo_form.text_field :caption %>
+      			<%= photo_form.label :caption %>
+     		 	<%= photo_form.file_field :attached %>
+    		<% end %>
+  		<% end %>
+	<% end %>
+</div>

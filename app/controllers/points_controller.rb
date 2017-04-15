@@ -136,24 +136,120 @@ class PointsController < ApplicationController
         end
     end
     
+    
+    
+    
+    # def member_activity_table
+        
+        
+        
+        
+    #     #@upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
+    #     #@user_points = Point.all.where(:UIN => session[:user_uin])
+        
+    #     uin = 123456789
+        
+    #     my_points = Point.where("UIN = :UIN",{UIN: uin})
+    #     puts 'My Points'
+    #     puts my_points
+        
+    #     @user = User.where("UIN = :UIN",{UIN: uin})[0]
+        
+    #     @users_event_points = []
+        
+    #     my_points.each do |point|
+    #         #@events.append(Event.find(attendance.event_id))
+    #         @users_event_points.append(MemberActivity.new(Event.find(point.event_id),point))
+            
+    #     end
+        
+    #     @@new_points = @users_event_points
+        
+        
+    #     #The method that contorls the button on the member_activity_table
+    #     def update_points
+    #         puts 'Updating Points Again Continually!'
+    #         puts 'Params:'
+    #         puts params[:name]
+    #         puts params.inspect
+    #         puts 'End params'
+    #         user_id = params[:temp]
+    #         puts @@new_points
+            
+    #         #puts @events
+    #     end
+        
+        
+    #     #@events = Event.all.where("UIN = :UIN",{UIN: 123456789})
+    # end
+    
+    # def update_points
+    #     uin = 123456789
+        
+    #     my_points = Point.where("UIN = :UIN",{UIN: uin})
+    #     puts 'My Points'
+    #     puts my_points
+        
+    #     @user = User.where("UIN = :UIN",{UIN: uin})[0]
+        
+    #     @users_event_points = []
+        
+    #     my_points.each do |point|
+    #         #@events.append(Event.find(attendance.event_id))
+    #         @users_event_points.append(MemberActivity.new(Event.find(point.event_id),point))
+            
+    #     end
+    # end
+    
+    def user_list
+        @users = User.all
+    end
+    
     MemberActivity = Struct.new(:event,:points)
     
     def member_activity_table
+        puts 'User: '
+        puts params.inspect
         
-        #@upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
-        #@user_points = Point.all.where(:UIN => session[:user_uin])
+        #This needs to be changed to the value passed from the user select table
+        user_id = params[:format]
+        @user = User.find(user_id)
+        users_points = Point.where("UIN = :UIN",{UIN: @user.UIN})
         
-        my_attendances = Point.all.where("UIN = :UIN",{UIN: 123456789})
-        
-        @events = []
-        
-        my_attendances.each do |attendance|
-            @events.append(Event.find(attendance.event_id))
+        @users_event_points = []
+        users_points.each do |point_object|
+            @users_event_points.append(MemberActivity.new(Event.find(point_object.event_id),point_object))
         end
         
         
         
-        #@events = Event.all.where("UIN = :UIN",{UIN: 123456789})
+        @points = Point.all
+    end
+    
+    def update
+        #Need to figure out how to validate the points input
+        
+        puts 'Update'
+        params[:points].each do |point_id|
+            puts 'Points'
+            cur_point  = Point.find(point_id)
+            input_points = params[:points][point_id][:points]
+            puts 'Old Points: ' + cur_point.points.to_s()
+            puts 'New Points: ' + input_points
+            
+            if cur_point.points.to_s != input_points
+                puts 'Theyre diff!'
+                cur_point.update_attributes!(:points => input_points,
+                                                :updated_at => DateTime.now)
+            end
+        end
+        redirect_to :back
+        flash[:success] = "Points were successfully updated."
+    end
+    
+    def edit_all
+        @users = Point.all
     end
 
+    
 end

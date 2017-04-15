@@ -1,0 +1,92 @@
+<style style="text/css">
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #dedede;
+}
+    
+/*.table-fixed thead {*/
+/*  width: 100%;*/
+/*}*/
+/*.table-fixed tbody {*/
+/*  height: 200px;*/
+/*  overflow-y: scroll;*/
+/*  overflow-x: hidden;*/
+/*  display: block;*/
+/*  width:150%;*/
+/*  float: left;*/
+/*  border-bottom-width: 0;*/
+/*}*/
+/*.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {*/
+/*  display: block;*/
+/*}*/
+
+/*.table-fixed tbody td, .table-fixed thead > tr> th {*/
+/*  float: left;*/
+/*  border-bottom-width: 0;*/
+/*}*/
+</style>
+
+
+
+<div class="container">
+
+  <h2>Select Member</h2>
+  <h4><span class="label label-primary">Please select a member's activity to view</span></h4>
+  <%= render 'layouts/flash_messages' %>
+
+  
+  <div class="page-margins">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-fixed">
+        <thead>
+          <tr>
+            <th class="col-sm-1">Name</th>
+            <th class="col-sm-1">UIN</th>
+            <th class="col-sm-1">Officer</th>
+            <th class="col-sm-1">Active</th>
+            <th class="col-sm-1">Email</th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr data-link="<%= points_member_activity_table_path(user.id) %>">
+              <td><%= user.name %></td>
+              <td><%= user.UIN %></td>
+              <td>
+                <% if user.officer %>
+                  <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+                <% end %>
+              </td>
+              <td>
+                <% if user.active %>
+                  <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+                <% end %>
+              </td>
+              <td><%= user.email %></td>
+              <!--<td><= user.UIN %></td>-->
+              <!--<td><= user.name %></td>-->
+              <!--<td>x</td>-->
+              <!--<td>Input Stuff here</td>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <% if flash[:success] %>
+    <div class="alert <= "alert-success" %> fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      Update Success
+    </div>
+  <% end %>
+</div>
+
+<script>
+    $("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})
+</script>
+
+<script>
+  setTimeout("$('.alert').fadeOut('slow')", 1000)
+</script>

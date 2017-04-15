@@ -2,37 +2,48 @@
 <div class="page-margins">
     <div class="row">
         <div class="col-md-3">
-            Member:
+            Member: 
+            <%= @user.name %>
         </div>
         <div class="col-md-9">
-            UIN:
+            UIN: 
+            <%= @user.UIN %>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            Hello:
-        </div>
-        <div class="col-md-9">
-            Hey:
-        </div>
-    </div>
+    <br>
     
-	<div class="table-responsive">
-	  <table class="table table-striped">
-		  <tr>
-		    <th>Event/Meeting</th>
-		    <th>Date</th> 
-		    <th>Points</th>
-		    <th></th>
-		  </tr>
-			<% @events.each do |event| %>
-				<tr>
-				  <!-- <tr align="center"> -->
-				    <td> <%= event.name %> </td>
-				    <td> <%= event.date %> </td>
-				    <!-- <td> <%= button_to "View Event", :class => "btn btn-default", :id =>"points_view_event_btn" %> </td> -->
-				  </tr>
-			<% end %>
-		</table>
-	</div>
-</div>
+      
+  <% if @users_event_points.empty? %>
+    <center>
+      <font size="7">
+        <%= @user.name + " has no points" %>
+      </font>
+    </center>
+  <% else %>
+  	<div class="table-responsive">
+  	  <table class="table table-striped">
+  		  <tr>
+  		    <th class="col-sm-4">Event/Meeting</th>
+  		    <th class="col-sm-4">Date</th> 
+  		    <th class="col-sm-4">Points</th>
+  		  </tr>
+        <%= form_tag points_update_path do %>
+          <% @users_event_points.each do |user_event_point| %> 
+            <%= fields_for "points[]", user_event_point[:points] do |pf| %>
+              <tr>
+                <td><%= user_event_point[:event].name %></td>
+                <td><%= user_event_point[:event].date %></td>
+                <!--<td><input class="form-control" style="width:50px;" value="<= user_event_point[:points].points %>" required></td>-->
+                <td><%= pf.text_field :points, type: "number", class: "form-control", required: true, pattern: [0-9]{9} %></td>
+              </tr>
+            <% end %>
+          <% end %>
+  		</table>
+    	</div>
+    	  <div class="col-sm-2">
+        <%= submit_tag "Submit", :class => "btn btn-success"%>
+      </div>
+    <% end %>
+    <%= render 'layouts/flash_messages' %>
+  <% end %>
+
