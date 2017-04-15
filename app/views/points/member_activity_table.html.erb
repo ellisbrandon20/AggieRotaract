@@ -18,6 +18,8 @@
       <font size="7">
         <%= @user.name + " has no points" %>
       </font>
+      <hr style="height:10pt; visibility:hidden;" />
+      <a href="<%= points_user_list_path %>" id="cancel_update_btn" class="btn btn-default">Back To List</a>
     </center>
   <% else %>
   	<div class="table-responsive">
@@ -39,10 +41,15 @@
             <% end %>
           <% end %>
   		</table>
-    	</div>
-    	  <div class="col-sm-2">
-        <%= submit_tag "Submit", :class => "btn btn-success"%>
+    	<div class="form-group row col-sm-12">
+        <div class="offset-sm-7 col-sm-2">
+          <a href="<%= points_user_list_path %>" id="cancel_update_btn" class="btn btn-default">Back To List</a>
+        </div>
+        <div class="col-sm-2">
+          <%= submit_tag "Update All Points", :class => "btn btn-success"%>
+        </div>
       </div>
+  
     <% end %>
     <%= render 'layouts/flash_messages' %>
   <% end %>
