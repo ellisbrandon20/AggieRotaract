@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     post 'points/view_users_approval'
     get 'points/view_users_approval'
     post '/points/approve_points'
+    get 'points/user_list'
+    get 'points/member_activity_table'
+    post 'points/update'
     
     #   get 'events/new'
     
