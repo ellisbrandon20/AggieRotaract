@@ -36,7 +36,7 @@
                 <td><%= user_event_point[:event].name %></td>
                 <td><%= user_event_point[:event].date %></td>
                 <!--<td><input class="form-control" style="width:50px;" value="<= user_event_point[:points].points %>" required></td>-->
-                <td><%= pf.text_field :points, type: "number", class: "form-control", required: true, pattern: [0-9]{9} %></td>
+                <td><%= pf.text_field :points, :required=> true, type: "number", class: "form-control" %></td>
               </tr>
             <% end %>
           <% end %>
@@ -49,7 +49,7 @@
           <%= submit_tag "Update All Points", :class => "btn btn-success"%>
         </div>
       </div>
-  
     <% end %>
+    <div class="space"></div>
     <%= render 'layouts/flash_messages' %>
   <% end %>
