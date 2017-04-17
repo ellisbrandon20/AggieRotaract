@@ -48,19 +48,41 @@
         </div>
     </div>
 </div>
-
+<br/><br/><br/>
 <!-- going list -->
 
+<% if !@going.empty? %>
+    <h1 class="title">"<%= @event.name %>" Sign-Up List</h1>
+    <div class="page-margins">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="going-list">
+                    <tr>
+                        <th class="col-md-2">Name</th>
+                        <th class="col-md-2">Email</th>
+                        <th class="col-md-2">Phone NO.</th>
+                        <th class="col-md-2">Needs Ride</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @going.each do |user| %>
+                        <tr>
+                            <td><%= user[:user].name %></td>
+                            <td><%= user[:user].email %></td>
+                            <td><%= user[:user].phone %></td>
+                            <td><% if user[:active_record].car_ride then %>
+                                    <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% end %>
 
-
-
-
-
-
-
-
-
-
+<div class="footer"/>
 
 
 <script>
