@@ -1,14 +1,16 @@
 <h1 class="title">Member Activity</h1>
 <div class="page-margins">
     <div class="row">
-        <div class="col-md-3">
-            Member: 
-            <%= @user.name %>
-        </div>
-        <div class="col-md-9">
-            UIN: 
-            <%= @user.UIN %>
-        </div>
+      <div class="col-md-3">
+        <font size = 4>
+          <strong>Member: </strong><%= @user.name %>
+        </font>
+      </div>
+      <div class="col-md-9">
+        <font size = 4>
+          <strong>UIN: </strong><%= @user.UIN %>
+        </font>
+      </div>
     </div>
     <br>
     
@@ -35,7 +37,6 @@
               <tr>
                 <td><%= user_event_point[:event].name %></td>
                 <td><%= user_event_point[:event].date %></td>
-                <!--<td><input class="form-control" style="width:50px;" value="<= user_event_point[:points].points %>" required></td>-->
                 <td><%= pf.text_field :points, :required=> true, type: "number", class: "form-control" %></td>
               </tr>
             <% end %>

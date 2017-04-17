@@ -112,11 +112,10 @@ class PointsController < ApplicationController
         
     end
     
-    
+    #Struct for displaying the Member Activity Table
     UserAttendance = Struct.new(:active_record, :name, :points)
     
     def view_users_approval
-        # @user_attendance = Attendance.where("event_id = :event_id and approved = :approved and wait_listed = :wait_listed", {event_id: params[:event], approved: [false], wait_listed: [false]})
         @user_attendance = Attendance.where("event_id = :event_id and wait_listed = :wait_listed", {event_id: params[:event], wait_listed: [false]})
         @event = Event.find(params[:event])
         
@@ -125,7 +124,6 @@ class PointsController < ApplicationController
         @user_attendance.each do |user_att|
             uin = user_att.UIN
             user = User.find_by(UIN: uin)
-            # @points = Point.where("event_id = :event_id", {event_id: params[:event]})
             points_record = Point.find_by(event_id: params[:event], UIN: uin)
             
             if points_record.nil?
@@ -143,15 +141,15 @@ class PointsController < ApplicationController
     
     MemberActivity = Struct.new(:event,:points)
     
+    #Controller for the Member Activity Table
     def member_activity_table
-        puts 'User: '
-        puts params.inspect
         
-        #This needs to be changed to the value passed from the user select table
+        #Reads in the selected user
         user_id = params[:format]
         @user = User.find(user_id)
         users_points = Point.where("UIN = :UIN",{UIN: @user.UIN})
         
+        #Gather the data to be displayed in the table
         @users_event_points = []
         users_points.each do |point_object|
             @users_event_points.append(MemberActivity.new(Event.find(point_object.event_id),point_object))
@@ -159,22 +157,16 @@ class PointsController < ApplicationController
         
         
         
-        @points = Point.all
+        #@points = Point.all
     end
     
+    #Updates a points object
     def update
-        #Need to figure out how to validate the points input
-        
-        puts 'Update'
         params[:points].each do |point_id|
-            puts 'Points'
             cur_point  = Point.find(point_id)
             input_points = params[:points][point_id][:points]
-            puts 'Old Points: ' + cur_point.points.to_s()
-            puts 'New Points: ' + input_points
             
             if cur_point.points.to_s != input_points
-                puts 'Theyre diff!'
                 cur_point.update_attributes!(:points => input_points,
                                                 :updated_at => DateTime.now)
             end
