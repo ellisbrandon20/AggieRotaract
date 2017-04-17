@@ -1,0 +1,90 @@
+<html>
+    <!-- <head/> -->
+    <style>
+        .center {
+          margin: auto;
+          width: 30%;
+          padding: 10px;
+        }
+
+        label { padding-bottom: 10px;
+          font-weight: normal;
+        }
+    </style>
+</html>
+<%= form_tag attendance_path(@selected_attd), :method => :put do %>
+
+  <div class="center">
+    <h1>Edit Sign Up Comments</h1>
+    
+    <label>
+      What method of contact do you prefer?
+      <div class="form-group row col-sm-12">
+        <div class="form-check">
+          <label class="form-check-label">
+              <% if @selected_attd.pref_contact == "email" %>
+                <input class="form-check-input" type="radio" name="pref_contact" value="email" required checked=true >  Email
+              <% else %>
+                <input class="form-check-input" type="radio" name="pref_contact" value="email" required >  Email
+              <% end %>
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <% if @selected_attd.pref_contact == "call" %>
+                <input class="form-check-input" type="radio" name="pref_contact" value="call" required checked=true >  Call
+              <% else %>
+                <input class="form-check-input" type="radio" name="pref_contact" value="call" required >  Call
+              <% end %>
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <% if @selected_attd.pref_contact == "text" %>
+                <input class="form-check-input" type="radio" name="pref_contact" value="text" required checked=true >  Text
+              <% else %>
+                <input class="form-check-input" type="radio" name="pref_contact" value="text" required >  Text
+              <% end %>
+          </label>
+        </div>
+      </div>
+     </label>
+      
+    <label>
+      Do you need a car ride?
+      <div class="form-group row col-sm-12">
+        <div class="form-check">
+          <label class="form-check-label">
+              <% if @selected_attd.car_ride == true %>
+                <input class="form-check-input" type="radio" name="car_ride" value=true required checked=true >  Yes
+              <% else %>
+                <input class="form-check-input" type="radio" name="car_ride" value=true required >  Yes
+              <% end %>
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+              <% if @selected_attd.car_ride == false %>
+                <input class="form-check-input" type="radio" name="car_ride" value=false checked=true >  No
+              <% else %>
+                <input class="form-check-input" type="radio" name="car_ride" value=false >  No
+              <% end %>
+          </label>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      Any special comments?:<br />
+      <textarea name='comment' id='comment' cols="50"><%= @selected_attd.comments %></textarea><br />
+    </label>
+
+  	<div class="col-md-8">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Update!</button>
+    </div>
+    <div class="col-md-8" style="padding-top: 1em;">
+      <a href="javascript:history.back()" class="btn btn-lg btn-default btn-block" >Go Back</a>
+    </div>
+  </div>
+<% end %>
+    
