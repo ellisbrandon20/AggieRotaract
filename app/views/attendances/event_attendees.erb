@@ -1,0 +1,59 @@
+<%event=Event.find(params[:event_id]) %>
+<%user=User.find_by(UIN: event.contact) %>
+<h1 class="title">Sign Up List for <%= event.name %></h1>
+<p> Date: <%= event.date %> <br>
+    Time: <%= event.start_time %> - <%= event.end_time %> <br>
+    Contact: <%= user.email %> <br>
+    <b>Points : <%= event.max_points %>  Spots Remaining: <%= event.capacity-(Attendance.where(event_id: params[:event_id], wait_listed: false).count)%></b><br>
+</p>
+<h2> Going List: </h2>
+<div class="page-margins">
+	<div class="table-responsive">
+	  <table class="table table-striped">
+		  <tr>
+		    <th>UIN</th>
+		    <th>Name</th> 
+		    <th>Needs Ride</th>
+		    <th>Comment</th>
+		    <th>Officer</th>
+		  </tr>
+			<% @attendees.each do |attendee| %>
+			    <% if attendee[:active_record].wait_listed==false %>
+    				<tr>
+    				  <!-- <tr align="center"> -->
+    				    <td> <%= attendee[:attendee].UIN %> </td>
+    				    <td> <%= attendee[:attendee].name %> </td>
+    				    <td> <%= attendee[:active_record].car_ride %> </td>
+    				    <td> <%= attendee[:active_record].comments %> </td>
+    				    <td> <%= attendee[:attendee].officer %> </td>
+    				  </tr>
+    			<% end %>
+			<% end %>
+		</table>
+	</div>
+<h2> Wait List: </h2>
+<div class="page-margins">
+	<div class="table-responsive">
+	  <table class="table table-striped">
+		  <tr>
+		    <th>UIN</th>
+		    <th>Name</th> 
+		    <th>Needs Ride</th>
+		    <th>Comment</th>
+		    <th>Officer</th>
+		  </tr>
+			<% @attendees.each do |attendee| %>
+			    <% if attendee[:active_record].wait_listed==true %>
+    				<tr>
+    				  <!-- <tr align="center"> -->
+    				    <td> <%= attendee[:attendee].UIN %> </td>
+    				    <td> <%= attendee[:attendee].name %> </td>
+    				    <td> <%= attendee[:active_record].car_ride %> </td>
+    				    <td> <%= attendee[:active_record].comments %> </td>
+    				    <td> <%= attendee[:attendee].officer %> </td>
+    				  </tr>
+				 <% end %>
+			<% end %>
+		</table>
+	</div>
+</div>

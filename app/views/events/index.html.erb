@@ -63,7 +63,8 @@
                             </div>
                         </div>
                         <div class="row col-xs-12 event-btn">
-                            <button type="button" class="btn btn-default btn-block">View Sign Ups</button>
+                            <%= button_to "View Sign Ups", { :controller => "attendances", :action => "event_attendees", :event_id => event.id },
+                            {class: 'btn btn-default btn-block'} %>
                         </div>
                     
                     <!-- general user -->    
