@@ -35,14 +35,14 @@
             <%= fields_for "points[]", user_event_point[:points] do |pf| %>
               <tr>
                 <td><%= user_event_point[:event].name %></td>
-                <td><%= user_event_point[:event].date %></td>
+                <td><%= user_event_point[:event].date.strftime("%B %d, %Y") %></td>
                 <td><%= pf.text_field :points, style: 'width:25%;', :required=> true,  type: "number", class: "form-control" %></td>
               </tr>
             <% end %>
           <% end %>
   		</table>
     	<div class="form-group row col-sm-12">
-        <div class="offset-sm-7 col-sm-2">
+        <div class="offset-sm-7 col-sm-1">
           <a href="<%= points_user_list_path %>" id="cancel_update_btn" class="btn btn-default">Back To List</a>
         </div>
         <div class="col-sm-2">

@@ -87,7 +87,6 @@ class PointsController < ApplicationController
         
     end
     
-    #Struct for displaying the Member Activity Table
     UserAttendance = Struct.new(:active_record, :name, :points)
     
     def view_users_approval
@@ -114,6 +113,7 @@ class PointsController < ApplicationController
         @users = User.all
     end
     
+    #Struct for displaying the Member Activity Table
     MemberActivity = Struct.new(:event,:points)
     
     #Controller for the Member Activity Table
@@ -129,9 +129,7 @@ class PointsController < ApplicationController
         users_points.each do |point_object|
             @users_event_points.append(MemberActivity.new(Event.find(point_object.event_id),point_object))
         end
-        
-        
-        
+
         #@points = Point.all
     end
     
