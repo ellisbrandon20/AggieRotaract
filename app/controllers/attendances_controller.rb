@@ -175,6 +175,22 @@ class AttendancesController < ApplicationController
         return @count
     end
     
+    Attendees = Struct.new(:active_record, :attendee)
+    
+    def event_attendees
+        puts "------- here"
+        @attendees = Array.new
+
+        #session user uin
+        @attendances=Attendance.where(event_id: params[:event_id])    
+        @attendances.each do |attendance|
+            attendee = User.find_by(UIN: attendance.UIN)
+
+            @attendees.append(Attendees.new(attendance, attendee))
+        end
+        puts "------- gone"
+    end
+    
     
     ViewDetailsData = Struct.new(:active_record, :user)
     def view_details

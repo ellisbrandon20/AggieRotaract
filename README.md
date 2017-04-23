@@ -6,7 +6,7 @@ To run on cloud9:
 - bundle install (should only be for first time) 
 - rails s -p $PORT -b $IP
 
-To clean out the database:
+To clean out and reset the database:
 - rake db:drop db:create db:migrate db:seed
 
 You can view this application on Heroku:
