@@ -1,28 +1,5 @@
 class PointsController < ApplicationController
-    # struct
-    UserPoints = Struct.new(:active_record, :event)
     
-    def index
-
-        @events = Array.new
-
-        #session user uin
-        @users_points = Point.where(UIN: session[:user_uin])
-        #  event_id, points, uin, issue_date    
-        @users_points.each do |user_pt|
-            event = Event.find(user_pt.event_id)
-
-            @events.append(UserPoints.new(user_pt, event))
-        end
-
-
-        if !params[:view_event].nil?
-            @view_event = Event.find(params[:view_event])
-            event_contact = User.find_by(UIN: @view_event.contact)
-            @view_event.contact = event_contact.email 
-        end
-    end
-
     def create
         
         
@@ -62,10 +39,8 @@ class PointsController < ApplicationController
     def meeting
         curr_time = DateTime.now.to_date
         all_events = Event.all
-        all_points = Point.all
         # populate dropdown list
         @upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
-        @user_points = Point.all.where(:UIN => session[:user_uin])
     end
     
     def meeting_signin
@@ -112,11 +87,10 @@ class PointsController < ApplicationController
         
     end
     
-    
+    #Struct for displaying the Member Activity Table
     UserAttendance = Struct.new(:active_record, :name, :points)
     
     def view_users_approval
-        # @user_attendance = Attendance.where("event_id = :event_id and approved = :approved and wait_listed = :wait_listed", {event_id: params[:event], approved: [false], wait_listed: [false]})
         @user_attendance = Attendance.where("event_id = :event_id and wait_listed = :wait_listed", {event_id: params[:event], wait_listed: [false]})
         @event = Event.find(params[:event])
         
@@ -125,7 +99,6 @@ class PointsController < ApplicationController
         @user_attendance.each do |user_att|
             uin = user_att.UIN
             user = User.find_by(UIN: uin)
-            # @points = Point.where("event_id = :event_id", {event_id: params[:event]})
             points_record = Point.find_by(event_id: params[:event], UIN: uin)
             
             if points_record.nil?
@@ -135,5 +108,51 @@ class PointsController < ApplicationController
             end 
         end
     end
+    
+    
+    def user_list
+        @users = User.all
+    end
+    
+    MemberActivity = Struct.new(:event,:points)
+    
+    #Controller for the Member Activity Table
+    def member_activity_table
+        
+        #Reads in the selected user
+        user_id = params[:format]
+        @user = User.find(user_id)
+        users_points = Point.where("UIN = :UIN",{UIN: @user.UIN})
+        
+        #Gather the data to be displayed in the table
+        @users_event_points = []
+        users_points.each do |point_object|
+            @users_event_points.append(MemberActivity.new(Event.find(point_object.event_id),point_object))
+        end
+        
+        
+        
+        #@points = Point.all
+    end
+    
+    #Updates a points object
+    def update
+        params[:points].each do |point_id|
+            cur_point  = Point.find(point_id)
+            input_points = params[:points][point_id][:points]
+            
+            if cur_point.points.to_s != input_points
+                cur_point.update_attributes!(:points => input_points,
+                                                :updated_at => DateTime.now)
+            end
+        end
+        redirect_to :back
+        flash[:success] = "Points were successfully updated."
+    end
+    
+    def edit_all
+        @users = Point.all
+    end
 
+    
 end
