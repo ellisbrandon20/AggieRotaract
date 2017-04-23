@@ -91,7 +91,8 @@
             <!-- right -->
             <div class="row col-sm-offset-2 btn-group">
                 <div class="event-btn">
-                    <button type="button" class="btn btn-default">View Details</button>
+                    <!--<button type="button" class="btn btn-default">View Details</button>-->
+                    <%= button_to "View Details", {:action =>"view_details", :event_id => event[:active_record].id}, {class: 'btn btn-default btn-block'} %>
                 </div>
                 <div class="event-btn">
                     <button type="button" class="btn btn-default">Edit Comment</button>

@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     get 'dashboard/index'
     post 'dashboard/index'
     
+    get 'attendances/view_details'
+    post 'attendances/view_details'
+    
     post 'img_upload/create'
     
     root 'user#login'

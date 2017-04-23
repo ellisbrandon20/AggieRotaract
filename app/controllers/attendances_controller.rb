@@ -192,6 +192,23 @@ class AttendancesController < ApplicationController
     end
     
     
+    ViewDetailsData = Struct.new(:active_record, :user)
+    def view_details
+        # grab the event details
+        @event = Event.find(params[:event_id])
+        
+        # grab the going list
+        @going_list = Attendance.where("event_id = :event_id and wait_listed = :wait_listed", {event_id: params[:event_id], wait_listed: [false]})
+        puts "--- goingList size: " + @going_list.count.to_s
+        @going = Array.new
+        @going_list.each do |att|
+            user = User.find_by(UIN: att.UIN)
+            @going.append(ViewDetailsData.new(att, user))
+            #puts "----going list: " + user.name
+        end
+        
+    end
+    
     private
         def contact_uin_to_email(usr_upcoming_events)
             # make the contact attribute represent the EMAIL instead of UIN 
