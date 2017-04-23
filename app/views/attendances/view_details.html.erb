@@ -69,7 +69,7 @@
                         <tr>
                             <td><%= user[:user].name %></td>
                             <td><%= user[:user].email %></td>
-                            <td><%= user[:user].phone %></td>
+                            <td><%= number_to_phone(user[:user].phone, area_code: true)%></td> 
                             <td><% if user[:active_record].car_ride then %>
                                     <span class="glyphicon glyphicon-ok" style="color: green;"></span>
                                 <% end %>
