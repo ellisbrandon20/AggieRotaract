@@ -16,28 +16,27 @@
 		    <th class="col-sm-2">UIN</th>
 		    <th class="col-sm-2">Name</th> 
 		    <th class="col-sm-1">Needs Ride</th>
-		    <th class="col-sm-8">Comment</th>
 		    <th class="col-sm-1">Officer</th>
+		    <th class="col-sm-8">Comment</th>
 		  </tr>
 		  </thead>
 			<% @attendees.each do |attendee| %>
 			    <% if attendee[:active_record].wait_listed==false %>
     				<tr>
-    				  <!-- <tr align="center"> -->
     				    <td> <%= attendee[:attendee].UIN %> </td>
     				    <td> <%= attendee[:attendee].name %> </td>
     				    <td>
-    				    <% if attendee[:active_record].car_ride %>
-                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-                		<% end %>
+	    				    <% if attendee[:active_record].car_ride %>
+	                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+	                		<% end %>
+                		</td>
+    				    <td>
+	    				    <% if attendee[:attendee].officer %>
+	                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+	                		<% end %>
                 		</td>
     				    <td> <%= attendee[:active_record].comments %> </td>
-    				    <td>
-    				    <% if attendee[:attendee].officer %>
-                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-                		<% end %>
-                		</td>
-    				  </tr>
+    				</tr>
     			<% end %>
 			<% end %>
 		</table>
@@ -52,26 +51,26 @@
 		    <th class="col-sm-2">UIN</th>
 		    <th class="col-sm-2">Name</th> 
 		    <th class="col-sm-1">Needs Ride</th>
-		    <th class="col-sm-8">Comment</th>
 		    <th class="col-sm-1">Officer</th>
+		    <th class="col-sm-8">Comment</th>
 		  </tr>
 		  </thead>
 			<% @attendees.each do |attendee| %>
 			    <% if attendee[:active_record].wait_listed==true %>
     				<tr>
-    				  <!-- <tr align="center"> -->
-    				    <td> <%= attendee[:attendee].UIN %> </td>
+    				   <td> <%= attendee[:attendee].UIN %> </td>
     				    <td> <%= attendee[:attendee].name %> </td>
     				    <td>
-    				    <% if attendee[:active_record].car_ride %>
-                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-                		<% end %>
+	    				    <% if attendee[:active_record].car_ride %>
+	                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+	                		<% end %>
+                		</td>
+    				    <td>
+	    				    <% if attendee[:attendee].officer %>
+	                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+	                		<% end %>
                 		</td>
     				    <td> <%= attendee[:active_record].comments %> </td>
-    				    <td>
-    				    <% if attendee[:attendee].officer %>
-                  			<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-                		<% end %>
     				  </tr>
 				 <% end %>
 			<% end %>
