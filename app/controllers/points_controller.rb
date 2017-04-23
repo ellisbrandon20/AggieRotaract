@@ -110,7 +110,7 @@ class PointsController < ApplicationController
     
     
     def user_list
-        @users = User.all
+        @users = User.order(:name).all
     end
     
     #Struct for displaying the Member Activity Table
