@@ -1,8 +1,8 @@
 class AttendancesController < ApplicationController
-	def index
-        @all_attendance = Attendance.all
-        @user_attendance = Attendance.all.where(:UIN => session[:user_uin])
-	end
+# 	def index
+#         @all_attendance = Attendance.all
+#         @user_attendance = Attendance.all.where(:UIN => session[:user_uin])
+# 	end
   
 	def new
 # 		@attendance = Attendance.new
@@ -173,6 +173,22 @@ class AttendancesController < ApplicationController
         @count=Attendance.where(event_id: params[:event_id]).count
         puts @count
         return @count
+    end
+    
+    Attendees = Struct.new(:active_record, :attendee)
+    
+    def event_attendees
+        puts "------- here"
+        @attendees = Array.new
+
+        #session user uin
+        @attendances=Attendance.where(event_id: params[:event_id])    
+        @attendances.each do |attendance|
+            attendee = User.find_by(UIN: attendance.UIN)
+
+            @attendees.append(Attendees.new(attendance, attendee))
+        end
+        puts "------- gone"
     end
     
     
