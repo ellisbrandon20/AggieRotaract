@@ -1,0 +1,28 @@
+   <html>
+    <!-- <head/> -->
+    <style>
+        .center {
+          margin: auto;
+          width: 30%;
+          padding: 10px;
+        }
+    </style>
+  </html>
+<!--%= form_tag :method => 'POST', :controller => 'admin', :action => 'update' do %>-->
+<%= form_tag admin_path(@record), :method => :put do %>
+    <h1 class="form-signin-heading text-muted center">Admin Log In</h1>
+    <%= render 'layouts/flash_messages' %>
+
+    <div class="center">
+ 	    <input name="old_admin_password" id="old_admin_password_id" type="password" class="form-control" placeholder="Old Admin Password" required="" autofocus="">
+    </div>
+    <div class="center">
+ 	    <input name="new_admin_password1" id="new_admin_password1_id" type="password" class="form-control" placeholder="New Admin Password" required="" autofocus="">
+    </div>
+    <div class="center">
+       <input name="new_admin_password2" id="new_admin_password2_id" type="password" class="form-control" placeholder="New Admin Password" required="" autofocus="">
+    </div>
+    <div class="center">
+        <button name="change_password_button" id="change_password_id" class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
+    </div>
+<% end %>
