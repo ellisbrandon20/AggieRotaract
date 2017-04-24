@@ -1,4 +1,29 @@
 class PointsController < ApplicationController
+    # struct
+    UserPoints = Struct.new(:active_record, :event)
+    
+    def index
+
+        @events = Array.new
+
+        #session user uin
+        @users_points = Point.where(UIN: session[:user_uin])
+        #  event_id, points, uin, issue_date    
+        @users_points.each do |user_pt|
+            event = Event.find(user_pt.event_id)
+
+            @events.append(UserPoints.new(user_pt, event))
+        end
+
+
+        if !params[:view_event].nil?
+            @view_event = Event.find(params[:view_event])
+            event_contact = User.find_by(UIN: @view_event.contact)
+            @view_event.contact = event_contact.email 
+        end
+    end
+    
+    
     
     def create
         
