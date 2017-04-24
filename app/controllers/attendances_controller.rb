@@ -1,8 +1,4 @@
 class AttendancesController < ApplicationController
-	def index
-        @all_attendance = Attendance.all
-        @user_attendance = Attendance.all.where(:UIN => session[:user_uin])
-	end
   
 	def new
 # 		@attendance = Attendance.new
@@ -166,6 +162,24 @@ class AttendancesController < ApplicationController
         # session[:remove_me_back] = URI(request.referer || ‘’).path
     end
     
+    def edit
+        @selected_attd = Attendance.find_by(:UIN => session[:user_uin], :event_id => params[:id])  
+    end
+    
+    def update
+        @attendance = Attendance.find(params[:id])
+        @attendance.update_attributes!(:UIN => session[:user_uin],
+    		:event_id => @attendance.event_id,
+    		:car_ride => params[:car_ride],
+    		:comments => params[:comment],
+    		:pref_contact => params[:pref_contact],
+    		:wait_listed => @attendance.wait_listed,
+    		:approved => @attendance.approved)
+        flash[:success] = "Your comments were successfully updated."
+        #redirect_to movie_path(@movie)
+        redirect_to dashboard_index_path
+    end
+    
     def show
     end
     
@@ -175,6 +189,39 @@ class AttendancesController < ApplicationController
         return @count
     end
     
+    Attendees = Struct.new(:active_record, :attendee)
+    
+    def event_attendees
+        puts "------- here"
+        @attendees = Array.new
+
+        #session user uin
+        @attendances=Attendance.where(event_id: params[:event_id])    
+        @attendances.each do |attendance|
+            attendee = User.find_by(UIN: attendance.UIN)
+
+            @attendees.append(Attendees.new(attendance, attendee))
+        end
+        puts "------- gone"
+    end
+    
+    
+    ViewDetailsData = Struct.new(:active_record, :user)
+    def view_details
+        # grab the event details
+        @event = Event.find(params[:event_id])
+        
+        # grab the going list
+        @going_list = Attendance.where("event_id = :event_id and wait_listed = :wait_listed", {event_id: params[:event_id], wait_listed: [false]})
+        puts "--- goingList size: " + @going_list.count.to_s
+        @going = Array.new
+        @going_list.each do |att|
+            user = User.find_by(UIN: att.UIN)
+            @going.append(ViewDetailsData.new(att, user))
+            #puts "----going list: " + user.name
+        end
+        
+    end
     
     private
         def contact_uin_to_email(usr_upcoming_events)

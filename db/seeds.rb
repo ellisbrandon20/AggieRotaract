@@ -220,8 +220,11 @@ users.each do |user|
 end
 
 points = [
+  {:event_id => 5, :points => 3, :UIN => 987654321, :issue_date => '2017-01-21'},
   {:event_id => 6, :points => 3.5, :UIN => 123456789, :issue_date => '2017-01-21'},
+  {:event_id => 3, :points => 3, :UIN => 987654321, :issue_date => '2017-01-21'},
   {:event_id => 7, :points => 2, :UIN => 123456789, :issue_date => '2017-02-21'},
+  {:event_id => 2, :points => 3, :UIN => 987654321, :issue_date => '2017-01-21'},
   {:event_id => 8, :points => 4.5, :UIN => 123456789, :issue_date => '2017-03-21'},
 ]
 

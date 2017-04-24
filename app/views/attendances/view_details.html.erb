@@ -1,0 +1,103 @@
+<h1 class="title">View Details</h1>
+
+<!-- event card -->
+<div class="event-card">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="row col-sm-12">
+                <h3 id="event_title"><%= @event.name %></h3>
+            </div>
+            <div class="row col-sm-12">
+                <b>Time: </b>
+                <div class="event-item-margin">
+                    <%= @event.start_time.strftime("%I:%M %p")%>
+                    -
+                    <%= @event.end_time.strftime("%I:%M %p") %>
+                </div>
+            </div>
+            <div class="row col-sm-12">
+                <b>Date: </b>
+                <div class="event-item-margin">
+                    <%= @event.date.strftime("%B %d, %Y") %>
+                </div>
+            </div>
+            <div class="row col-sm-12">
+                <b>Contact: </b>
+                <div class="event-item-margin">
+                    <%= @event.contact %>
+                </div>
+            </div>
+            <b>Description: </b>
+            <div class="row col-sm-12">
+                <%= @event.description %>
+            </div>
+        </div>
+            
+        <div class="col-sm-3">
+            <div class="row col-sm-12">
+                Points: 
+                <%= @event.max_points %>
+            </div>
+            <div class="row col-sm-12 event-image">
+                <!-- images are stored on cloudinary -->
+                <%= cl_image_tag(@event.image, class: "img-thumbnail") %>
+            </div>
+            <div class="row col-sm-12">
+                <a href="" id="address" class="address" target="_blank"><%= @event.address %></a>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/><br/>
+<!-- going list -->
+
+<% if !@going.empty? %>
+    <h1 class="title">"<%= @event.name %>" Sign-Up List</h1>
+    <div class="page-margins">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="going-list">
+                    <tr>
+                        <th class="col-md-2">Name</th>
+                        <th class="col-md-2">Email</th>
+                        <th class="col-md-2">Phone NO.</th>
+                        <th class="col-md-2">Needs Ride</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @going.each do |user| %>
+                        <tr>
+                            <td><%= user[:user].name %></td>
+                            <td><%= user[:user].email %></td>
+                            <td><%= number_to_phone(user[:user].phone, area_code: true)%></td> 
+                            <td><% if user[:active_record].car_ride then %>
+                                    <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% end %>
+
+<div class="footer"/>
+
+
+<script>
+// couldnt get the script to run from any of the coffee files 
+$(document).ready(function(){
+    var $editItem, $elements, $link, $pluslink, i;
+    $elements = document.getElementsByClassName('address');
+    i = 0;
+    while (i < $elements.length) {
+        $editItem = $elements[i];
+        $link = $editItem.text;
+        $pluslink = $link.replace(/\s+/g, '+');
+        $elements[i].href = 'https://www.google.com/maps?q=' + $pluslink;
+        $elements[i].text = 'Google Maps Link';
+        i++;
+    }
+});
+</script>

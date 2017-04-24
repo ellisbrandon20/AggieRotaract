@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     def index
         curr_time = DateTime.now.to_date
-        @all_events = Event.all
+        @all_events = Event.order(:date).all
         @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         @upcoming_events_email = @upcoming_events
         contact_uin_to_email
@@ -134,6 +134,9 @@ class EventsController < ApplicationController
         #redirect_to movie_path(@movie)
         redirect_to events_path
     end
+    
+    
+    
     
     
     private

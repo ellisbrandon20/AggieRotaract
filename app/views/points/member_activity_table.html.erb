@@ -1,0 +1,55 @@
+<h1 class="title">Member Activity</h1>
+<div class="page-margins">
+    <div class="row">
+      <div class="col-md-3">
+        <font size = 4>
+          <strong>Member: </strong><%= @user.name %>
+        </font>
+      </div>
+      <div class="col-md-9">
+        <font size = 4>
+          <strong>UIN: </strong><%= @user.UIN %>
+        </font>
+      </div>
+    </div>
+    <br>
+    
+      
+  <% if @users_event_points.empty? %>
+    <center>
+      <font size="7">
+        <%= @user.name + " has no points" %>
+      </font>
+      <hr style="height:10pt; visibility:hidden;" />
+    </center>
+  <% else %>
+  	<div class="table-responsive">
+  	  <table class="table table-striped">
+  		  <tr>
+  		    <th class="col-sm-4">Event/Meeting</th>
+  		    <th class="col-sm-4">Date</th> 
+  		    <th class="col-sm-4">Points</th>
+  		  </tr>
+        <%= form_tag points_update_path do %>
+          <% @users_event_points.each do |user_event_point| %> 
+            <%= fields_for "points[]", user_event_point[:points] do |pf| %>
+              <tr>
+                <td><%= user_event_point[:event].name %></td>
+                <td><%= user_event_point[:event].date.strftime("%B %d, %Y") %></td>
+                <td><%= pf.text_field :points, style: 'width:25%;', :required=> true,  type: "number", class: "form-control" %></td>
+              </tr>
+            <% end %>
+          <% end %>
+  		</table>
+    	<div class="form-group row col-sm-12">
+        <div class="offset-sm-7 col-sm-1">
+          <a href="<%= points_user_list_path %>" id="cancel_update_btn" class="btn btn-default">Back To List</a>
+        </div>
+        <div class="col-sm-2">
+          <%= submit_tag "Update All Points", :class => "btn btn-success"%>
+        </div>
+      </div>
+    <% end %>
+    <div class="space"></div>
+    <%= render 'layouts/flash_messages' %>
+  <% end %>
