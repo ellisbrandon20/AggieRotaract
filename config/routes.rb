@@ -30,12 +30,15 @@ Rails.application.routes.draw do
     
     post 'img_upload/create'
     
+    post 'admin/update'
+    
     root 'user#login'
     
     resources :events
     resources :user
     resources :points
     resources :attendances
+    resources :admin
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

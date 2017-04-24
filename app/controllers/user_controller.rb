@@ -29,8 +29,9 @@ class UserController < ApplicationController
 	end
 
 	def admin_password_validation
-		password = "password"
-		if params[:admin_password] == password
+		hashed_password = Digest::SHA2.hexdigest(params[:admin_password])
+		pass = Admin.find(1).password
+		if pass == hashed_password
 			# redirect_to root_path(:login_error => "invalid_password")
 			session[:admin] = true
 			redirect_to dashboard_index_path
