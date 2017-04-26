@@ -147,7 +147,8 @@ class PointsController < ApplicationController
         #Reads in the selected user
         user_id = params[:format]
         @user = User.find(user_id)
-        users_points = Point.where("UIN = :UIN",{UIN: @user.UIN})
+        # users_points = Point.where("UIN = :UIN",{UIN: @user.UIN})
+        users_points = Point.where(:UIN => @user.UIN)
         
         #Gather the data to be displayed in the table
         @users_event_points = []
