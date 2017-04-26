@@ -58,12 +58,6 @@
             events.each do |event|
                 Event.create!(event)
             end
-            
-password = [ :password => '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8']
-
-            password.each do |pwd|
-                Admin.create!(pwd)
-            end
 # Iteration 2
 
 meetings = [
@@ -248,5 +242,11 @@ attendances = [
 attendances.each do |attendance|
     Attendance.create!(attendance)
 end
+
+password = [ :password => '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8']
+
+            password.each do |pwd|
+                Admin.create!(pwd)
+            end
 
 puts "--- done"
