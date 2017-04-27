@@ -4,6 +4,9 @@
   }
 </style>
 
+<!-- redirects members trying to "hack" into the admin pages -->
+<%= member_redirect() %>
+
 <h1 class="title">Edit User</h1>
   <div class="create-form">
     <%= form_for :user, url: user_path do |f| %>

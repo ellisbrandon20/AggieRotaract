@@ -5,6 +5,8 @@
     }
 </style>
 
+<!-- redirects members trying to "hack" into the admin pages -->
+<%= member_redirect() %>
 
 <%= form_tag :method => :post, :class => '', :controller => 'attendances', :action => 'create' do %>
     <h1 class="title"> Add User to Event </h1>

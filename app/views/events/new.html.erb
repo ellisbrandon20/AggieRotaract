@@ -1,4 +1,8 @@
 <%= cloudinary_js_config %>
+
+<!-- redirects members trying to "hack" into the admin pages -->
+<%= member_redirect() %>
+
 <h1 class="title">Create Event</h1>
   <div class="create-form">
     <%= form_for :event, url: events_path do |f| %>

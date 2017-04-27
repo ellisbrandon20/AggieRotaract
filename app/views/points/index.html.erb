@@ -15,11 +15,9 @@
 		  </tr>
 			<% @events.each do |event| %>
 				<tr>
-				  <!-- <tr align="center"> -->
 				    <td> <%= event[:event].name %> </td>
 				    <td> <%= event[:event].date.strftime("%B %d, %Y")%> </td>
 				    <td> <%= event[:active_record].points %> </td>
-				    <!-- <td> <%= button_to "View Event", :class => "btn btn-default", :id =>"points_view_event_btn" %> </td> -->
 				    <td>
 				    	<%= link_to  "View Event", points_path(:view_event => event[:event].id), class: "btn btn-default" %>
 				    </td>

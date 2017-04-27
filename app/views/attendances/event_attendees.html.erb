@@ -1,3 +1,6 @@
+<!-- redirects members trying to "hack" into the admin pages -->
+<%= member_redirect() %>
+
 <%event=Event.find(params[:event_id]) %>
 <%user=User.find_by(UIN: event.contact) %>
 <h1 class="title">Sign Up List for <%= event.name %></h1>

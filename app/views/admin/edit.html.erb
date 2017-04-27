@@ -1,5 +1,4 @@
-   <html>
-    <!-- <head/> -->
+<html>
     <style>
         .center {
           margin: auto;
@@ -7,8 +6,11 @@
           padding: 10px;
         }
     </style>
-  </html>
-<!--%= form_tag :method => 'POST', :controller => 'admin', :action => 'update' do %>-->
+</html>
+
+<!-- redirects members trying to "hack" into the admin pages -->
+<%= member_redirect() %>
+
 <%= form_tag admin_path(@record), :method => :put do %>
     <h1 class="form-signin-heading text-muted center">Admin Log In</h1>
     <%= render 'layouts/flash_messages' %>

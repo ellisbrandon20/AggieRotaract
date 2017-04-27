@@ -1,5 +1,9 @@
+<!-- redirects members trying to "hack" into the admin pages -->
+<%= member_redirect() %>
+
 <h1 class="text-center">Select Event to Approve Points</h1>
 <br/>
+
 <%= form_tag :method => :post, :class => 'form-signin', :controller => 'points', :action => 'view_users_approval' do %>
     
     <div class="row">
