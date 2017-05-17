@@ -78,28 +78,37 @@ class PointsController < ApplicationController
             
             #check to see if UIN exists
             if User.exists?({:UIN => user_uin})
-                # add user to meeting
                 name = User.find_by({:UIN => user_uin}).name
-                meeting = Event.find(params[:meeting_id])
-                points = meeting.max_points
-                issue_date = DateTime.now.to_date
-                
-                point = Point.create!(:event_id => params[:meeting_id],
-                                      :points => points,
-                                      :UIN => params[:uin],
-                                      :issue_date => issue_date)
-                                      
-                point.save
-                flash[:success] = name + " has successfully signed in"
-                
-                redirect_to points_meeting_path(:event_id => meeting, :event_name => meeting.name)
-                
+                # check if that user already signed in for this meeting
+                if(Point.exists?({:UIN => user_uin, :event_id => params[:meeting_id]}))
+                   # display error/warning message that user already signed in for that meeting
+                   meeting_name = Event.find(params[:meeting_id]).name
+                   flash[:warning] = name + " has already signed in for " + meeting_name
+                   redirect_to points_meeting_path(:event_id => meeting)
+                else
+                    # add user to meeting
+                    
+                    meeting = Event.find(params[:meeting_id])
+                    points = meeting.max_points
+                    issue_date = DateTime.now.to_date
+                    
+                    point = Point.create!(:event_id => params[:meeting_id],
+                                          :points => points,
+                                          :UIN => params[:uin],
+                                          :issue_date => issue_date)
+                                          
+                    point.save
+                    flash[:success] = name + " has successfully signed in"
+                    
+                    redirect_to points_meeting_path(:event_id => meeting, :event_name => meeting.name)
+                end
             else
                 #if not, offer to create new user
                 flash[:warning] = "Invalid UIN. Do you need to Sign Up?"
                 puts "------------------------- user does not exists"
-                redirect_to points_meeting_path
+                redirect_to points_meeting_path(:event_id => meeting)
             end
+            
         end      
     end
     
