@@ -91,11 +91,18 @@ class EventsController < ApplicationController
                  
         @event.save
         
-        # respond_to do
-        #     format.html {}
-        #     format.js { render :js => "update_img();" }
-        # end
-        # render :js => "update_img();"
+        # make the officer an automatic person on the going list
+        @attendance = Attendance.create!(:UIN => params[:contact],
+    		:event_id => @event.id,
+    		:car_ride => false,
+    		:comments => "I am your point of contact for this event",
+    		:pref_contact => "Email",
+    		:wait_listed => false,
+    		:approved => false
+    		)
+    	@attendance.save
+        
+        
         if !@event.name.nil?
             flash[:success] = "Successfully Created Event: " + @event.name
         end
