@@ -115,7 +115,12 @@ class EventsController < ApplicationController
     
     def update
         @event = Event.find(params[:id])
-        puts "============ edit " + @event.name
+        
+        # update the going/waitlist according to the new capacity if it was updated
+        if(@event.capacity != params[:capacity])
+            update_lists(@event.capacity, params[:capacity], @event.id)
+        end
+        
         # convert date input to correct format for database
         date = date_conversion
         @event.update_attributes!(:name => params[:name],
@@ -129,9 +134,9 @@ class EventsController < ApplicationController
                  :capacity => params[:capacity],
                  :contact => params[:contact],
                  :image => params[:image])
-        # @movie.update_attributes!(movie_params)
+
         flash[:success] = "#{@event.name} was successfully updated."
-        #redirect_to movie_path(@movie)
+
         redirect_to events_path
     end
     
@@ -168,5 +173,34 @@ class EventsController < ApplicationController
             @officers.each do |officer|
                 puts "-----officer:" + officer.name + "---uin:" + officer.UIN.to_s
             end
+        end
+        
+        def update_lists(old_capacity, new_capacity, event_id)
+            
+            if(old_capacity > new_capacity.to_i)
+                # move ppl from going list to waitlist
+                num_records = old_capacity - new_capacity.to_i
+                # first just try changing the waitlisted attribute to true
+                records_to_waitlist = Attendance.where(:event_id => event_id, :wait_listed => false).last(num_records)
+                # .find_by(:wait_listed => false, :limit => num_records).reverse
+                
+                puts "records to put in waitlist"
+                records_to_waitlist.each do |r|
+                    puts "-------------" + r.UIN.to_s
+                    r.update_attributes!(:wait_listed => true)
+                end
+                
+            elsif(old_capacity < new_capacity.to_i)
+                # move ppl from wait list to going list
+                 num_records = new_capacity.to_i - old_capacity
+                # first just try changing the waitlisted attribute to false
+                records_to_waitlist = Attendance.where(:event_id => event_id, :wait_listed => true).first(num_records)
+                 puts "records to put in going list"
+                records_to_waitlist.each do |r|
+                    puts "-------------" + r.UIN.to_s
+                    r.update_attributes!(:wait_listed => false)
+                end
+            end
+            
         end
 end
