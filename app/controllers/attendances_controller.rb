@@ -1,52 +1,4 @@
 class AttendancesController < ApplicationController
-  
-	def new
-        @all_users = User.order('name').all
-        puts params[:event_id]
-	end
-
-	def create
-		# determine if user is on going list or waitlisted
-		@current_event=Event.find(params[:event_id])
-		if params[:wait_list].nil?
-		    if number_people_registered < @current_event.capacity
-    		    @waiting = false
-    		else
-    		    @waiting = true
-    		end
-    	else
-    	    @waiting = false
-    	end
-		
-		# params[:user] comes from /attendances/new when admin is adding an entry for 
-        # approving points for user that attended event but that was not signed up for
-        uin = session[:user_uin]
-		if session[:admin] then uin = params[:user] end
-		
-    	@attendance = Attendance.create!(:UIN => uin,
-    		:event_id => params[:event_id],
-    		:car_ride => params[:car_ride],
-    		:comments => params[:comment],
-    		:pref_contact => params[:pref_contact],
-    		:wait_listed => @waiting,
-    		:approved => false
-    		)
-    	if @attendance.save
-    		flash[:success] = "You are registered!"
-    	else
-    	    flash[:danger] = "Try again we could not save that record"
-    	end
-    	
-    	if session[:admin]
-    	    # action called by admin to add member to attendance record post event
-    	    redirect_to points_view_users_approval_path(:event => params[:event_id])
-    	else
-    	    # action called by users when signing up for event
-    	    redirect_to events_path
-    	end
-    	
-	end
-
     UpcomingEventData = Struct.new(:active_record, :wait_list_pos)
     
     def index
@@ -120,14 +72,59 @@ class AttendancesController < ApplicationController
                     # ":wait_list_pos" tells you if the user is "going" or "waitlisted"
                     
                 @user_upcoming_events.append(UpcomingEventData.new(event,waitlist_position))
-            else
-                puts "Event past date."
             end
         end
 
-        puts "User upcoming events length"
-        puts @user_upcoming_events.length
+        # sort the events by date
+        @user_upcoming_events.sort! {|a, b| a.active_record.date <=> b.active_record.date}
     end
+  
+	def new
+        @all_users = User.order('name').all
+        puts params[:event_id]
+	end
+
+	def create
+		# determine if user is on going list or waitlisted
+		@current_event=Event.find(params[:event_id])
+		if params[:wait_list].nil?
+		    if number_people_registered < @current_event.capacity
+    		    @waiting = false
+    		else
+    		    @waiting = true
+    		end
+    	else
+    	    @waiting = false
+    	end
+		
+		# params[:user] comes from /attendances/new when admin is adding an entry for 
+        # approving points for user that attended event but that was not signed up for
+        uin = session[:user_uin]
+		if session[:admin] then uin = params[:user] end
+		
+    	@attendance = Attendance.create!(:UIN => uin,
+    		:event_id => params[:event_id],
+    		:car_ride => params[:car_ride],
+    		:comments => params[:comment],
+    		:pref_contact => params[:pref_contact],
+    		:wait_listed => @waiting,
+    		:approved => false
+    		)
+    	if @attendance.save
+    		flash[:success] = "You are registered!"
+    	else
+    	    flash[:danger] = "Try again we could not save that record"
+    	end
+    	
+    	if session[:admin]
+    	    # action called by admin to add member to attendance record post event
+    	    redirect_to points_view_users_approval_path(:event => params[:event_id])
+    	else
+    	    # action called by users when signing up for event
+    	    redirect_to events_path
+    	end
+    	
+	end
 
     def remove_from_event
         
