@@ -63,7 +63,7 @@
 meetings = [
           {:name => 'Meeting 1', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
           :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
-          :date => '2017-06-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 1.0, 
+          :date => '2017-07-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 1.0, 
           :meeting => true, :contact => 123456789, :image => ''},
            
           {:name => 'Meeting 2', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',

@@ -3,14 +3,17 @@ class PointsController < ApplicationController
     
     def index
         @events = Array.new
-
+        
         #session user uin
         @users_points = Point.where(UIN: session[:user_uin])
+
         @users_points.each do |user_pt|
             event = Event.find(user_pt.event_id)
-
             @events.append(UserPoints.new(user_pt, event))
         end
+        
+        #sort @events by the date
+        @events.sort! { |a, b| a.event.date <=> b.event.date}
 
 
         if !params[:view_event].nil?
@@ -58,6 +61,7 @@ class PointsController < ApplicationController
         all_events = Event.all
         # populate dropdown list
         @upcoming_meetings = all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [true]})
+        puts "-----------meetings: " + @upcoming_meetings.to_s
     end
     
     def meeting_signin
