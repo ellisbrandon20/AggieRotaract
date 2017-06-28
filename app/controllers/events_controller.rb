@@ -37,9 +37,6 @@ class EventsController < ApplicationController
         if !params[:user_uin].nil? 
             uin = params[:user_uin] 
         end
-        puts "--- remove me"
-        puts "---- uin:" + uin
-        puts "---- event_id" + params[:event_id]
         
         Attendance.where(:UIN => uin).where(:event_id => params[:event_id]).destroy_all
         
@@ -56,7 +53,6 @@ class EventsController < ApplicationController
     def destroy
         puts params[:id]
         Attendance.where(:event_id => params[:id]).destroy_all
-        #Events.where(:event_id => params[:event_id]).destroy_all
         Event.find(params[:id]).destroy()
         redirect_to :back
         flash[:success] = "You successfully deleted " + params[:event_name] + "!"
@@ -67,11 +63,8 @@ class EventsController < ApplicationController
         #upload image to cloudinary for storage
         puts "--- image: " + params[:image]
         if !params[:image].empty?
-            puts "--- uploading file to cloud"
-            puts Dir.pwd
             file_dir = "public/images/" + params[:image]
             Cloudinary::Uploader.upload(file_dir, :use_filename => true, :unique_filename => false)
-            puts "--- uploading complete!!!!!!"
         end
         
         # convert date input to correct format for database
@@ -115,9 +108,7 @@ class EventsController < ApplicationController
     
     def edit
         @event = Event.find(params[:id])
-        
         grab_officers
-        
     end
     
     def update
@@ -147,10 +138,6 @@ class EventsController < ApplicationController
         redirect_to events_path
     end
     
-    
-    
-    
-    
     private
         def event_params
             params.require(:event).permit(:name, :description, :address, :meeting, :UIN, :date, :start_time, :end_time, :max_points, :contact, :image)
@@ -170,16 +157,13 @@ class EventsController < ApplicationController
                 date_arr = params[:date].split('/')
                 date = date_arr[2] + '-' + date_arr[0] + '-' + date_arr[1]
             else
-                date = "2017-03-15"
+                date = "2001-01-01"
             end
             return date
         end
         
         def grab_officers
             @officers = User.where("officer = :officer", {officer: [true]})
-            @officers.each do |officer|
-                puts "-----officer:" + officer.name + "---uin:" + officer.UIN.to_s
-            end
         end
         
         def update_lists(old_capacity, new_capacity, event_id)
@@ -189,11 +173,8 @@ class EventsController < ApplicationController
                 num_records = old_capacity - new_capacity.to_i
                 # first just try changing the waitlisted attribute to true
                 records_to_waitlist = Attendance.where(:event_id => event_id, :wait_listed => false).last(num_records)
-                # .find_by(:wait_listed => false, :limit => num_records).reverse
-                
-                puts "records to put in waitlist"
+
                 records_to_waitlist.each do |r|
-                    puts "-------------" + r.UIN.to_s
                     r.update_attributes!(:wait_listed => true)
                 end
                 
@@ -202,12 +183,9 @@ class EventsController < ApplicationController
                  num_records = new_capacity.to_i - old_capacity
                 # first just try changing the waitlisted attribute to false
                 records_to_waitlist = Attendance.where(:event_id => event_id, :wait_listed => true).first(num_records)
-                 puts "records to put in going list"
                 records_to_waitlist.each do |r|
-                    puts "-------------" + r.UIN.to_s
                     r.update_attributes!(:wait_listed => false)
                 end
             end
-            
         end
 end

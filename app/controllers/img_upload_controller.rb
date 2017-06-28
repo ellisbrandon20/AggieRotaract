@@ -20,8 +20,5 @@ class ImgUploadController < ApplicationController
     
     flash[:success] = "File uploaded"
     session[:image_upload] = name
-    
-    puts "----- complete"
-    
   end
 end

@@ -1,15 +1,11 @@
 class AttendancesController < ApplicationController
   
 	def new
-# 		@attendance = Attendance.new
-# 		@attendance.user = current_user
-# 		@attendance.event = Attendance.find(params[:event_id])
         @all_users = User.order('name').all
         puts params[:event_id]
 	end
 
 	def create
-		
 		# determine if user is on going list or waitlisted
 		@current_event=Event.find(params[:event_id])
 		if params[:wait_list].nil?
@@ -20,10 +16,7 @@ class AttendancesController < ApplicationController
     		end
     	else
     	    @waiting = false
-    	    puts "--- waiting is false "
     	end
-		
-		puts "---- pref_contact: " + params[:pref_contact]
 		
 		# params[:user] comes from /attendances/new when admin is adding an entry for 
         # approving points for user that attended event but that was not signed up for
@@ -46,7 +39,6 @@ class AttendancesController < ApplicationController
     	
     	if session[:admin]
     	    # action called by admin to add member to attendance record post event
-    	    puts "---- redirecting to view_users_approval"
     	    redirect_to points_view_users_approval_path(:event => params[:event_id])
     	else
     	    # action called by users when signing up for event
@@ -69,14 +61,8 @@ class AttendancesController < ApplicationController
         
         # find instances where user X is signed up for an event
         all_attendances.each do |attendance_row|
-            # puts "\nAdding an attendance\n"
-            # puts "Event UIN"
-            # puts event.UIN
-            # puts "Session UIN"
-            # puts session[:user_uin]
             
             if attendance_row.UIN == session[:user_uin].to_i then
-                puts "\nAdding Event ID to Upcoming Event List\n"
                 events_user_attd.append(attendance_row.event_id)
             end
         end
@@ -176,7 +162,6 @@ class AttendancesController < ApplicationController
     		:wait_listed => @attendance.wait_listed,
     		:approved => @attendance.approved)
         flash[:success] = "Your comments were successfully updated."
-        #redirect_to movie_path(@movie)
         redirect_to dashboard_index_path
     end
     
@@ -192,7 +177,6 @@ class AttendancesController < ApplicationController
     Attendees = Struct.new(:active_record, :attendee)
     
     def event_attendees
-        puts "------- here"
         @attendees = Array.new
 
         #session user uin
@@ -202,7 +186,6 @@ class AttendancesController < ApplicationController
 
             @attendees.append(Attendees.new(attendance, attendee))
         end
-        puts "------- gone"
     end
     
     
@@ -213,12 +196,10 @@ class AttendancesController < ApplicationController
         
         # grab the going list
         @going_list = Attendance.where("event_id = :event_id and wait_listed = :wait_listed", {event_id: params[:event_id], wait_listed: [false]})
-        puts "--- goingList size: " + @going_list.count.to_s
         @going = Array.new
         @going_list.each do |att|
             user = User.find_by(UIN: att.UIN)
             @going.append(ViewDetailsData.new(att, user))
-            #puts "----going list: " + user.name
         end
         
     end

@@ -1,14 +1,11 @@
 class PointsController < ApplicationController
-    # struct
     UserPoints = Struct.new(:active_record, :event)
     
     def index
-
         @events = Array.new
 
         #session user uin
         @users_points = Point.where(UIN: session[:user_uin])
-        #  event_id, points, uin, issue_date    
         @users_points.each do |user_pt|
             event = Event.find(user_pt.event_id)
 
@@ -23,12 +20,7 @@ class PointsController < ApplicationController
         end
     end
     
-    
-    
     def create
-        
-        
-        
         @user_uin = params[:user_uin]
         @user_points = params[:points]
         
@@ -105,7 +97,6 @@ class PointsController < ApplicationController
             else
                 #if not, offer to create new user
                 flash[:warning] = "Invalid UIN. Do you need to Sign Up?"
-                puts "------------------------- user does not exists"
                 redirect_to points_meeting_path(:event_id => meeting)
             end
             
@@ -164,8 +155,6 @@ class PointsController < ApplicationController
         users_points.each do |point_object|
             @users_event_points.append(MemberActivity.new(Event.find(point_object.event_id),point_object))
         end
-
-        #@points = Point.all
     end
     
     #Updates a points object
@@ -186,6 +175,4 @@ class PointsController < ApplicationController
     def edit_all
         @users = Point.all
     end
-
-    
 end

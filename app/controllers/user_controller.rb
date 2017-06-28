@@ -44,7 +44,6 @@ class UserController < ApplicationController
 	def new
 		# creates the correct "Go Back" link for user creation since we use the form in 2 different locations: Login, Meeting Sign In
 		session[:new_user_back] = URI(request.referer || '').path
-		puts "user_back:" + session[:new_user_back]
 		if session[:new_user_back] == "/points/meeting"
 			render layout: "application"
 		end
@@ -76,7 +75,6 @@ class UserController < ApplicationController
 		# should be clearing necessary information like this, not sure if we need anything else for now this is enough
 		session[:user_uin] = nil
 		session[:admin] = nil
-		puts "redirect to path"
 		flash[:success] = "Successfully logged out."
 		redirect_to root_path
 	end
@@ -96,19 +94,9 @@ class UserController < ApplicationController
 	end
 	
 	def update
-		
-		if !session[:admin]
-			#@user = User.find_by(:UIN => session[:user_uin])
-			puts "Not admin\n"
-		end
-		
-		
         @user = User.find(params[:id])
-        puts "============ edit " + @user.name
         # convert date input to correct format for database
        
-       
-        
         @user.update_attributes!(:name => params[:name],
                  :phone => params[:phone],
                  :email => params[:email],
@@ -120,7 +108,7 @@ class UserController < ApplicationController
                  :officer => params[:officer],
                  :active => params[:active],
                  :updated_at => DateTime.now)
-        # @movie.update_attributes!(movie_params)
+
         flash[:success] = "#{@user.name} was successfully updated."
         redirect_to user_list_path
 	end
