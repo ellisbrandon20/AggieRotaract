@@ -112,8 +112,9 @@ class PointsController < ApplicationController
     
     def select_approve_points
         curr_time = DateTime.now.to_date
-        @past_events = Event.where("date <= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
-        
+        # places the most recent events at the top of the list
+        db_events = Event.order(date: :desc).all
+        @past_events = db_events.where("date <= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
     end
     
     UserAttendance = Struct.new(:active_record, :name, :points)
