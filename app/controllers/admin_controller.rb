@@ -1,5 +1,21 @@
 class AdminController < ApplicationController
     
+    def export_data
+    	# if 1
+    	# 	@header = get_event_header()
+    	# 	get_event_data()
+    	# elsif 2
+    	# 	@header = get_attendances_header()
+    	# 	get_attendances_data()
+    	# elsif 3
+    	# 	@header = get_users_header()
+    	# 	get_users_data()
+    	# elsif 4
+    	# 	@header = get_points_header()
+    	# 	get_points_data()
+    	# end
+    end
+    
     def edit
        @record = Admin.find(params[:id]) 
        

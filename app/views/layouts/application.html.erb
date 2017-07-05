@@ -1,3 +1,5 @@
+application.html.erb
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -42,14 +44,18 @@
             <li class="nav-item active">
               <a class="nav-link" href="/events" id="upcoming-events">Upcoming Events</a>
             </li>
-            <li class="nav-item active">
-              
-              <% if session[:admin] %>
+            <% if session[:admin] %>
+              <li class="nav-item active">
                 <a class="nav-link" href="/points/select_approve_points">Points</a>
-              <% else %>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/admin/export_data">Export Data</a>
+              </li>
+            <% else %>
+              <li class="nav-item active">
                 <a class="nav-link" href="/points" id="points">Points</a>
-              <% end %>
-            </li>
+              </li>
+            <% end %>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">

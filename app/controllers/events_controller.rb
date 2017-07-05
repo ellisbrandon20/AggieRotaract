@@ -5,6 +5,11 @@ class EventsController < ApplicationController
         @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         @upcoming_events_email = @upcoming_events
         contact_uin_to_email
+        
+        respond_to do |format|
+        	format.html            
+        	format.csv { send_data @all_events.to_csv, filename: "events-#{Date.today}.csv" }
+        end
     end
     
     def new

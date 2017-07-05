@@ -21,6 +21,12 @@ class PointsController < ApplicationController
             event_contact = User.find_by(UIN: @view_event.contact)
             @view_event.contact = event_contact.email 
         end
+        
+        all_points = Point.all
+        respond_to do |format|
+               format.html
+               format.csv { send_data all_points.to_csv, filename: "points-#{Date.today}.csv" }
+       end
     end
     
     def create

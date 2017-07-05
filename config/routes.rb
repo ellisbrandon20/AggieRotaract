@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     post 'img_upload/create'
     
     post 'admin/update'
+    get 'admin/export_data'
     
     root 'user#login'
     

@@ -1,6 +1,25 @@
 class UserController < ApplicationController
 	layout "login"
-	
+	layout "application", :only => [ :index, :new, :edit ]
+
+	#displays all the users that can be editted
+	def index
+		@users = User.order(:name).all
+		
+		respond_to do |format|
+    		format.html
+    		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    	end
+	end
+
+	def list
+		@users = User.all
+
+    	respond_to do |format|
+    		format.html
+    		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    	end
+	end
 	
 	def login
 		# check if admin or member is trying to login
@@ -45,7 +64,7 @@ class UserController < ApplicationController
 		# creates the correct "Go Back" link for user creation since we use the form in 2 different locations: Login, Meeting Sign In
 		session[:new_user_back] = URI(request.referer || '').path
 		if session[:new_user_back] == "/points/meeting"
-			render layout: "application"
+			
 		end
 	end
 	
@@ -79,18 +98,10 @@ class UserController < ApplicationController
 		redirect_to root_path
 	end
 	
-	#displays all the users that can be editted
-	def index
-		
-		@users = User.order(:name).all
-		render layout: "application"
-	end
-	
 	def edit
 		@user = User.find params[:id]
 		@shirt_sizes = ["X-Small","Small","Medium", "Large", "X-Large", "XX-Large", "XXX-Large"]
 		@classifications = ["Freshman","Sophomore","Junior","Senior","Graduate"]
-		render layout: "application"
 	end
 	
 	def update
