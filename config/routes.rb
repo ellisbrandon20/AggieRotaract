@@ -41,13 +41,13 @@ Rails.application.routes.draw do
     post 'admin/update'
     get 'admin/export_data'
     
-    root 'user#login'
-    
     resources :events
     resources :user
     resources :points
     resources :attendances
     resources :admin
+    
+    root 'user#login'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

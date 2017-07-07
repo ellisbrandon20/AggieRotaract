@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+	before_filter :authenticate_user!, :only => [ :index, :new, :edit, :create, :update ]
 	layout "login"
 	layout "application", :only => [ :index, :new, :edit ]
 
@@ -6,19 +7,10 @@ class UserController < ApplicationController
 	def index
 		@users = User.order(:name).all
 		
-		respond_to do |format|
-    		format.html
-    		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
-    	end
-	end
-
-	def list
-		@users = User.all
-
-    	respond_to do |format|
-    		format.html
-    		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
-    	end
+		# respond_to do |format|
+  #  		format.html
+  #  		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+  #  	end
 	end
 	
 	def login

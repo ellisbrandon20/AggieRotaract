@@ -1,4 +1,6 @@
 class AttendancesController < ApplicationController
+    before_filter :authenticate_user!
+    
     UpcomingEventData = Struct.new(:active_record, :wait_list_pos)
     
     def index
@@ -78,10 +80,10 @@ class AttendancesController < ApplicationController
         # sort the events by date
         @user_upcoming_events.sort! {|a, b| a.active_record.date <=> b.active_record.date}
         
-        respond_to do |format|
-    		format.html
-    		format.csv { send_data all_attendances.to_csv, filename: "eventAttendances-#{Date.today}.csv" }
-    	end
+    #     respond_to do |format|
+    # 		format.html
+    # 		format.csv { send_data all_attendances.to_csv, filename: "eventAttendances-#{Date.today}.csv" }
+    # 	end
     end
   
 	def new

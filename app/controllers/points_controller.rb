@@ -1,4 +1,6 @@
 class PointsController < ApplicationController
+    before_filter :authenticate_user!
+    
     UserPoints = Struct.new(:active_record, :event)
     
     def index
@@ -22,11 +24,11 @@ class PointsController < ApplicationController
             @view_event.contact = event_contact.email 
         end
         
-        all_points = Point.all
-        respond_to do |format|
-               format.html
-               format.csv { send_data all_points.to_csv, filename: "points-#{Date.today}.csv" }
-       end
+    #     all_points = Point.all
+    #     respond_to do |format|
+    #           format.html
+    #           format.csv { send_data all_points.to_csv, filename: "points-#{Date.today}.csv" }
+    #   end
     end
     
     def create
