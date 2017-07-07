@@ -1,20 +1,27 @@
 class AdminController < ApplicationController
     before_filter :authenticate_user!
+        		
+    # special structs    		
+
     
     def export_data
-    	# if 1
-    	# 	@header = get_event_header()
-    	# 	get_event_data()
-    	# elsif 2
-    	# 	@header = get_attendances_header()
-    	# 	get_attendances_data()
-    	# elsif 3
-    	# 	@header = get_users_header()
-    	# 	get_users_data()
-    	# elsif 4
-    	# 	@header = get_points_header()
-    	# 	get_points_data()
-    	# end
+    	@data = Array.new
+    	if params[:option] == '1'
+    		@events = Event.order(:date).all
+    		@data = event_data_conversion(@data)
+    	elsif params[:option] == '2'
+    		TODO
+    		@header = get_attendances_header()
+    		@data = get_attendances_data()
+    	elsif params[:option] == '3'
+    		TODO
+    		@header = get_users_header()
+    		@data = get_users_data()
+    	elsif params[:option] == '4'
+    		TODO
+    		@header = get_points_header()
+    		@data = get_points_data()
+    	end
     end
     
     def edit
@@ -43,5 +50,12 @@ class AdminController < ApplicationController
     
     
     def show
+    end
+    
+    
+    private
+    
+    def get_event_data
+    
     end
 end

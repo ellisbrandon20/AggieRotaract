@@ -1,19 +1,20 @@
 class UserController < ApplicationController
-	before_filter :authenticate_user!, :only => [ :index, :new, :edit, :create, :update ]
-	layout "login"
+	before_filter :authenticate_user!, :only => [ :index, :edit, :create, :update ]
 	layout "application", :only => [ :index, :new, :edit ]
+	layout "login", :only => [:login, :admin_login]
 
 	#displays all the users that can be editted
 	def index
 		@users = User.order(:name).all
 		
-		# respond_to do |format|
-  #  		format.html
-  #  		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
-  #  	end
+		respond_to do |format|
+    		format.html
+    		format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    	end
 	end
 	
 	def login
+		# render layout: "login"
 		# check if admin or member is trying to login
 		if params[:login_UIN] == "admin"
 			# ask for password
@@ -55,8 +56,8 @@ class UserController < ApplicationController
 	def new
 		# creates the correct "Go Back" link for user creation since we use the form in 2 different locations: Login, Meeting Sign In
 		session[:new_user_back] = URI(request.referer || '').path
-		if session[:new_user_back] == "/points/meeting"
-			
+		if session[:new_user_back] == "/"
+			render layout: "login"
 		end
 	end
 	

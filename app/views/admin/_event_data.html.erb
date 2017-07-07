@@ -1,0 +1,42 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-fixed">
+        <thead>
+          <tr>
+            <th class="">ID</th>
+            <th class="col-sm-2">Name</th>
+            <th class="col-sm-1">Address</th>
+            <th class="col-sm-1">Date</th>
+            <th class="col-sm-2">Description</th>
+            <th class="col-sm-1">Start Time</th>
+            <th class="col-sm-1">End Time</th>
+            <th class="col-sm-1">Capacity</th>
+            <th class="col-sm-1">Max Points</th>
+            <th class="col-sm-1">Meeting</th>
+            <th class="col-sm-1">Contact</th>
+            <!--<th class="col-sm-1">Image</th>-->
+          </tr>
+        </thead>
+        <tbody>
+            <% @data.each do |row| %>
+                <tr>
+                    <td><%= row.id %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.address[0...40] + "..." %></td>
+                    <td><%= row.date %></td>
+                    <td><%= row.description[0..50] + "..." %></td>
+                    <td><%= row.start_time %></td>
+                    <td><%= row.end_time %></td>
+                    <td><%= row.capacity %></td>
+                    <td><%= row.max_points %></td>
+                    <td><%= row.meeting %></td>
+                    <td><%= row.contact %></td>
+                    <!--<td><%= row.image %></td>-->
+                </tr>
+            <% end %>
+
+        </tbody>
+    </table>
+    
+    <a href="/events.csv"><button class="btn btn-default btn-lg" id="export-events-csv">Export Events finish working on this</button></a>
+
+</div>

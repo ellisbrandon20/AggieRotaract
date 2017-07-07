@@ -1,55 +1,61 @@
 <!-- redirects members trying to "hack" into the admin pages -->
-<!--<%= member_redirect() %>-->
+<%= member_redirect() %>
 
-<!--<h1 class="title">Export Data</h1>-->
-<!--<%= render 'layouts/flash_messages' %>-->
-<!--<div class="button-pad page-margins">-->
-<!--    <div class="row">-->
-<!--        <div class="col-sm-2">-->
-<!--            <ul class="nav flex-column">-->
-<!--              <li class="nav-button">-->
-<!--                <a id="1" class="btn btn-default" href=<%= admin_export_data_path(:option => 1) %>>Events</a>-->
-<!--              </li>-->
-<!--              <li class="nav-button">-->
-<!--                <a id="2" class="btn btn-default" href=<%= admin_export_data_path(:option => 2) %>>Attendances</a>-->
-<!--              </li>-->
-<!--              <li class="nav-button">-->
-<!--                <a id="3" class="btn btn-default" href=<%= admin_export_data_path(:option => 3) %>>Users</a>-->
-<!--              </li>-->
-<!--              <li class="nav-button">-->
-<!--                <a id="4" class="btn btn-default" href=<%= admin_export_data_path(:option => 4) %>>Points</a>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--        <div class="col-sm-9">-->
-<!--            Table of data-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<h1 class="title">Export Data</h1>
+<%= render 'layouts/flash_messages' %>
+<div class="button-pad page-margins">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="nav flex-column">
+              <li class="nav-button">
+                <a id="1" class="btn btn-default" href=<%= admin_export_data_path(:option => 1) %>>Events</a>
+              </li>
+              <li class="nav-button">
+                <a id="2" class="btn btn-default" href=<%= admin_export_data_path(:option => 2) %>>Attendances</a>
+              </li>
+              <li class="nav-button">
+                <a id="3" class="btn btn-default" href=<%= admin_export_data_path(:option => 3) %>>Users</a>
+              </li>
+              <li class="nav-button">
+                <a id="4" class="btn btn-default" href=<%= admin_export_data_path(:option => 4) %>>Points</a>
+              </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            
+            
+            <%= render :partial => "event_data" %>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
 
 
 
 
-<!--<script>-->
-<!--    var getUrlParameter = function getUrlParameter(sParam) {-->
-<!--    var sPageURL = decodeURIComponent(window.location.search.substring(1)),-->
-<!--            sURLVariables = sPageURL.split('&'),-->
-<!--            sParameterName,-->
-<!--            i;-->
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
     
-<!--        for (i = 0; i < sURLVariables.length; i++) {-->
-<!--            sParameterName = sURLVariables[i].split('=');-->
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
     
-<!--            if (sParameterName[0] === sParam) {-->
-<!--                return sParameterName[1] === undefined ? true : sParameterName[1];-->
-<!--            }-->
-<!--        }-->
-<!--    };-->
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
     
-<!--    $( document ).ready(function() {-->
-<!--        var activeNav = getUrlParameter('option');-->
-<!--        $(".btn-info").removeClass("btn-info");-->
-<!--        $("#" + activeNav).removeClass("btn-default");-->
-<!--        $("#" + activeNav).addClass("btn-info");-->
-<!--    });-->
-<!--</script>-->
+    $( document ).ready(function() {
+        var activeNav = getUrlParameter('option');
+        $(".btn-info").removeClass("btn-info");
+        $("#" + activeNav).removeClass("btn-default");
+        $("#" + activeNav).addClass("btn-info");
+    });
+</script>

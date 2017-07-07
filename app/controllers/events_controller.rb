@@ -8,10 +8,10 @@ class EventsController < ApplicationController
         @upcoming_events_email = @upcoming_events
         contact_uin_to_email
         
-        # respond_to do |format|
-        # 	format.html            
-        # 	format.csv { send_data @all_events.to_csv, filename: "events-#{Date.today}.csv" }
-        # end
+        respond_to do |format|
+        	format.html            
+        	format.csv { send_data Event.order(:date).all.to_csv, filename: "events-#{Date.today}.csv" }
+        end
     end
     
     def new
