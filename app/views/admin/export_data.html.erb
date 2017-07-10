@@ -22,13 +22,15 @@
             </ul>
         </div>
         <div class="col-sm-9">
-            
-            
-            <%= render :partial => "event_data" %>
-            
-            
-            
-            
+            <% if params[:option] == '1' %>
+    		    <%= render :partial => "event_data" %>
+    	    <% elsif params[:option] == '2' %>
+    		    <%= render :partial => "attendance_data" %>
+    	    <% elsif params[:option] == '3' %>
+    		
+    	    <% elsif params[:option] == '4' %>
+    		
+    	    <% end %>
         </div>
     </div>
 </div>

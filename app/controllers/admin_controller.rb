@@ -8,10 +8,9 @@ class AdminController < ApplicationController
     	@data = Array.new
     	if params[:option] == '1'
     		@events = Event.order(:date).all
-    		@data = event_data_conversion(@data)
+    		@data = event_data_conversion()
     	elsif params[:option] == '2'
-    		TODO
-    		@header = get_attendances_header()
+    		@events = Attendance.order(:event_id).all
     		@data = get_attendances_data()
     	elsif params[:option] == '3'
     		TODO

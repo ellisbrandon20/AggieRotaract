@@ -1,0 +1,32 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-fixed">
+        <thead>
+          <tr>
+            <th class="col-sm-1">Event</th>
+            <th class="col-sm-1">Name</th>
+            <th class="col-sm-1">Car Ride</th>
+            <th class="col-sm-1">Comments</th>
+            <th class="col-sm-1">Wait Listed</th>
+            <th class="col-sm-1">Contact Method</th>
+            <th class="col-sm-1">Approved</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @data.each do |row| %>
+                <tr>
+                    <td><%= row.event %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.car_ride %></td>
+                    <td><%= row.comments %></td>
+                    <td><%= row.wait_listed %></td>
+                    <td><%= row.pref_contact %></td>
+                    <td><%= row.approved %></td>
+                </tr>
+            <% end %>
+
+        </tbody>
+    </table>
+    
+    <a href="/attendances.csv"><button class="btn btn-default btn-lg" id="export-users-csv">Export as CSV</button></a>
+
+</div>

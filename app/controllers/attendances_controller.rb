@@ -82,7 +82,7 @@ class AttendancesController < ApplicationController
         
         respond_to do |format|
     		format.html
-    		format.csv { send_data all_attendances.to_csv, filename: "eventAttendances-#{Date.today}.csv" }
+    		format.csv { send_data Attendance.order(:event_id).all.to_csv, filename: "eventAttendances-#{Date.today}.csv" }
     	end
     end
   
