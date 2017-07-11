@@ -1,0 +1,26 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-fixed">
+        <thead>
+          <tr>
+            <th class="col-sm-2">Event</th>
+            <th class="col-sm-2">Name</th>
+            <th class="col-sm-1">Points</th>
+            <th class="col-sm-1">Issue Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @data.each do |row| %>
+                <tr>
+                    <td><%= row.event %></td>
+                    <td><%= row.user %></td>
+                    <td><%= row.points %></td>
+                    <td><%= row.issue_date %></td>
+                </tr>
+            <% end %>
+
+        </tbody>
+    </table>
+    
+    <a href="/points.csv"><button class="btn btn-default btn-lg" id="export-points-csv">Export Points data</button></a>
+
+</div>

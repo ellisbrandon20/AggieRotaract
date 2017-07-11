@@ -7,18 +7,13 @@ class AdminController < ApplicationController
     def export_data
     	@data = Array.new
     	if params[:option] == '1'
-    		@events = Event.order(:date).all
     		@data = event_data_conversion()
     	elsif params[:option] == '2'
     		@events = Attendance.order(:event_id).all
     		@data = get_attendances_data()
     	elsif params[:option] == '3'
-    		TODO
-    		@header = get_users_header()
     		@data = get_users_data()
     	elsif params[:option] == '4'
-    		TODO
-    		@header = get_points_header()
     		@data = get_points_data()
     	end
     end

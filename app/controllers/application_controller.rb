@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   EventData = Struct.new(:id, :name, :address, :date, :description, :start_time, :end_time, :capacity, :max_points, :meeting, :contact, :image)
   def event_data_conversion
     # convert necessary columns to human readable content
+    @events = Event.order(:date).all
 		@events.each do |row|
 			#date
 			date = row.date.strftime("%B %d, %Y") 
@@ -47,6 +48,27 @@ class ApplicationController < ActionController::Base
     
     @data.each do |row|
       puts "name---"+row.name
+    end
+  end
+  
+  def get_users_data
+    @data = User.all.to_a
+  end
+  
+  PointData = Struct.new(:event, :user, :points, :issue_date)
+  def get_points_data
+    @points = Point.order(:event_id).all
+    
+    @points.each do |row|
+      #convert event_id to event name
+      event = Event.find(row.event_id).name
+      #convert UIN to name
+      name = User.find_by(:UIN => row.UIN).name
+      
+      @data.append(PointData.new(event, name, row.points, row.issue_date.strftime("%B %d, %Y")))
+    end
+    
+    @data.each do |row|
     end
   end
 end

@@ -9,7 +9,7 @@ class Point < ApplicationRecord
                 # User Name
                 member = User.find_by(:UIN => rec.UIN).name
                 
-                csv << [ event_name, member, rec.points, rec.issue_date]
+                csv << [ event_name, member, rec.points, rec.issue_date.strftime("%B %d, %Y")]
             end
         end
     end
