@@ -10,7 +10,7 @@ To clean out and reset the database:
 - rake db:drop db:create db:migrate db:seed
 
 You can view this application on Heroku:
-https://glacial-hamlet-90409.herokuapp.com/
+http://test-aggierotaract.herokuapp.com/
 
 Images:
 - This project uses Cloudinary as a free storage for all images for this application.
