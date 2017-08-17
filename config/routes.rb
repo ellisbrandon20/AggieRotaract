@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'points/user_list'
     get 'points/member_activity_table'
     post 'points/update'
+    get 'points/user_csv'
     
     #   get 'events/new'
     

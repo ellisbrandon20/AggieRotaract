@@ -8,6 +8,8 @@ class PointsController < ApplicationController
         
         #session user uin
         @users_points = Point.where(UIN: session[:user_uin])
+        @userName = User.find_by(UIN: session[:user_uin]).name
+        
 
         @users_points.each do |user_pt|
             event = Event.find(user_pt.event_id)
@@ -24,10 +26,14 @@ class PointsController < ApplicationController
             @view_event.contact = event_contact.email 
         end
         
-        all_points = Point.all
+        @all_points = Point.all
         respond_to do |format|
               format.html
-              format.csv { send_data all_points.to_csv, filename: "points-#{Date.today}.csv" }
+              format.csv { send_data @all_points.to_csv, filename: "points-#{Date.today}.csv" }
+              format.pdf do
+                  pdf = UserPointsPdf.new(@events, session[:user_uin])
+                  send_data pdf.render, filename: "user-points-#{Date.today}.pdf"
+              end
       end
     end
     
@@ -188,4 +194,14 @@ class PointsController < ApplicationController
     def edit_all
         @users = Point.all
     end
+    
+#     def user_csv
+        
+#         user_points = Point.where(:UIN => session[:user_uin])
+        
+#         respond_to do |format|
+#               format.html
+#               format.csv { send_data user_points.user_points_csv, filename: "user-point-#{Date.today}.csv" }
+#          end
+# 	end
 end
