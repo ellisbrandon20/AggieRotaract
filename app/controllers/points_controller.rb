@@ -131,6 +131,9 @@ class PointsController < ApplicationController
         @past_events = db_events.where("date <= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
         
         puts "---- past_events -> " + @past_events.to_s
+        @past_events.each do |event|
+            puts "--- event: " + @past_events.name 
+        end
     end
     
     UserAttendance = Struct.new(:active_record, :name, :points)
