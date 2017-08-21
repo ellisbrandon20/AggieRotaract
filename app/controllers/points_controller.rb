@@ -6,26 +6,27 @@ class PointsController < ApplicationController
     def index
         @events = Array.new
         
-        #session user uin
-        @users_points = Point.where(UIN: session[:user_uin])
-        @userName = User.find_by(UIN: session[:user_uin]).name
-        
-
-        @users_points.each do |user_pt|
-            event = Event.find(user_pt.event_id)
-            @events.append(UserPoints.new(user_pt, event))
+        if (!session[:user_uin].nil?)
+            #session user uin
+            @users_points = Point.where(UIN: session[:user_uin])
+            @userName = User.find_by(UIN: session[:user_uin]).name
+            
+    
+            @users_points.each do |user_pt|
+                event = Event.find(user_pt.event_id)
+                @events.append(UserPoints.new(user_pt, event))
+            end
+            
+            #sort @events by the date
+            @events.sort! { |a, b| a.event.date <=> b.event.date}
+    
+    
+            if !params[:view_event].nil?
+                @view_event = Event.find(params[:view_event])
+                event_contact = User.find_by(UIN: @view_event.contact)
+                @view_event.contact = event_contact.email 
+            end
         end
-        
-        #sort @events by the date
-        @events.sort! { |a, b| a.event.date <=> b.event.date}
-
-
-        if !params[:view_event].nil?
-            @view_event = Event.find(params[:view_event])
-            event_contact = User.find_by(UIN: @view_event.contact)
-            @view_event.contact = event_contact.email 
-        end
-        
         @all_points = Point.all
         respond_to do |format|
               format.html
