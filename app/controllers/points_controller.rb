@@ -129,6 +129,8 @@ class PointsController < ApplicationController
         # places the most recent events at the top of the list
         db_events = Event.order(date: :desc).all
         @past_events = db_events.where("date <= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
+        
+        puts "---- past_events -> " + @past_events.to_s
     end
     
     UserAttendance = Struct.new(:active_record, :name, :points)
