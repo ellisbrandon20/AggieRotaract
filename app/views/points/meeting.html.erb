@@ -10,7 +10,7 @@
     <%= form_tag :method => :post, :class => '', :controller => 'points', :url => points_meeting_signin_path, :action => 'meeting_signin' do %>
     
         <div class="row col-sm-12 form-group"> <!-- Dropdown list -->
-            <select class="btn-group bootstrap-select selectpicker show-tick" name="meeting_id" required>
+            <select class="btn-group bootstrap-select show-tick" name="meeting_id" required>
                 
                 <% if params[:event_id].nil? %>
                     <option disabled selected value> -- Select Meeting -- </option>
