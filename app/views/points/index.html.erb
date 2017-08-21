@@ -5,13 +5,13 @@
 <% end %>
 <div class="row">
     <h3 class="col-sm-8" style="margin-left: 6em;"> Total Points: <%= total %></h3>
-    <div class="col-sm-2">
-        <% if !params[:view_event].nil? %>
+    <!-- <div class="col-sm-2">
+        < if !params[:view_event].nil? %>
             <a href=<%= points_path(:view_event => params[:view_event], format: "pdf") %> class="btn btn-success btn-lg" id="export-user-points-csv">Export Data</a>
-        <% else %>
+        < else %>
             <a href=<%= points_path(format: "pdf") %> class="btn btn-primary" id="export-user-points-csv">Export Data</a>
-        <% end %>
-    </div>
+        < end %>
+    </div> -->
 </div>
 <div class="page-margins">
 	<div class="table-responsive">
