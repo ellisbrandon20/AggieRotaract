@@ -47,7 +47,7 @@
             <%= f.label :classification %>
           </div>
           <div class="form-group row col-sm-12">
-            <select class="btn-group bootstrap-select selectpicker show-tick" name="shirt" required>
+            <select class="btn-group bootstrap-select show-tick" name="shirt" required>
                   <% @classifications.each do |classification| %>
                     <% if classification == @user.classification %>
                       <option value=<%= classification %> selected><%= classification %> </option>
@@ -69,7 +69,7 @@
             <%= f.label :shirt %>
           </div>
           <div class="form-group row col-sm-12">
-            <select class="btn-group bootstrap-select selectpicker show-tick" name="shirt" required>
+            <select class="btn-group bootstrap-select show-tick" name="shirt" required>
                   <% @shirt_sizes.each do |size| %>
                     <% if size == @user.shirt %>
                       <option value=<%= size %> selected><%= size %> </option>

@@ -88,7 +88,7 @@
               <%= label_tag :contact %>
             </div>
             <div class="form-group row col-sm-12">
-              <select class="btn-group bootstrap-select selectpicker show-tick" name="contact" required>
+              <select class="btn-group bootstrap-select show-tick" name="contact" required>
                 <!-- list the officers -->
                 <% @officers.each do |officer| %>
                   <!-- must convert UIN to string because that is how we store it in Event Model -->
