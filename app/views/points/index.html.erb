@@ -13,6 +13,12 @@
         < end %>
     </div> -->
 </div>
+<div class="">
+    <% if is_user_active session[:user_uin] %>
+        <h2><div class="label label-success center-label">Congrats You are an Active Member</div></h2>
+    <% end %>
+</div>
+<br/>
 <div class="page-margins">
 	<div class="table-responsive">
 	  <table class="table table-striped">

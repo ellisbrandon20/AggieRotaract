@@ -73,7 +73,7 @@ class UserController < ApplicationController
                  :shirt => params[:shirt],
                  :gender => params[:gender],
                  :officer => false,
-                 :active => true)
+                 :active => false)
                  
         @new_user.save
 		flash[:success] = "Created User: " + @new_user.name

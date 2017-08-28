@@ -1,5 +1,6 @@
 class PointsController < ApplicationController
     before_filter :authenticate_user!
+    include PointsHelper
     
     UserPoints = Struct.new(:active_record, :event)
     
@@ -35,7 +36,8 @@ class PointsController < ApplicationController
                   pdf = UserPointsPdf.new(@events, session[:user_uin])
                   send_data pdf.render, filename: "user-points-#{Date.today}.pdf"
               end
-      end
+        end
+        
     end
     
     def create
@@ -63,6 +65,18 @@ class PointsController < ApplicationController
             @attendance_record = Attendance.find_by(UIN: uin, event_id: params[:event_id])
             @attendance_record.update_attribute(:approved, true)
             @attendance_record.save
+            
+                        
+            # check if user reached 30 points
+            is_active = is_user_active(uin)
+            if is_active
+                user = User.find_by(:UIN => uin)
+                user.update_attribute(:active, true)
+                user.save
+                puts "--- user earned 30 points is now ACTIVE"
+            else
+                puts "--- user is NOT ACTIVE"
+            end
         end
      
         flash[:success] = "Points were successfully distributed"
@@ -85,13 +99,13 @@ class PointsController < ApplicationController
             redirect_to points_meeting_path
         else
             #grab uin
-            user_uin = params[:uin]
+            uin = params[:uin]
             
             #check to see if UIN exists
-            if User.exists?({:UIN => user_uin})
-                name = User.find_by({:UIN => user_uin}).name
+            if User.exists?({:UIN => uin})
+                name = User.find_by({:UIN => uin}).name
                 # check if that user already signed in for this meeting
-                if(Point.exists?({:UIN => user_uin, :event_id => params[:meeting_id]}))
+                if(Point.exists?({:UIN => uin, :event_id => params[:meeting_id]}))
                    # display error/warning message that user already signed in for that meeting
                    meeting_name = Event.find(params[:meeting_id]).name
                    flash[:warning] = name + " has already signed in for " + meeting_name
@@ -110,6 +124,18 @@ class PointsController < ApplicationController
                                           
                     point.save
                     flash[:success] = name + " has successfully signed in"
+                    
+                    # check if user reached 30 points
+                    is_active = is_user_active(uin)
+                    if is_active
+                        user = User.find_by(:UIN => uin)
+                        user.update_attribute(:active, true)
+                        user.save
+                        puts "--- user earned 30 points is now ACTIVE"
+                    else
+                        puts "--- user is NOT ACTIVE"
+                    end
+                    
                     
                     redirect_to points_meeting_path(:event_id => meeting, :event_name => meeting.name)
                 end
