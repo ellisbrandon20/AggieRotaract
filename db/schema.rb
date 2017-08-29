@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170417221405) do
     t.boolean  "meeting"
     t.string   "contact"
     t.string   "image"
+    t.boolean  "publish"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

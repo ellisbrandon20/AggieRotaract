@@ -12,45 +12,45 @@
                       {:name => 'Big Event', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
                       :date => '2017-12-15',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 3.0, 
-                      :meeting => false, :contact => 123456789, :image => 'big_event.jpeg'},
+                      :meeting => false, :contact => 123456789, :image => 'big_event.jpeg', :publish => true},
                        
                       {:name => 'Habitat for Humanity', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-11-16', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
+                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg', :publish => true},
                       
                       # events to test approve points 
                       {:name => 'past event 1', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
                       :date => '2017-05-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 3.0, 
-                      :meeting => false, :contact => 123456789, :image => 'big_event.jpeg'},
+                      :meeting => false, :contact => 123456789, :image => 'big_event.jpeg', :publish => true},
                        
                       {:name => 'past event 2', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-05-02', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg'},
+                      :meeting => false, :contact => 987654321, :image => 'habitat_for_humanity.jpeg', :publish => true},
                       
                       # event to test signup waitlist feature
                       {:name => 'Kyle Field Clean up', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-09-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 1, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg'},
+                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg', :publish => true},
                       
                       # events to seed in points for users
                       {:name => 'Yogurt Land Profit Share', :address => '1800 S Texas Ave, College Station, TX 77840',
                       :description => 'Profit share for our organization at Yogurtland',
                       :date => '2017-09-21', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 10, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png'},
+                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png', :publish => true},
                       
                       {:name => 'Rotary Breakfast', :address => '1800 S Texas Ave, College Station, TX 77840',
                       :description => 'Breakfast with community Rotary members, possibility of eating breakfast with someone that used to have career with your degree',
                       :date => '2017-9-22', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 10, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png'},
+                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png', :publish => true},
                       
                       {:name => 'Aggie Replant', :address => '1800 S Texas Ave, College Station, TX 77840',
                       :description => 'Replanting trees in the surrounding area.',
                       :date => '2017-03-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 10, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png'}
+                      :meeting => false, :contact => 987654321, :image => 'Aggie_Rotaract_nav.png', :publish => true}
                       
                     ]
                      
@@ -64,12 +64,12 @@ meetings = [
           {:name => 'Meeting 1', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
           :description => 'Since its introduction in 1982, The Big Event has become the largest, one-day, student-run service project in the nation. Each spring, tens of thousands of Texas A&M students come together to say "Thank You" to the residents of Bryan and College Station. For the past 33 years, Aggie students have participated in this annual event to show their appreciation to the surrounding community, completing service projects such as yard work, window washing, and painting for residents of the community. Although The Big Event has become the largest one-day, student-run service project in the nation, our message and our mission remains the same – to simply say “Thank You.”',
           :date => '2017-12-01',:start_time => '10:00:00', :end_time => '15:00:00', :capacity => 30, :max_points => 1.0, 
-          :meeting => true, :contact => 123456789, :image => ''},
+          :meeting => true, :contact => 123456789, :image => '', :publish => true},
            
           {:name => 'Meeting 2', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
           :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
           :date => '2017-12-02', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 25, :max_points => 1.0, 
-          :meeting => true, :contact => 987654321, :image => ''}
+          :meeting => true, :contact => 987654321, :image => '', :publish => true}
          ]
          
 

@@ -12,6 +12,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.boolean :meeting
       t.string :contact
       t.string :image
+      t.boolean :publish
 
       t.timestamps
     end
