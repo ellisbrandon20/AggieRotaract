@@ -127,6 +127,7 @@ class EventsController < ApplicationController
     def edit
         @event = Event.find(params[:id])
         grab_officers
+        
     end
     
     def update
