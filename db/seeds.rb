@@ -34,7 +34,7 @@
                       {:name => 'Kyle Field Clean up', :address => 'Administration Building, 400 Bizzell St, College Station, TX 77843',
                       :description => 'Aggie Habitat for Humanity is the Texas A&M Campus Chapter of Habitat for Humanity International. We work closely with Bryan/College Station Habitat for Humanity.',
                       :date => '2017-09-20', :start_time => '09:00:00', :end_time => '13:00:00', :capacity => 1, :max_points => 2.0, 
-                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg', :publish => true},
+                      :meeting => false, :contact => 987654321, :image => 'kylefield-jets.jpeg', :publish => false},
                       
                       # events to seed in points for users
                       {:name => 'Yogurt Land Profit Share', :address => '1800 S Texas Ave, College Station, TX 77840',

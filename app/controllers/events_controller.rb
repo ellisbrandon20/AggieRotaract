@@ -4,7 +4,15 @@ class EventsController < ApplicationController
     def index
         curr_time = DateTime.now.to_date
         @all_events = Event.order(:date).all
-        @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
+        
+        if !session[:user_uin].nil?
+            puts '--- member is logged in'
+            @upcoming_events = @all_events.where("date >= :date and meeting = :meeting and publish = :published", {date: curr_time, meeting: [false], published: [true]})
+        else
+            puts '--- ADMIN is logged in'
+            @upcoming_events = @all_events.where("date >= :date and meeting = :meeting", {date: curr_time, meeting: [false]})
+        end
+        
         @upcoming_events_email = @upcoming_events
         contact_uin_to_email
         
@@ -77,6 +85,8 @@ class EventsController < ApplicationController
         # convert date input to correct format for database
         date = date_conversion
         
+        puts "--- params publish " + params[:publish].to_s
+        
         @event = Event.create!(:name => params[:name],
                  :description => params[:description],
                  :address => params[:address],
@@ -87,6 +97,7 @@ class EventsController < ApplicationController
                  :max_points => params[:max_points],
                  :capacity => params[:capacity],
                  :contact => params[:contact],
+                 :publish => params[:publish],
                  :image => params[:image])
                  
         @event.save
@@ -138,6 +149,7 @@ class EventsController < ApplicationController
                  :max_points => params[:max_points],
                  :capacity => params[:capacity],
                  :contact => params[:contact],
+                 :publish => params[:publish],
                  :image => params[:image])
 
         flash[:success] = "#{@event.name} was successfully updated."
