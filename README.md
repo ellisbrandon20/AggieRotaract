@@ -4,7 +4,7 @@ This is a Organization Management System web application for Texas A&M Universit
 
 This project is going to replace the current system that Aggie Rotaract uses which was a series of Google Sheets connected via code that ended up not being as reliable as they had hoped. 
 
-###This project is an on-going project and continuing to add feautres and communicating with the organization will be Brandon Ellis
+### This project is an on-going project and continuing to add feautres and communicating with the organization will be Brandon Ellis
 
 
 To run on local machine: 
