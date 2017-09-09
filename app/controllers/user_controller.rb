@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-	before_filter :authenticate_user!, :only => [ :index, :edit, :update ]
+	before_filter :authenticate_user!, :only => [ :index, :update ]
 	layout "application", :only => [ :index, :new, :edit ]
 	layout "login", :only => [:login, :admin_login]
 
