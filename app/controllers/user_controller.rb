@@ -114,6 +114,6 @@ class UserController < ApplicationController
                  :updated_at => DateTime.now)
 
         flash[:success] = "#{@user.name} was successfully updated."
-        redirect_to user_list_path
+        redirect_to user_index_path
 	end
 end
